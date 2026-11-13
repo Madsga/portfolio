@@ -13,6 +13,9 @@ button{font:inherit;color:inherit}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .wrap{width:min(100% - 2*var(--gut),76rem);margin-inline:auto}
 
+/* Netlify's free plan injects a "Powered by Netlify" badge as an iframe; keep it off the pages */
+#nl-badge-frame{display:none!important}
+
 /* ---------- The name ---------- */
 .name{font-family:var(--display);font-weight:800;text-transform:uppercase;line-height:.8;white-space:nowrap;font-size:12vw;user-select:none;-webkit-user-select:none;touch-action:pan-y}
 .name .word{display:inline-block}
