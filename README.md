@@ -13,9 +13,7 @@ python3 -m http.server 4173 --directory site
 
 Then open http://localhost:4173.
 
-## Publish (Cloudflare Pages)
+## Publish
 
-Connect the repository and use these settings:
-
-- Build command: none
-- Build output directory: `site`
+- Netlify: connect the repository. `netlify.toml` already sets the publish directory to `site`.
+- Cloudflare Pages: connect the repository, leave the build command empty, and set the build output directory to `site`.
