@@ -1,0 +1,5 @@
+# Original decks, exports and screenshots: kept on disk, not in the repository
+source/
+
+.DS_Store
+.claude/settings.local.json

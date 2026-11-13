@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Better VQ – Mads Buciek</title>
+<meta name="description" content="Better VQ: a virtual queue for airport check-in and security as a native iOS app, in three directions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<style>
+body{--bg:#F2F4F5;--ink:#0E1A1D;--muted:#4A5A5E;--teal:#0B4A55;--mint:#6FD6C8;--pale:#BFE3E8;--font:"Inter",system-ui,sans-serif;--focus:#6FD6C8;
+  --foot-bg:#0B4A55;--foot-ink:#F1F5F5;--hello:#6FD6C8;--hello-ink:#0C1517;--next-bg:#17161B;--next-ink:#F56C14}
+.h2{font-weight:600;letter-spacing:-.05em;line-height:1}
+.dev{border-radius:2rem;outline:.55rem solid #111214;box-shadow:0 0 0 calc(.55rem + 2px) #2E2F33,0 50px 90px rgba(2,20,25,.5);width:100%}
+
+.hero{background:var(--teal);color:#F1F5F5;min-height:100svh;padding-top:5rem;overflow:clip;position:relative}
+.hero h1{font-size:17.2vw;font-weight:600;line-height:.9;letter-spacing:-.06em;white-space:nowrap;padding-inline:var(--gut);margin-left:-.04em}
+.hero-row{display:grid;grid-template-columns:1fr 1fr;gap:2rem;padding:1.5rem var(--gut) 0;color:var(--pale)}
+.hero-row p{font-size:clamp(1.0625rem,1.6vw,1.375rem);line-height:1.4;max-width:26rem}
+.hero-row p:last-child{justify-self:end;text-align:right}
+.fan{position:relative;height:clamp(22rem,44vw,36rem);margin-top:clamp(1rem,3vw,2.5rem)}
+.fan img{position:absolute;width:clamp(10rem,19vw,16rem);top:14%}
+.fan img:nth-child(1){left:calc(50% - clamp(10rem,19vw,16rem)*1.55);transform:rotate(-9deg)}
+.fan img:nth-child(2){left:calc(50% - clamp(10rem,19vw,16rem)*.5);top:0;z-index:1}
+.fan img:nth-child(3){left:calc(50% + clamp(10rem,19vw,16rem)*.55);transform:rotate(9deg)}
+@media (max-width:640px){.hero-row{grid-template-columns:1fr}.hero-row p:last-child{justify-self:start;text-align:left}}
+
+.rules{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--ink);margin-top:3.5rem}
+.rules li{padding:1.5rem 1.5rem 0}
+.rules li:first-child{padding-left:0}
+.rules li+li{border-left:2px solid var(--ink)}
+.rules b{display:block;font-size:clamp(2.5rem,7vw,6.5rem);font-weight:600;line-height:1;letter-spacing:-.05em;white-space:nowrap}
+.rules span{color:var(--muted)}
+@media (max-width:700px){.rules{grid-template-columns:1fr;border-top:0}.rules li{padding:1.25rem 0 0;border-top:2px solid var(--ink);margin-top:1.25rem}.rules li+li{border-left:0}}
+
+/* Try it: the slot picker and the pass it writes to */
+.try{background:#ECECEE}
+.booth{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(1.5rem,4vw,3rem);align-items:center;margin-top:2.5rem}
+@media (max-width:820px){.booth{grid-template-columns:1fr}}
+.picker{background:#fff;border-radius:1.9rem;padding:1.5rem;box-shadow:0 30px 60px rgba(20,30,40,.14)}
+.picker h3{font-size:1.125rem;font-weight:600;margin-bottom:1rem}
+.picker h3+.slots{margin-bottom:1.5rem}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem}
+.slot{height:5.5rem;border-radius:1.25rem;border:1px solid #D3DCDE;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:background .15s,color .15s,transform .1s}
+.slot b{font-size:1.375rem;font-weight:700}
+.slot span{font-size:.875rem;color:var(--muted)}
+.slot:hover{border-color:var(--teal)}
+.slot:active{transform:scale(.96)}
+.slot[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
+.slot[aria-pressed="true"] span{color:#D4E8EB}
+.slot:disabled{background:#F2F4F5;border-color:transparent;color:#5B6B70;cursor:not-allowed}
+.slot:disabled b{text-decoration:line-through;font-weight:500}
+@media (max-width:480px){.slots{grid-template-columns:1fr 1fr}}
+.pass{background:var(--teal);color:#fff;border-radius:1.75rem;padding:1.6rem;box-shadow:0 30px 60px rgba(11,46,53,.3);transform:rotate(3deg);max-width:22rem;justify-self:center;width:100%}
+.pass small{color:var(--pale);font-size:.9375rem}
+.pass .route{font-size:2.25rem;font-weight:800;letter-spacing:-.02em;margin:.25rem 0 1rem}
+.pass dl{display:grid;grid-template-columns:1fr auto;gap:.7rem 1rem}
+.pass dt:nth-of-type(2),.pass dd:nth-of-type(2){border-top:1px solid #2F6872;padding-top:.7rem}
+.pass dd{font-weight:700;font-variant-numeric:tabular-nums}
+.pass .open{margin-top:1.25rem;background:#fff;color:var(--teal);font-weight:600;text-align:center;padding:.6rem;border-radius:999px}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem;counter-reset:s}
+.steps li{background:#fff;border-radius:1.75rem;padding:1.6rem;counter-increment:s}
+.steps li::before{content:"0" counter(s);font-weight:600;color:var(--teal)}
+.steps li.heavy{background:var(--teal);color:#fff}
+.steps li.heavy::before{color:var(--mint)}
+.steps h3{font-size:1.5rem;font-weight:600;line-height:1.15;margin:.8rem 0 .5rem;letter-spacing:-.02em}
+.steps p{color:var(--muted)}
+.steps .heavy p{color:#D4E8EB}
+@media (max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+
+.why{background:#0D0D0D;color:#F2F2F2;--muted:#BDBDBD}
+.adds{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3rem}
+.adds li{background:#1A1B1E;border:1px solid #2E2F33;border-radius:1.75rem;padding:1.6rem}
+.adds h3{font-size:1.375rem;font-weight:600;color:var(--mint);margin-bottom:.5rem;letter-spacing:-.01em}
+.adds p{color:#BDBDBD}
+@media (max-width:900px){.adds{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.adds{grid-template-columns:1fr}}
+
+.dir{padding-block:clamp(4rem,9vw,7rem);overflow:clip}
+.dir .pair{display:flex;gap:1.75rem;justify-content:center;padding:1rem}
+.dir .pair img{width:min(44%,15rem)}
+.dir .pair img:nth-child(2){margin-top:3.5rem}
+.dir .letter{font-weight:500;font-size:1.125rem}
+.dir h2{margin:.75rem 0 1.25rem}
+.dir-a{background:var(--teal);color:#F1F5F5;--muted:var(--pale)}
+.dir-b{background:#ECECEE}
+.dir-b .pair img:nth-child(1){transform:rotate(-6deg)}
+.dir-b .pair img:nth-child(2){transform:rotate(6deg)}
+.dir-b .split>:first-child{order:2}
+@media (max-width:820px){.dir-b .split>:first-child{order:0}}
+.dir-c{background:#0A0A0A;color:#F2F2F2;--muted:#D9D9D9}
+.dir-c .letter{color:var(--mint)}
+.dir ul.bits{margin-top:1.5rem;color:var(--muted)}
+.dir ul.bits li{padding:.5rem 0;border-top:1px solid color-mix(in srgb,currentColor 25%,transparent)}
+
+.compare{overflow-x:auto;margin-top:2.5rem}
+table{border-collapse:collapse;width:100%;min-width:44rem;font-size:1rem}
+th,td{text-align:left;padding:1rem 1rem 1rem 0;border-top:1px solid #C9D3D6;vertical-align:top}
+thead th{border-top:2px solid var(--ink);font-weight:600}
+tbody th{font-weight:600}
+td{color:var(--muted)}
+
+.onepass{background:radial-gradient(ellipse at 30% 10%,#145B68 0%,#0B4A55 45%,#06303A 100%);color:#F1F5F5;--muted:#F1F5F5}
+.onepass img{width:min(100%,18rem);justify-self:center}
+
+.nexts{background:var(--teal);color:#F1F5F5}
+.nexts .h2{max-width:16ch}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem}
+.cards3 li{background:#0C1517;border-radius:1.75rem;padding:1.6rem}
+.cards3 h3{font-size:1.375rem;font-weight:600;color:var(--pale);margin-bottom:.5rem}
+.cards3 p{color:#B7C7CA}
+@media (max-width:820px){.cards3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="case-top" style="color:#BFE3E8">
+  <a href="index.html">Mads Buciek</a>
+  <a href="index.html#work">All work</a>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Skip the line.</h1>
+    <div class="hero-row">
+      <p>Book a time for airport check-in and security, not a place in the queue.</p>
+      <p>Better VQ, virtual queue booking. An iOS concept in three directions.</p>
+    </div>
+    <div class="fan">
+      <img class="dev" src="img/vq/a-find.png" alt="Direction A: the Find your flight screen." width="1170" height="2532">
+      <img class="dev" src="img/vq/b-home.png" alt="Direction B: home screen with departures." width="1170" height="2532">
+      <img class="dev" src="img/vq/c-where.png" alt="Direction C: Where are you flying today, in large type on a dark screen." width="1170" height="2532">
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="split top">
+        <h2 class="h2">Pick a slot, arrive at that time, walk past the queue.</h2>
+        <p class="lede">Better VQ is a virtual queue for airports. Today the booking is a four-step web flow that ends in an email. This concept covers what it looks like as a native iOS app. The app keeps every booking rule; only the way through the booking changes.</p>
+      </div>
+      <ul class="rules">
+        <li><b>15 min</b><span>Each check-in and security slot</span></li>
+        <li><b>10</b><span>Passengers at most per booking</span></li>
+        <li><b>3 days</b><span>Before departure, booking opens</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec try">
+    <div class="wrap">
+      <h2 class="h2">Every slot says its state in words, not just colour.</h2>
+      <div class="booth">
+        <div class="picker">
+          <h3 id="ci">Check-in</h3>
+          <div class="slots" role="group" aria-labelledby="ci" data-target="p-ci">
+            <button class="slot" type="button" aria-pressed="false"><b>17:30</b><span>Open</span></button>
+            <button class="slot" type="button" aria-pressed="false"><b>17:45</b><span>Few left</span></button>
+            <button class="slot" type="button" aria-pressed="true"><b>18:00</b><span>Picked</span></button>
+            <button class="slot" type="button" disabled><b>18:45</b><span>Full</span></button>
+          </div>
+          <h3 id="se">Security</h3>
+          <div class="slots" role="group" aria-labelledby="se" data-target="p-se">
+            <button class="slot" type="button" aria-pressed="false"><b>18:15</b><span>Open</span></button>
+            <button class="slot" type="button" aria-pressed="true"><b>18:30</b><span>Picked</span></button>
+            <button class="slot" type="button" aria-pressed="false"><b>18:45</b><span>Few left</span></button>
+            <button class="slot" type="button" disabled><b>19:00</b><span>Full</span></button>
+          </div>
+        </div>
+        <div class="pass" aria-live="polite">
+          <small>Today, easyJet U2 819</small>
+          <p class="route">DEMO → DUB</p>
+          <dl>
+            <dt>Check-in</dt><dd id="p-ci">18:00</dd>
+            <dt>Security</dt><dd id="p-se">18:30</dd>
+          </dl>
+          <p class="open">One pass for both</p>
+        </div>
+      </div>
+      <p class="note" style="margin-top:1.5rem">Pick a slot and the pass updates. Times and flight are sample data.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <h2 class="h2">Today, booking takes four web steps</h2>
+      <ol class="steps">
+        <li><h3>Find your flight</h3><p>Pick the destination and the flight.</p></li>
+        <li class="heavy"><h3>Booking details</h3><p>Passengers, a check-in slot, a security slot and an email, all on one page.</p></li>
+        <li><h3>Review</h3><p>Check the flight, the times and the passengers.</p></li>
+        <li><h3>Confirmation</h3><p>The booking is sent by email.</p></li>
+      </ol>
+      <p class="body" style="margin-top:1.5rem">Step two carries most of the work. Each app direction splits or compresses that step differently.</p>
+    </div>
+  </section>
+
+  <section class="sec why">
+    <div class="wrap">
+      <div class="split top">
+        <h2 class="h2">What a native app adds to the booking</h2>
+        <p class="lede">The web flow ends at an email. An app can stay with the passenger until the checkpoint.</p>
+      </div>
+      <ul class="adds">
+        <li><h3>iOS navigation</h3><p>Back, sheets and tabs that people already know.</p></li>
+        <li><h3>A pass</h3><p>One code to show at check-in and at security.</p></li>
+        <li><h3>My bookings</h3><p>Every trip in one tab, not in the inbox.</p></li>
+        <li><h3>Wallet and reminders</h3><p>The pass in Wallet, the slot in the calendar, a nudge before it.</p></li>
+      </ul>
+      <p class="note" style="margin-top:1.5rem">These four are proposals for the concept, not features of the current product.</p>
+    </div>
+  </section>
+
+  <section class="dir dir-a">
+    <div class="wrap split">
+      <div>
+        <p class="letter">Direction A, guided steps</p>
+        <h2 class="h2">One decision at a time.</h2>
+        <p class="lede">Find a flight, choose check-in and security slots, review, and carry a pass to every checkpoint. Five steps, then a confirmation, in light, standard iOS styling.</p>
+        <ul class="bits"><li>Suits first-time travellers</li><li>The slowest path of the three</li></ul>
+      </div>
+      <div class="pair">
+        <img class="dev" src="img/vq/a-slots.png" alt="Direction A: passengers and a grid of time slots." loading="lazy">
+        <img class="dev" src="img/vq/a-pass.png" alt="Direction A: confirmation screen with the pass." loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="dir dir-b">
+    <div class="wrap split">
+      <div>
+        <p class="letter">Direction B, fewer steps</p>
+        <h2 class="h2">Book straight from the flight card.</h2>
+        <p class="lede">Two screens and a sheet. Slots, passengers and the pass all start from the departure.</p>
+        <ul class="bits"><li>Suits repeat travellers</li><li>The booking screen is dense</li></ul>
+      </div>
+      <div class="pair">
+        <img class="dev" src="img/vq/b-home.png" alt="Direction B: home screen with departures." loading="lazy">
+        <img class="dev" src="img/vq/b-book.png" alt="Direction B: booking screen with slot cards." loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="dir dir-c">
+    <div class="wrap split">
+      <div>
+        <p class="letter">Direction C, one question per screen</p>
+        <h2 class="h2">Three screens. Big type. Mint accent.</h2>
+        <p class="lede">One thing asked per screen, in large type, for quick use on the move.</p>
+        <ul class="bits"><li>Suits quick use while walking</li><li>Needs a light mode before it can ship</li></ul>
+      </div>
+      <div class="pair">
+        <img class="dev" src="img/vq/c-where.png" alt="Direction C: Where are you flying today." loading="lazy">
+        <img class="dev" src="img/vq/c-when.png" alt="Direction C: When will you check in, with slot rows." loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <h2 class="h2">Each direction trades speed for guidance</h2>
+      <div class="compare" tabindex="0" role="region" aria-label="Comparison of the three directions">
+        <table>
+          <thead><tr><th>Direction</th><th>Booking</th><th>Look</th><th>Suits</th><th>Watch out</th></tr></thead>
+          <tbody>
+            <tr><th>A, guided steps</th><td>5 steps, then confirmation</td><td>Light, standard iOS</td><td>First-time travellers</td><td>Slowest path</td></tr>
+            <tr><th>B, fewer steps</th><td>2 screens and a sheet</td><td>Pills, floating tab bar</td><td>Repeat travellers</td><td>Dense booking screen</td></tr>
+            <tr><th>C, one question</th><td>3 screens</td><td>Dark, big type, mint accent</td><td>Quick use on the move</td><td>Needs a light mode</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note" style="margin-top:1.25rem">“Suits” is a design hypothesis, not a research finding. All three share one component set with the same four slot states, so a chosen direction can reuse the others’ work.</p>
+    </div>
+  </section>
+
+  <section class="sec onepass">
+    <div class="wrap split">
+      <div class="stack">
+        <h2 class="h2">One pass, every checkpoint.</h2>
+        <p class="lede">The same code opens check-in and security, and both slot times sit on the pass. This is where the app earns its place over the web flow: it is there at the checkpoint without searching for an email.</p>
+      </div>
+      <img class="dev" src="img/vq/b-pass.png" alt="Full-screen pass with a code for check-in and security." loading="lazy">
+    </div>
+  </section>
+
+  <section class="sec nexts">
+    <div class="wrap">
+      <h2 class="h2">Next: put the three directions in front of travellers.</h2>
+      <ul class="cards3">
+        <li><h3>Test A, B and C</h3><p>With first-time and repeat travellers, to check who each direction really suits.</p></li>
+        <li><h3>Pick one, keep the parts</h3><p>The shared component set lets the chosen direction borrow the best of the others.</p></li>
+        <li><h3>Real data</h3><p>Destinations come from the live demo; slot times are sample data for now.</p></li>
+      </ul>
+      <p style="margin-top:1.5rem;color:#BFE3E8;font-size:.9375rem">The concept is not built or tested yet.</p>
+    </div>
+  </section>
+
+  <a class="next" href="renovai.html"><span>Next case</span><strong>RenovAI</strong></a>
+</main>
+
+<footer class="foot">
+  <div class="foot-row">
+    <p>Working on a product that has outgrown its first design?</p>
+    <a class="hello" href="mailto:mads506n@gmail.com">Say hello!</a>
+  </div>
+  <p class="name" data-name>Mads Buciek</p>
+</footer>
+
+<script src="js/site.js"></script>
+<script>
+// Slot picker: one picked slot per group; the pass shows the chosen times.
+document.querySelectorAll('.slots').forEach((group) => {
+  const out = document.getElementById(group.dataset.target);
+  const slots = [...group.querySelectorAll('.slot:not(:disabled)')];
+  slots.forEach((s) => (s.dataset.state = s.querySelector('span').textContent === 'Picked' ? 'Open' : s.querySelector('span').textContent));
+  slots.forEach((s) => s.addEventListener('click', () => {
+    slots.forEach((o) => { o.setAttribute('aria-pressed', 'false'); o.querySelector('span').textContent = o.dataset.state; });
+    s.setAttribute('aria-pressed', 'true');
+    s.querySelector('span').textContent = 'Picked';
+    out.textContent = s.querySelector('b').textContent;
+  }));
+});
+</script>
+</body>
+</html>

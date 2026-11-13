@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mads Buciek, senior product designer</title>
+<meta name="description" content="Senior product designer building solutions for scaling SaaS and enterprise software.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Inter:wght@400;500;600;700&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<style>
+body{--bg:#F4F5F3;--ink:#1E2A44;--taupe:#A39591;--hello:#FFD84A;--font:"Archivo",system-ui,sans-serif;--focus:#1E2A44}
+
+/* Pinstripes, borrowed from the shirt in the portrait */
+.hero{background-image:repeating-linear-gradient(90deg,transparent 0 27px,rgba(30,42,68,.07) 27px 28px)}
+
+.top{position:absolute;inset:0 0 auto 0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:1.1rem var(--gut);font-weight:600}
+.top a{text-decoration:none}
+.top a:hover{text-decoration:underline;text-underline-offset:.25em}
+.top nav{display:flex;gap:1.75rem}
+
+.pin{height:100svh}
+.motion .pin{height:190svh}
+.hero{position:sticky;top:0;height:100svh;overflow:clip;display:grid;grid-template-rows:1fr auto;padding:5.5rem var(--gut) clamp(1rem,2.5vw,2rem)}
+.hero{--pt:5rem;--pb:5vw}
+.hero-mid{min-height:0}
+.tagline{position:relative;z-index:2;font-size:clamp(1.25rem,2vw,2rem);line-height:1.15;letter-spacing:-.02em;font-weight:500;text-wrap:balance;
+  max-width:calc(50vw - (100svh - var(--pt) - var(--pb))*.4 - var(--gut) - 1.5rem)}
+/* Portrait: large, centred, sitting behind the name */
+.portrait{position:absolute;z-index:0;left:50%;bottom:var(--pb);transform:translateX(-50%);height:calc(100svh - var(--pt) - var(--pb));aspect-ratio:798/1201;max-width:calc(100% - 2*var(--gut));background:none;padding:0;border:0;cursor:pointer;display:block}
+.portrait img{width:100%;height:100%;object-fit:contain;object-position:50% 100%;filter:blur(18px) saturate(.85);transition:filter .7s ease}
+.portrait:hover img,.portrait:focus-visible img,.portrait.clear img{filter:none}
+.hero .name{position:relative;z-index:1;color:var(--ink);pointer-events:none}
+.hero .name .l{pointer-events:auto}
+
+@media (max-width:1000px){
+  .hero{--pt:11.5rem}
+  .tagline{max-width:24em;font-size:1.375rem}
+}
+@media (max-width:700px){
+  .hero{padding-top:4.5rem;--pt:13.5rem;--pb:30vw}
+}
+
+/* Work: four doors, each already wearing its product's skin */
+.work-head{padding:clamp(4rem,9vw,7rem) var(--gut) clamp(1.5rem,3vw,2.5rem);display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.work-head h2{font-size:clamp(2rem,5vw,4rem);line-height:1;letter-spacing:-.03em;font-weight:800}
+.work-head p{color:#5A6377;max-width:26rem}
+.door{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);min-height:clamp(26rem,48vw,40rem);overflow:hidden;text-decoration:none;isolation:isolate}
+.door-text{padding:clamp(2rem,5vw,4.5rem) var(--gut);display:flex;flex-direction:column;justify-content:space-between;gap:2rem}
+.door-text p{max-width:26rem;font-size:1.125rem;line-height:1.45}
+.door-art{position:relative}
+.door-art img{position:absolute;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.shot{border-radius:1.75rem;box-shadow:0 30px 70px rgba(0,0,0,.3)}
+@media (max-width:760px){
+  .door{grid-template-columns:1fr;min-height:0}
+  .door-art{height:19rem}
+}
+
+.d-ally{background:#F3F4F6;color:#111827;font-family:"Inter",sans-serif}
+.d-ally h3{font-size:clamp(2.25rem,5vw,4.5rem);line-height:1;letter-spacing:-.045em;font-weight:700;max-width:10ch}
+.d-ally .tag{align-self:flex-start;background:#FDE2E6;color:#B40016;font-weight:600;font-size:.9375rem;padding:.35rem .8rem;border-radius:999px}
+.d-ally .door-art img{width:38%;top:12%}
+.d-ally .door-art img:nth-child(1){left:8%}
+.d-ally .door-art img:nth-child(2){left:52%;top:24%}
+.d-ally:hover .door-art img:nth-child(1){transform:translateY(-4%)}
+.d-ally:hover .door-art img:nth-child(2){transform:translateY(-9%)}
+
+.d-vq{background:#0B4A55;color:#F1F5F5;font-family:"Inter",sans-serif}
+.d-vq h3{font-size:clamp(3rem,8.5vw,8rem);line-height:.92;letter-spacing:-.06em;font-weight:600}
+.d-vq .tag{color:#BFE3E8;font-weight:500}
+.d-vq .door-art img{width:30%;top:16%;border-radius:1.5rem;outline:6px solid #111214}
+.d-vq .door-art img:nth-child(1){left:6%;transform:rotate(-9deg)}
+.d-vq .door-art img:nth-child(2){left:36%;top:8%;z-index:1}
+.d-vq .door-art img:nth-child(3){left:66%;transform:rotate(9deg)}
+.d-vq:hover .door-art img:nth-child(1){transform:rotate(-13deg) translateX(-6%)}
+.d-vq:hover .door-art img:nth-child(3){transform:rotate(13deg) translateX(6%)}
+
+.d-renov{background:radial-gradient(ellipse at 85% 100%,#4A2414 0%,#17161B 60%);color:#F5F1EC;font-family:"Inter",sans-serif}
+.d-renov h3{font-size:clamp(2rem,4.2vw,3.5rem);line-height:1.05;letter-spacing:-.03em;font-weight:700;max-width:13ch}
+.d-renov .tag{color:#F56C14;font-weight:700;font-size:1.5rem;letter-spacing:-.02em}
+.d-renov .door-text p{color:#B5ADA6}
+.d-renov .door-art img{left:4%;top:14%;width:120%;max-width:none;border-radius:1rem 0 0 1rem;border:1px solid #3A3236;box-shadow:0 40px 80px rgba(0,0,0,.5)}
+.d-renov:hover .door-art img{transform:translateX(-5%)}
+
+.d-days{background:#1A1814;color:#F2EEE6;font-family:"Manrope",sans-serif}
+.d-days h3{font-size:clamp(2.5rem,6vw,5.5rem);line-height:.98;letter-spacing:-.045em;font-weight:700;max-width:9ch}
+.d-days .tag{color:#E8894F;font-weight:700;font-variant-numeric:tabular-nums}
+.d-days .door-text p{color:#A8A196}
+.d-days .door-art img{width:62%;border-radius:.6rem;box-shadow:0 24px 64px rgba(0,0,0,.5)}
+.d-days .door-art img:nth-child(1){left:30%;top:8%;transform:rotate(4deg)}
+.d-days .door-art img:nth-child(2){left:4%;top:34%;transform:rotate(-3deg)}
+.d-days .door-art img:nth-child(3){left:34%;top:58%;transform:rotate(2deg)}
+.d-days:hover .door-art img:nth-child(1){transform:rotate(7deg) translateY(-5%)}
+.d-days:hover .door-art img:nth-child(2){transform:rotate(-6deg) translateX(-4%)}
+.d-days:hover .door-art img:nth-child(3){transform:rotate(4deg) translateY(5%)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a href="#top">Mads Buciek</a>
+  <nav aria-label="Main">
+    <a href="#work">Work</a>
+    <a href="mailto:mads506n@gmail.com">Say hello</a>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="pin" data-pin>
+    <section class="hero">
+      <div class="hero-mid">
+        <p class="tagline" data-fade>Senior product designer building solutions for scaling SaaS and enterprise software.</p>
+        <button class="portrait" type="button" data-portrait aria-label="Portrait of Mads Buciek. Activate to bring it into focus.">
+          <img src="img/portrait.png" alt="" width="798" height="1201">
+        </button>
+      </div>
+      <h1 class="name" data-name>Mads Buciek</h1>
+    </section>
+  </div>
+
+  <section id="work" aria-labelledby="work-h">
+    <div class="work-head">
+      <h2 id="work-h">Selected work</h2>    </div>
+
+    <a class="door d-ally" href="ally.html">
+      <div class="door-text">
+        <span class="tag">Danfoss Ally, concept redesign</span>
+        <div>
+          <h3>A thermostat app, rebuilt around rooms</h3>
+          <p style="margin-top:1.25rem;color:#4B5563">Two taps instead of four. One settings screen instead of three. For iPhone, iPad and an iOS widget.</p>
+        </div>
+      </div>
+      <div class="door-art" aria-hidden="true">
+        <img src="img/ally/home-tilt.png" alt="" loading="lazy">
+        <img src="img/ally/room-tilt.png" alt="" loading="lazy">
+      </div>
+    </a>
+
+    <a class="door d-vq" href="better-vq.html">
+      <div class="door-text">
+        <span class="tag">Better VQ, iOS concept</span>
+        <div>
+          <h3>Skip the line.</h3>
+          <p style="margin-top:1.25rem;color:#BFE3E8">Book a time for airport check-in and security instead of a place in the queue. One booking, three directions.</p>
+        </div>
+      </div>
+      <div class="door-art" aria-hidden="true">
+        <img src="img/vq/a-find.png" alt="" loading="lazy">
+        <img src="img/vq/b-home.png" alt="" loading="lazy">
+        <img src="img/vq/c-where.png" alt="" loading="lazy">
+      </div>
+    </a>
+
+    <a class="door d-renov" href="renovai.html">
+      <div class="door-text">
+        <span class="tag">RenovAI</span>
+        <div>
+          <h3>Describe the job. Get the shopping plan.</h3>
+          <p style="margin-top:1.25rem">An AI renovation assistant that shows its reasoning before anything reaches the cart.</p>
+        </div>
+      </div>
+      <div class="door-art" aria-hidden="true">
+        <img src="img/renovai/10.jpg" alt="" loading="lazy">
+      </div>
+    </a>
+
+    <a class="door d-days" href="30-days.html">
+      <div class="door-text">
+        <span class="tag">60:00</span>
+        <div>
+          <h3>30 days of landing pages</h3>
+          <p style="margin-top:1.25rem">A random photo, sixty minutes, one finished page. Every day for a month.</p>
+        </div>
+      </div>
+      <div class="door-art" aria-hidden="true">
+        <img src="img/days/getaway.jpg" alt="" loading="lazy">
+        <img src="img/days/contrast.jpg" alt="" loading="lazy">
+        <img src="img/days/flowermail.jpg" alt="" loading="lazy">
+      </div>
+    </a>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-row">
+    <p>Working on a product that has outgrown its first design?</p>
+    <a class="hello" href="mailto:mads506n@gmail.com">Say hello!</a>
+  </div>
+  <p class="name" data-name>Mads Buciek</p>
+</footer>
+
+<script src="js/site.js"></script>
+</body>
+</html>
