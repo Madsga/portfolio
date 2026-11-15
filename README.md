@@ -29,5 +29,6 @@ npm run serve   # serves site/ at http://localhost:4173
 
 ## Publish
 
+- Vercel: connected. Every push to `main` deploys to production; `vercel.json` runs `npm run build` and publishes `site`.
 - Netlify: connect the repository. `netlify.toml` runs `npm run build` and publishes `site`.
 - Cloudflare Pages: connect the repository, set the build command to `npm run build`, and set the build output directory to `site`.
