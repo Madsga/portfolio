@@ -1,0 +1,13 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "scripts": {
+    "build": "tailwindcss -i src/styles.css -o site/css/site.css --minify",
+    "watch": "tailwindcss -i src/styles.css -o site/css/site.css --watch",
+    "serve": "python3 -m http.server 4173 --directory site"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.3.5",
+    "tailwindcss": "4.3.5"
+  }
+}

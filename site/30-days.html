@@ -8,95 +8,35 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Inter:wght@400;600&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/base.css">
-<style>
-body{--bg:#F2EEE6;--ink:#1A1814;--muted:#5E574C;--orange:#E07A3F;--rust:#B4521C;--soft:#E8E2D6;--font:"Inter",system-ui,sans-serif;--head:"Manrope","Inter",sans-serif;--focus:#B4521C;
-  --foot-bg:#1A1814;--foot-ink:#F2EEE6;--hello:#E07A3F;--hello-ink:#1A1814;--next-bg:#F3F4F6;--next-ink:#111827}
-h1,h2,h3,.h2{font-family:var(--head)}
-
-.hero{background:var(--ink);color:#F2EEE6;min-height:100svh;padding:6.5rem 0 4rem;position:relative;overflow:clip;display:flex;align-items:flex-end}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:end}
-.clock{font-family:var(--head);font-weight:700;color:#E8894F;font-size:clamp(1.5rem,3vw,2.25rem);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
-.hero h1{font-size:clamp(3rem,8.6vw,8rem);line-height:.96;letter-spacing:-.05em;font-weight:700;margin:.75rem 0 1.5rem;max-width:8ch}
-.hero .lede{color:#A8A196}
-.pile{position:relative;height:clamp(20rem,46vw,38rem)}
-.pile img{position:absolute;width:74%;border-radius:.7rem;box-shadow:0 24px 64px rgba(0,0,0,.55)}
-.pile img:nth-child(1){right:0;top:0;transform:rotate(4deg)}
-.pile img:nth-child(2){left:0;top:30%;transform:rotate(-3deg)}
-.pile img:nth-child(3){right:4%;top:60%;transform:rotate(2deg)}
-@media (max-width:820px){.hero-grid{grid-template-columns:1fr}.pile{order:-1;height:17rem}.pile img{width:62%}}
-
-.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3.5rem}
-.nums li{border-top:2px solid var(--ink);padding-top:1.25rem}
-.nums b{display:block;font-family:var(--head);font-size:clamp(4rem,10vw,9rem);font-weight:700;line-height:1;letter-spacing:-.04em;color:var(--rust)}
-.nums span{color:var(--muted);font-size:1.125rem}
-@media (max-width:640px){.nums{grid-template-columns:1fr}}
-
-.day{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3rem;counter-reset:d}
-.day li{background:var(--soft);border-radius:1rem;padding:1.75rem;counter-increment:d}
-.day li::before{content:"0" counter(d);font-weight:600;color:var(--rust)}
-.day h3{font-size:1.75rem;font-weight:600;letter-spacing:-.02em;line-height:1.1;margin:.6rem 0 .5rem}
-.day p{color:var(--muted)}
-.day li.stop{background:var(--ink);color:#F2EEE6}
-.day li.stop::before{content:"60:00";color:#E8894F}
-.day li.stop p{color:#A8A196}
-@media (max-width:900px){.day{grid-template-columns:1fr 1fr}}
-@media (max-width:520px){.day{grid-template-columns:1fr}}
-
-.wall{background:var(--ink);color:#F2EEE6;--muted:#A8A196}
-.group+.group{margin-top:clamp(3.5rem,8vw,6rem)}
-.group header{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:end;margin-bottom:1.75rem}
-.group h3{font-size:clamp(2rem,5vw,4rem);font-weight:700;letter-spacing:-.04em;line-height:1;color:var(--orange)}
-.group header p{color:var(--muted);max-width:28rem}
-@media (max-width:700px){.group header{grid-template-columns:1fr}}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-@media (max-width:900px){.grid{grid-template-columns:1fr 1fr}}
-@media (max-width:520px){.grid{grid-template-columns:1fr}}
-.grid button{display:block;width:100%;padding:0;border:0;background:none;text-align:left;cursor:zoom-in;color:inherit}
-.grid img{border-radius:.6rem;aspect-ratio:1600/942;object-fit:cover;width:100%;transition:transform .35s ease}
-.grid button:hover img{transform:scale(1.025)}
-.grid span{display:block;margin-top:.6rem;font-family:var(--head);font-weight:600;font-size:1.0625rem}
-
-dialog{border:0;padding:0;background:transparent;max-width:min(96vw,90rem);max-height:96vh;color:#F2EEE6}
-dialog::backdrop{background:rgba(10,9,8,.9)}
-dialog img{max-height:84vh;width:auto;margin-inline:auto;border-radius:.6rem}
-dialog form{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-top:.9rem;font-family:var(--head);font-weight:600}
-dialog button{background:#F2EEE6;color:#1A1814;border:0;border-radius:999px;padding:.5rem 1.1rem;font-weight:600;cursor:pointer}
-
-.learn{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;margin-top:3.5rem}
-.learn li{border-top:2px solid var(--ink);padding-top:1.5rem}
-.learn h3{font-size:1.875rem;font-weight:600;letter-spacing:-.02em;line-height:1.1;margin-bottom:.6rem}
-.learn p{color:var(--muted)}
-@media (max-width:820px){.learn{grid-template-columns:1fr;gap:1.5rem}}
-</style>
+<link rel="stylesheet" href="css/site.css">
 </head>
-<body>
+<body class="bg-days-bg font-inter text-days-ink [--focus:var(--color-days-rust)]">
 
-<header class="case-top" style="color:#F2EEE6">
-  <a href="index.html">Mads Buciek</a>
-  <a href="index.html#work">All work</a>
+<header class="absolute inset-x-0 top-0 z-5 flex items-center justify-between gap-4 px-gut py-5 text-[1rem] font-semibold text-days-bg">
+  <a class="underline-offset-[.25em] hover:underline" href="index.html">Mads Buciek</a>
+  <a class="underline-offset-[.25em] hover:underline" href="index.html#work">All work</a>
 </header>
 
 <main>
-  <section class="hero">
-    <div class="wrap hero-grid">
+  <section class="relative flex min-h-svh items-end overflow-clip bg-days-ink pt-26 pb-16 text-days-bg">
+    <div class="wrap grid items-end gap-8 lg:grid-cols-2">
       <div>
-        <p class="clock" id="clock" aria-label="Sixty minute timer">60:00</p>
-        <h1>30 days of landing pages</h1>
-        <p class="lede">A random photo. A landing page. Sixty minutes from picture to finished design, every day for a month.</p>
+        <p class="font-manrope text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-.02em] text-days-clock tabular-nums" id="clock" aria-label="Sixty minute timer">60:00</p>
+        <h1 class="mt-3 mb-6 max-w-[8ch] font-manrope text-[clamp(3rem,8.6vw,8rem)] leading-[.96] font-bold tracking-[-.05em]">30 days of landing pages</h1>
+        <p class="max-w-xl text-lede text-days-sand">A random photo. A landing page. Sixty minutes from picture to finished design, every day for a month.</p>
       </div>
-      <div class="pile" aria-hidden="true">
-        <img src="img/days/getaway.jpg" alt="">
-        <img src="img/days/contrast.jpg" alt="">
-        <img src="img/days/flowermail.jpg" alt="">
+      <div class="relative -order-1 h-68 lg:order-none lg:h-[clamp(20rem,46vw,38rem)] *:absolute *:w-[62%] *:rounded-[.7rem] *:shadow-[0_24px_64px_rgba(0,0,0,.55)] lg:*:w-[74%]" aria-hidden="true">
+        <img class="top-0 right-0 rotate-4" src="img/days/getaway.jpg" alt="">
+        <img class="top-[30%] left-0 -rotate-3" src="img/days/contrast.jpg" alt="">
+        <img class="top-[60%] right-[4%] rotate-2" src="img/days/flowermail.jpg" alt="">
       </div>
     </div>
   </section>
 
-  <section class="sec">
+  <section class="py-sec">
     <div class="wrap">
-      <h2 class="h2" style="max-width:16ch">Every day, a randomly selected photo became the whole brief.</h2>
-      <ul class="nums">
+      <h2 class="max-w-[16ch] font-manrope text-h2 font-bold text-balance">Every day, a randomly selected photo became the whole brief.</h2>
+      <ul class="mt-14 grid gap-8 md:grid-cols-3 *:border-t-2 *:border-days-ink *:pt-5 [&_b]:block [&_b]:font-manrope [&_b]:text-[clamp(4rem,10vw,9rem)] [&_b]:leading-none [&_b]:font-bold [&_b]:tracking-[-.04em] [&_b]:text-days-rust [&_span]:text-[1.125rem] [&_span]:text-days-muted">
         <li><b>30</b><span>days in a row, one new page each day</span></li>
         <li><b>1</b><span>random picture, chosen for me, as the starting point</span></li>
         <li><b>60</b><span>minutes from picture to finished landing page</span></li>
@@ -104,65 +44,74 @@ dialog button{background:#F2EEE6;color:#1A1814;border:0;border-radius:999px;padd
     </div>
   </section>
 
-  <section class="sec" style="padding-top:0">
+  <section class="pb-sec">
     <div class="wrap">
-      <h2 class="h2" style="max-width:16ch">From picture to page, with the clock running.</h2>
-      <ol class="day">
-        <li><h3>Read the photo</h3><p>Mood, colours and subject: what could this picture be selling?</p></li>
-        <li><h3>Invent the brand</h3><p>A name, a promise and a tone of voice that fit the image.</p></li>
-        <li><h3>Design the page</h3><p>Hero, navigation, type and call to action, built around the photo.</p></li>
-        <li class="stop"><h3>Stop</h3><p>When the hour is up, the page is done. No second pass.</p></li>
+      <h2 class="max-w-[16ch] font-manrope text-h2 font-bold text-balance">From picture to page, with the clock running.</h2>
+      <ol class="mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-4 *:rounded-2xl *:p-7 [&_h3]:mt-[.6rem] [&_h3]:mb-2 [&_h3]:font-manrope [&_h3]:text-[1.75rem] [&_h3]:leading-[1.1] [&_h3]:font-semibold [&_h3]:tracking-[-.02em]">
+        <li class="bg-days-soft"><span class="font-semibold text-days-rust" aria-hidden="true">01</span><h3>Read the photo</h3><p class="text-days-muted">Mood, colours and subject: what could this picture be selling?</p></li>
+        <li class="bg-days-soft"><span class="font-semibold text-days-rust" aria-hidden="true">02</span><h3>Invent the brand</h3><p class="text-days-muted">A name, a promise and a tone of voice that fit the image.</p></li>
+        <li class="bg-days-soft"><span class="font-semibold text-days-rust" aria-hidden="true">03</span><h3>Design the page</h3><p class="text-days-muted">Hero, navigation, type and call to action, built around the photo.</p></li>
+        <li class="bg-days-ink text-days-bg"><span class="font-semibold text-days-clock" aria-hidden="true">60:00</span><h3>Stop</h3><p class="text-days-sand">When the hour is up, the page is done. No second pass.</p></li>
       </ol>
     </div>
   </section>
 
-  <section class="sec wall">
+  <section class="bg-days-ink py-sec text-days-bg" id="wall">
     <div class="wrap">
-      <h2 class="h2" style="margin-bottom:clamp(2.5rem,6vw,4.5rem)">19 of the 30, in three loose themes</h2>
+      <h2 class="mb-[clamp(2.5rem,6vw,4.5rem)] max-w-[19ch] font-manrope text-h2 font-bold text-balance">19 of the 30, in three loose themes</h2>
 
-      <div class="group">
-        <header><h3>Nature and travel</h3><p>When the photo is a landscape, the page steps back and lets the light do the work.</p></header>
-        <ul class="grid">
-          <li><button type="button"><img src="img/days/whitenoise.jpg" alt="White Noise landing page" loading="lazy"><span>White Noise</span></button></li>
-          <li><button type="button"><img src="img/days/getaway.jpg" alt="The GetAway landing page" loading="lazy"><span>The GetAway</span></button></li>
-          <li><button type="button"><img src="img/days/wildlife.jpg" alt="Norwegian Wildlife landing page" loading="lazy"><span>Norwegian Wildlife</span></button></li>
-          <li><button type="button"><img src="img/days/expedition.jpg" alt="Expedition Tours landing page" loading="lazy"><span>Expedition Tours</span></button></li>
-          <li><button type="button"><img src="img/days/cabinfever.jpg" alt="CabinFever landing page" loading="lazy"><span>CabinFever</span></button></li>
-          <li><button type="button"><img src="img/days/sunset.jpg" alt="Sunset Calendar landing page" loading="lazy"><span>Sunset Calendar</span></button></li>
-        </ul>
-      </div>
+      <div class="space-y-[clamp(3.5rem,8vw,6rem)]
+                  [&_header]:mb-7 [&_header]:grid [&_header]:items-end [&_header]:gap-6 md:[&_header]:grid-cols-2
+                  [&_header_h3]:font-manrope [&_header_h3]:text-[clamp(2rem,5vw,4rem)] [&_header_h3]:leading-none [&_header_h3]:font-bold [&_header_h3]:tracking-[-.04em] [&_header_h3]:text-days-orange
+                  [&_header_p]:max-w-md [&_header_p]:text-days-sand
+                  [&_ul]:grid [&_ul]:gap-4 sm:[&_ul]:grid-cols-2 xl:[&_ul]:grid-cols-3
+                  [&_button]:block [&_button]:w-full [&_button]:cursor-zoom-in [&_button]:text-left
+                  [&_img]:aspect-[1600/942] [&_img]:w-full [&_img]:rounded-[.6rem] [&_img]:object-cover [&_img]:transition-transform [&_img]:duration-350 [&_img]:ease-[ease] [&_button:hover_img]:scale-[1.025]
+                  [&_li_span]:mt-[.6rem] [&_li_span]:block [&_li_span]:font-manrope [&_li_span]:font-semibold">
+        <div>
+          <header><h3>Nature and travel</h3><p>When the photo is a landscape, the page steps back and lets the light do the work.</p></header>
+          <ul>
+            <li><button type="button"><img src="img/days/whitenoise.jpg" alt="White Noise landing page" loading="lazy"><span>White Noise</span></button></li>
+            <li><button type="button"><img src="img/days/getaway.jpg" alt="The GetAway landing page" loading="lazy"><span>The GetAway</span></button></li>
+            <li><button type="button"><img src="img/days/wildlife.jpg" alt="Norwegian Wildlife landing page" loading="lazy"><span>Norwegian Wildlife</span></button></li>
+            <li><button type="button"><img src="img/days/expedition.jpg" alt="Expedition Tours landing page" loading="lazy"><span>Expedition Tours</span></button></li>
+            <li><button type="button"><img src="img/days/cabinfever.jpg" alt="CabinFever landing page" loading="lazy"><span>CabinFever</span></button></li>
+            <li><button type="button"><img src="img/days/sunset.jpg" alt="Sunset Calendar landing page" loading="lazy"><span>Sunset Calendar</span></button></li>
+          </ul>
+        </div>
 
-      <div class="group">
-        <header><h3>Culture, craft and lifestyle</h3><p>Brands with a point of view, where typography carries as much personality as the photo.</p></header>
-        <ul class="grid">
-          <li><button type="button"><img src="img/days/culture.jpg" alt="Copenhagen Culture Collective landing page" loading="lazy"><span>Copenhagen Culture Collective</span></button></li>
-          <li><button type="button"><img src="img/days/andersen.jpg" alt="Andersen Architects landing page with monochrome photos in an orange frame" loading="lazy"><span>Andersen Architects</span></button></li>
-          <li><button type="button"><img src="img/days/crafts.jpg" alt="Crafts of Copenhagen landing page" loading="lazy"><span>Crafts of Copenhagen</span></button></li>
-          <li><button type="button"><img src="img/days/flowermail.jpg" alt="Flowermail landing page" loading="lazy"><span>Flowermail</span></button></li>
-          <li><button type="button"><img src="img/days/drinks.jpg" alt="Weekend Drinks landing page" loading="lazy"><span>Weekend Drinks</span></button></li>
-          <li><button type="button"><img src="img/days/lookbook.jpg" alt="Summer lookbook landing page in a monospace grid" loading="lazy"><span>Summer Lookbook</span></button></li>
-          <li><button type="button"><img src="img/days/contrast.jpg" alt="Contrast Media landing page" loading="lazy"><span>Contrast Media</span></button></li>
-        </ul>
-      </div>
+        <div>
+          <header><h3>Culture, craft and lifestyle</h3><p>Brands with a point of view, where typography carries as much personality as the photo.</p></header>
+          <ul>
+            <li><button type="button"><img src="img/days/culture.jpg" alt="Copenhagen Culture Collective landing page" loading="lazy"><span>Copenhagen Culture Collective</span></button></li>
+            <li><button type="button"><img src="img/days/andersen.jpg" alt="Andersen Architects landing page with monochrome photos in an orange frame" loading="lazy"><span>Andersen Architects</span></button></li>
+            <li><button type="button"><img src="img/days/crafts.jpg" alt="Crafts of Copenhagen landing page" loading="lazy"><span>Crafts of Copenhagen</span></button></li>
+            <li><button type="button"><img src="img/days/flowermail.jpg" alt="Flowermail landing page" loading="lazy"><span>Flowermail</span></button></li>
+            <li><button type="button"><img src="img/days/drinks.jpg" alt="Weekend Drinks landing page" loading="lazy"><span>Weekend Drinks</span></button></li>
+            <li><button type="button"><img src="img/days/lookbook.jpg" alt="Summer lookbook landing page in a monospace grid" loading="lazy"><span>Summer Lookbook</span></button></li>
+            <li><button type="button"><img src="img/days/contrast.jpg" alt="Contrast Media landing page" loading="lazy"><span>Contrast Media</span></button></li>
+          </ul>
+        </div>
 
-      <div class="group">
-        <header><h3>Apps and services</h3><p>Product pages, where a single photo has to explain what the product does.</p></header>
-        <ul class="grid">
-          <li><button type="button"><img src="img/days/mindblown.jpg" alt="MindBlown landing page" loading="lazy"><span>MindBlown</span></button></li>
-          <li><button type="button"><img src="img/days/plant.jpg" alt="Plant info landing page" loading="lazy"><span>Plant info</span></button></li>
-          <li><button type="button"><img src="img/days/nutrikit.jpg" alt="NutriKit landing page" loading="lazy"><span>NutriKit</span></button></li>
-          <li><button type="button"><img src="img/days/fldwrk.jpg" alt="Fldwrk landing page" loading="lazy"><span>Fldwrk</span></button></li>
-          <li><button type="button"><img src="img/days/oneplace.jpg" alt="One Place landing page" loading="lazy"><span>One Place</span></button></li>
-          <li><button type="button"><img src="img/days/teamm8.jpg" alt="Team M8 landing page" loading="lazy"><span>Team M8</span></button></li>
-        </ul>
+        <div>
+          <header><h3>Apps and services</h3><p>Product pages, where a single photo has to explain what the product does.</p></header>
+          <ul>
+            <li><button type="button"><img src="img/days/mindblown.jpg" alt="MindBlown landing page" loading="lazy"><span>MindBlown</span></button></li>
+            <li><button type="button"><img src="img/days/plant.jpg" alt="Plant info landing page" loading="lazy"><span>Plant info</span></button></li>
+            <li><button type="button"><img src="img/days/nutrikit.jpg" alt="NutriKit landing page" loading="lazy"><span>NutriKit</span></button></li>
+            <li><button type="button"><img src="img/days/fldwrk.jpg" alt="Fldwrk landing page" loading="lazy"><span>Fldwrk</span></button></li>
+            <li><button type="button"><img src="img/days/oneplace.jpg" alt="One Place landing page" loading="lazy"><span>One Place</span></button></li>
+            <li><button type="button"><img src="img/days/teamm8.jpg" alt="Team M8 landing page" loading="lazy"><span>Team M8</span></button></li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="sec">
+  <section class="py-sec">
     <div class="wrap">
-      <h2 class="h2" style="max-width:14ch">A time limit turns taste into decisions.</h2>
-      <ul class="learn">
+      <h2 class="max-w-[14ch] font-manrope text-h2 font-bold text-balance">A time limit turns taste into decisions.</h2>
+      <ul class="mt-14 grid gap-6 lg:grid-cols-3 lg:gap-10 *:border-t-2 *:border-days-ink *:pt-6 [&_h3]:mb-[.6rem] [&_h3]:font-manrope [&_h3]:text-[1.875rem] [&_h3]:leading-[1.1] [&_h3]:font-semibold [&_h3]:tracking-[-.02em] [&_p]:text-days-muted">
         <li><h3>Commit early</h3><p>No time for ten directions. Pick one, then spend the hour making it good.</p></li>
         <li><h3>Let the image lead</h3><p>Palette, type and tone of voice came from the photo, not from a template.</p></li>
         <li><h3>Range over routine</h3><p>From brutalist collage to quiet Nordic editorial: a new visual voice every day.</p></li>
@@ -170,20 +119,23 @@ dialog button{background:#F2EEE6;color:#1A1814;border:0;border-radius:999px;padd
     </div>
   </section>
 
-  <a class="next" href="ally.html"><span>Next case</span><strong>Ally redesign</strong></a>
+  <a class="group block bg-ally-bg px-gut py-[clamp(3rem,8vw,6rem)] text-ally-ink" href="ally.html">
+    <span class="mb-3 block font-semibold opacity-80">Next case</span>
+    <strong class="block text-next font-bold transition-transform duration-300 ease-[ease] group-hover:translate-x-[.15em]">Ally redesign</strong>
+  </a>
 </main>
 
-<dialog id="lightbox" aria-label="Landing page, full size">
-  <img alt="">
-  <form method="dialog"><span></span><button>Close</button></form>
+<dialog class="m-auto max-h-[96vh] max-w-[min(96vw,90rem)] bg-transparent p-0 text-days-bg backdrop:bg-[rgba(10,9,8,.9)]" id="lightbox" aria-label="Landing page, full size">
+  <img class="mx-auto max-h-[84vh] w-auto rounded-[.6rem]" alt="">
+  <form class="mt-[.9rem] flex items-center justify-between gap-4 font-manrope font-semibold" method="dialog"><span></span><button class="cursor-pointer rounded-full bg-days-bg px-[1.1rem] py-2 font-semibold text-days-ink">Close</button></form>
 </dialog>
 
-<footer class="foot">
-  <div class="foot-row">
-    <p>Working on a product that has outgrown its first design?</p>
-    <a class="hello" href="mailto:mads506n@gmail.com">Say hello!</a>
+<footer class="flex flex-col overflow-clip bg-days-ink px-gut py-[clamp(1.25rem,2.5vw,2.25rem)] text-days-bg">
+  <div class="order-2 mt-[clamp(1.25rem,2.5vw,2.25rem)] flex flex-wrap items-center justify-between gap-6">
+    <p class="max-w-[24ch] text-[clamp(1.125rem,2vw,1.5rem)] leading-[1.3]">Working on a product that has outgrown its first design?</p>
+    <a class="inline-block rounded-full bg-days-orange px-[1.6em] py-[.85em] font-display text-[clamp(1.25rem,2.4vw,1.75rem)] font-bold text-days-ink transition-transform duration-200 hover:scale-104 hover:-rotate-3" href="mailto:mads506n@gmail.com">Say hello!</a>
   </div>
-  <p class="name" data-name>Mads Buciek</p>
+  <p class="name order-1 md:mb-[.48em] md:origin-top md:scale-y-160" data-name>Mads Buciek</p>
 </footer>
 
 <script src="js/site.js"></script>
@@ -192,7 +144,7 @@ dialog button{background:#F2EEE6;color:#1A1814;border:0;border-radius:999px;padd
   // Lightbox: open any page at full size.
   const box = document.getElementById('lightbox');
   const big = box.querySelector('img'), cap = box.querySelector('span');
-  document.querySelectorAll('.grid button').forEach((b) => b.addEventListener('click', () => {
+  document.querySelectorAll('#wall li button').forEach((b) => b.addEventListener('click', () => {
     const img = b.querySelector('img');
     big.src = img.src; big.alt = img.alt; cap.textContent = b.querySelector('span').textContent;
     box.showModal();

@@ -9,7 +9,7 @@
     const text = el.textContent.trim();
     el.textContent = '';
     const sr = document.createElement('span');
-    sr.className = 'vh';
+    sr.className = 'sr-only';
     sr.textContent = text;
     el.append(sr);
     text.split(' ').forEach((word) => {
@@ -146,13 +146,17 @@
   function toast(text) {
     if (!toastEl) {
       toastEl = document.createElement('div');
-      toastEl.className = 'toast';
+      toastEl.className =
+        'fixed bottom-6 left-1/2 z-50 max-w-[calc(100%-2rem)] -translate-x-1/2 translate-y-4 rounded-xl bg-toast px-[1.2rem] py-[.8rem] ' +
+        'font-[system-ui,sans-serif] text-[1rem]/[1.35] text-white shadow-[0_12px_32px_rgba(0,0,0,.3)] select-all ' +
+        'pointer-events-none opacity-0 transition-[opacity,translate] duration-250 ' +
+        'data-show:pointer-events-auto data-show:translate-y-0 data-show:opacity-100';
       toastEl.setAttribute('role', 'status');
       document.body.append(toastEl);
     }
     toastEl.textContent = text;
-    toastEl.classList.add('show');
+    toastEl.toggleAttribute('data-show', true);
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toastEl.classList.remove('show'), 6000);
+    toastTimer = setTimeout(() => toastEl.removeAttribute('data-show'), 6000);
   }
 })();

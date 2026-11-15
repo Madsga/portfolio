@@ -8,126 +8,52 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/base.css">
-<style>
-body{--bg:#F3F4F6;--ink:#111827;--muted:#4B5563;--red:#D9001B;--deep:#B40016;--navy:#0F172A;--font:"Inter",system-ui,sans-serif;--focus:#D9001B;
-  --foot-bg:#0F172A;--foot-ink:#F8FAFC;--hello:#D9001B;--hello-ink:#fff;--next-bg:#0B4A55;--next-ink:#F1F5F5}
-h1,h2,h3{letter-spacing:-.035em}
-
-/* Tiles: the app's own vocabulary */
-.tile{background:#fff;border:1px solid #E5E7EB;border-radius:1.75rem;padding:1.5rem}
-.tile.dark{background:linear-gradient(160deg,#1E293B,#0F172A);color:#F8FAFC;border:0}
-.pill{display:inline-block;background:#FDE2E6;color:var(--deep);font-weight:600;font-size:.9375rem;padding:.35rem .85rem;border-radius:999px}
-.pill.ok{background:#E3F6EC;color:#0B6B3A}
-
-.hero{position:relative;min-height:100svh;padding:6.5rem 0 4rem;display:flex;align-items:center;overflow:clip;
-  background:radial-gradient(60rem 40rem at 78% 55%,rgba(217,0,27,.16),transparent 60%),var(--bg)}
-.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,5vw,5rem);align-items:center}
-.hero h1{font-size:clamp(2.75rem,7vw,6.25rem);line-height:.96;font-weight:700;letter-spacing:-.05em;margin:1.25rem 0 1.5rem;max-width:10ch}
-.hero-phone{justify-self:center;width:min(100%,22.5rem)}
-/* The mockups carry their own phone frame and shadow */
-.phone{border-radius:0;box-shadow:none;overflow:visible;width:min(100%,21rem)}
-@media (max-width:820px){.hero-grid{grid-template-columns:1fr}}
-
-/* The live thermostat */
-.stat{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;max-width:27rem;margin-top:2.25rem;box-shadow:0 20px 50px rgba(17,24,39,.08)}
-.stat h2{font-size:1.125rem;font-weight:600;letter-spacing:-.01em;margin-top:.6rem}
-.stat .now{font-size:3.25rem;font-weight:700;line-height:1;letter-spacing:-.05em;margin:.15rem 0 .25rem}
-.stat .sub{color:#6B7280;font-size:.9375rem}
-.dial{display:flex;align-items:center;gap:.6rem}
-.dial button{width:3rem;height:3rem;border-radius:50%;border:1px solid #D1D5DB;background:#fff;font-size:1.5rem;line-height:1;cursor:pointer;transition:background .15s,transform .1s}
-.dial button:hover{background:#F3F4F6}
-.dial button:active{transform:scale(.92)}
-.trv{width:3.6rem;height:6.4rem;border-radius:.9rem .9rem 1.1rem 1.1rem;background:linear-gradient(90deg,#D9DCE2,#fff 45%,#C9CDD6);display:flex;flex-direction:column;align-items:center;padding-top:1rem;gap:.55rem;position:relative}
-.trv::after{content:"";position:absolute;bottom:-.9rem;width:1.5rem;height:.95rem;background:linear-gradient(90deg,#9CA3AF,#E5E7EB,#9CA3AF);border-radius:0 0 .2rem .2rem}
-.trv output{background:#111827;color:#fff;font-family:"JetBrains Mono",monospace;font-size:.8125rem;padding:.2rem .35rem;border-radius:.35rem}
-.trv i{width:1.3rem;height:.25rem;border-radius:1rem;background:var(--red);transition:opacity .3s}
-.stat.hold .trv i{opacity:.15}
-
-.about{padding-block:clamp(3rem,7vw,5rem)}
-
-.problem{background:var(--navy);color:#F8FAFC;--muted:#CBD5E1}
-.problem .h2{max-width:24ch}
-.qs{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2.5rem 0}
-.qs li{background:#1E293B;border-radius:1.5rem;padding:1.5rem;font-size:clamp(1.125rem,2vw,1.5rem);font-weight:600;line-height:1.25}
-@media (max-width:700px){.qs{grid-template-columns:1fr}}
-
-.measures{background:var(--red);color:#fff}
-.measures .h2{max-width:20ch}
-.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:3rem}
-.nums li{border-top:2px solid #fff;padding-top:1rem}
-.nums b{display:block;font-size:clamp(2.5rem,5.5vw,5rem);font-weight:700;line-height:1;letter-spacing:-.05em;white-space:nowrap}
-.nums span{display:block;margin-top:.6rem;color:#FFF5F5}
-@media (max-width:820px){.nums{grid-template-columns:1fr 1fr}}
-
-.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem}
-.tabs h3{font-size:1.375rem;font-weight:700}
-.tabs p{color:var(--muted);margin-top:.4rem}
-@media (max-width:820px){.tabs{grid-template-columns:1fr 1fr}}
-@media (max-width:480px){.tabs{grid-template-columns:1fr}}
-.ia{border-radius:1.5rem;margin-top:2.5rem;background:#EEEEEC}
-
-.screen{padding-block:clamp(3rem,7vw,5.5rem)}
-.screen .phone{justify-self:center}
-.screen:nth-of-type(even) .split>:first-child{order:2}
-@media (max-width:820px){.screen:nth-of-type(even) .split>:first-child{order:0}}
-.screen h3{font-size:clamp(1.75rem,3.4vw,2.75rem);line-height:1.08;font-weight:700;margin:.9rem 0 1.1rem;max-width:20ch;text-wrap:balance}
-
-.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.trio .tile{display:flex;flex-direction:column;gap:1rem}
-.trio img{width:min(100%,17rem);margin-inline:auto}
-.trio h3{font-size:1.375rem;line-height:1.15;font-weight:700}
-.trio p{color:var(--muted)}
-@media (max-width:820px){.trio{grid-template-columns:1fr;max-width:24rem;margin-inline:auto}}
-
-.ipad{background:#E5E7EB}
-.ipad img{border-radius:1.5rem;box-shadow:0 0 0 .6rem #111827,0 40px 80px rgba(17,24,39,.3);margin:1rem .6rem 0}
-.widget img{border-radius:1.5rem;background:#fff;margin-top:2.5rem}
-
-.reflect{background:var(--navy);color:#F8FAFC;--muted:#CBD5E1}
-.reflect h3{font-size:1.5rem;font-weight:700;margin-bottom:1rem}
-.todo li{background:#1E293B;border-radius:1.25rem;padding:1.1rem 1.25rem}
-.todo li+li{margin-top:.75rem}
-</style>
+<link rel="stylesheet" href="css/site.css">
 </head>
-<body>
+<body class="bg-ally-bg font-inter text-ally-ink [--focus:var(--color-ally-red)]">
 
-<header class="case-top">
-  <a href="index.html">Mads Buciek</a>
-  <a href="index.html#work">All work</a>
+<header class="absolute inset-x-0 top-0 z-5 flex items-center justify-between gap-4 px-gut py-5 text-[1rem] font-semibold">
+  <a class="underline-offset-[.25em] hover:underline" href="index.html">Mads Buciek</a>
+  <a class="underline-offset-[.25em] hover:underline" href="index.html#work">All work</a>
 </header>
 
 <main>
-  <section class="hero">
-    <div class="wrap hero-grid">
+  <section class="relative flex min-h-svh items-center overflow-clip pt-26 pb-16 bg-[radial-gradient(60rem_40rem_at_78%_55%,rgba(217,0,27,.16),transparent_60%)]">
+    <div class="wrap grid items-center gap-[clamp(2rem,5vw,5rem)] lg:grid-cols-[1.1fr_.9fr]">
       <div>
-        <span class="pill">Concept redesign for iPhone, iPad and widget</span>
-        <h1>A thermostat app, rebuilt around rooms</h1>
-        <p class="lede">Same palette, every existing function kept, a new structure. Two taps instead of four. One settings screen instead of three.</p>
+        <span class="inline-block rounded-full bg-ally-pink px-[.85rem] py-[.35rem] text-note font-semibold text-ally-deep">Concept redesign for iPhone, iPad and widget</span>
+        <h1 class="mt-5 mb-6 max-w-[10ch] text-[clamp(2.75rem,7vw,6.25rem)] leading-[.96] font-bold tracking-[-.05em]">A thermostat app, rebuilt around rooms</h1>
+        <p class="max-w-xl text-lede text-ally-muted">Same palette, every existing function kept, a new structure. Two taps instead of four. One settings screen instead of three.</p>
 
-        <div class="tile stat" id="stat">
+        <!-- The live thermostat: the script toggles .hold on the tile and .ok on the state pill -->
+        <div class="group/stat mt-9 grid max-w-[27rem] grid-cols-[1fr_auto] items-center gap-4 rounded-[1.75rem] border border-ally-line bg-white p-6 shadow-[0_20px_50px_rgba(17,24,39,.08)]" id="stat">
           <div>
-            <span class="pill" id="stat-state">Varmer op</span>
-            <h2>Badeværelse</h2>
-            <p class="now">20,6°</p>
-            <p class="sub">Mål <span id="stat-goal">22,0</span>° <span aria-hidden="true">/</span> 52 %</p>
+            <span class="inline-block rounded-full bg-ally-pink px-[.85rem] py-[.35rem] text-note font-semibold text-ally-deep [&.ok]:bg-ally-okbg [&.ok]:text-ally-ok" id="stat-state">Varmer op</span>
+            <h2 class="mt-[.6rem] text-[1.125rem] font-semibold tracking-[-.01em]">Badeværelse</h2>
+            <p class="mt-[.15rem] mb-1 text-[3.25rem] leading-none font-bold tracking-[-.05em]">20,6°</p>
+            <p class="text-note text-ally-sub">Mål <span id="stat-goal">22,0</span>° <span aria-hidden="true">/</span> 52 %</p>
           </div>
-          <div class="dial">
-            <button type="button" id="minus" aria-label="Lower the target by half a degree">−</button>
-            <div class="trv" aria-hidden="true"><output id="stat-lcd">22,0</output><i></i></div>
-            <button type="button" id="plus" aria-label="Raise the target by half a degree">+</button>
+          <div class="flex items-center gap-[.6rem]">
+            <button class="size-12 cursor-pointer rounded-full border border-ally-edge bg-white text-[1.5rem] leading-none transition-[background-color,scale] duration-150 hover:bg-ally-bg active:scale-92" type="button" id="minus" aria-label="Lower the target by half a degree">−</button>
+            <div class="relative flex h-[6.4rem] w-[3.6rem] flex-col items-center gap-[.55rem] rounded-t-[.9rem] rounded-b-[1.1rem] pt-4 bg-[linear-gradient(90deg,#D9DCE2,#fff_45%,#C9CDD6)]
+                        after:absolute after:-bottom-[.9rem] after:h-[.95rem] after:w-6 after:rounded-b-[.2rem] after:bg-[linear-gradient(90deg,#9CA3AF,#E5E7EB,#9CA3AF)]" aria-hidden="true">
+              <output class="rounded-[.35rem] bg-ally-ink px-[.35rem] py-[.2rem] font-mono text-[.8125rem] text-white" id="stat-lcd">22,0</output>
+              <i class="h-1 w-[1.3rem] rounded-2xl bg-ally-red transition-opacity duration-300 group-[.hold]/stat:opacity-15"></i>
+            </div>
+            <button class="size-12 cursor-pointer rounded-full border border-ally-edge bg-white text-[1.5rem] leading-none transition-[background-color,scale] duration-150 hover:bg-ally-bg active:scale-92" type="button" id="plus" aria-label="Raise the target by half a degree">+</button>
           </div>
         </div>
-        <p class="note" style="margin-top:1rem">Try it: the device itself is the dial, half a degree per tap.</p>
+        <p class="mt-4 max-w-[40rem] text-note text-ally-muted">Try it: the device itself is the dial, half a degree per tap.</p>
       </div>
-      <img class="hero-phone" src="img/ally/home-tilt.png" alt="The redesigned Hjem screen on an iPhone: a grid of room tiles where the bathroom, which is heating, gets the largest tile." width="360" height="710">
+      <!-- The mockups carry their own phone frame and shadow -->
+      <img class="w-full max-w-[22.5rem] justify-self-center" src="img/ally/home-tilt.png" alt="The redesigned Hjem screen on an iPhone: a grid of room tiles where the bathroom, which is heating, gets the largest tile." width="360" height="710">
     </div>
   </section>
 
-  <section class="about">
-    <div class="wrap split top">
-      <p class="lede" style="color:var(--ink)">I redesigned the Danfoss Ally app around rooms instead of hardware. The brief I set myself had three rules: keep the existing Ally colour palette, keep every function the app has today, and improve the information architecture wherever possible.</p>
-      <dl class="facts">
+  <section class="py-[clamp(3rem,7vw,5rem)]">
+    <div class="wrap grid items-start gap-[clamp(2rem,6vw,6rem)] lg:grid-cols-2">
+      <p class="max-w-xl text-lede">I redesigned the Danfoss Ally app around rooms instead of hardware. The brief I set myself had three rules: keep the existing Ally colour palette, keep every function the app has today, and improve the information architecture wherever possible.</p>
+      <dl class="grid grid-cols-[7.5rem_1fr] gap-x-6 gap-y-[.9rem] border-t-2 border-ally-ink pt-5 [&>dd]:text-ally-muted [&>dt]:font-semibold">
         <dt>Type</dt><dd>Self-initiated concept redesign. Not affiliated with Danfoss.</dd>
         <dt>Role</dt><dd>Research, information architecture, UI, design system</dd>
         <dt>Platform</dt><dd>iOS and iPadOS</dd>
@@ -136,52 +62,53 @@ h1,h2,h3{letter-spacing:-.035em}
     </div>
   </section>
 
-  <section class="sec problem">
+  <section class="bg-ally-navy py-sec text-ally-snow">
     <div class="wrap">
-      <h2 class="h2">The app is organised the way the hardware is wired, not the way people think about their home.</h2>
-      <ul class="qs">
+      <h2 class="max-w-[24ch] text-h2 font-bold text-balance">The app is organised the way the hardware is wired, not the way people think about their home.</h2>
+      <ul class="my-10 grid gap-4 md:grid-cols-3 *:rounded-3xl *:bg-ally-slate *:p-6 *:text-[clamp(1.125rem,2vw,1.5rem)] *:leading-[1.25] *:font-semibold">
         <li>Is it warm enough?</li>
         <li>When does the heating change?</li>
         <li>Is anything wrong?</li>
       </ul>
-      <p class="lede">Answering those everyday questions meant opening individual devices and digging through drawers, sheets and gear icons. I mapped all 24 screens from a 2:20 walkthrough of the live app, and the map became the contract: every function on it had to have a place in the new structure.</p>
+      <p class="max-w-xl text-lede text-ally-mist">Answering those everyday questions meant opening individual devices and digging through drawers, sheets and gear icons. I mapped all 24 screens from a 2:20 walkthrough of the live app, and the map became the contract: every function on it had to have a place in the new structure.</p>
     </div>
   </section>
 
-  <section class="sec measures">
+  <section class="bg-ally-red py-sec text-white">
     <div class="wrap">
-      <h2 class="h2">The same functions, fewer steps to reach them</h2>
-      <ul class="nums">
+      <h2 class="max-w-[20ch] text-h2 font-bold text-balance">The same functions, fewer steps to reach them</h2>
+      <ul class="mt-12 grid grid-cols-2 gap-8 lg:grid-cols-4 *:border-t-2 *:border-white *:pt-4 [&_b]:block [&_b]:text-[clamp(2.5rem,5.5vw,5rem)] [&_b]:leading-none [&_b]:font-bold [&_b]:tracking-[-.05em] [&_b]:whitespace-nowrap [&_span]:mt-[.6rem] [&_span]:block [&_span]:text-ally-blush">
         <li><b>4 → 2</b><span>taps to change the Hjemme level</span></li>
         <li><b>3 → 1</b><span>screens for one device’s settings</span></li>
         <li><b>4 → 2</b><span>deepest level for everyday tasks</span></li>
         <li><b>2 → 1</b><span>languages in the UI</span></li>
       </ul>
-      <p style="margin-top:2rem;color:#FFF5F5;font-size:.9375rem">Structural measures from the redesign, not tested task times.</p>
+      <p class="mt-8 text-note text-ally-blush">Structural measures from the redesign, not tested task times.</p>
     </div>
   </section>
 
-  <section class="sec">
+  <section class="py-sec">
     <div class="wrap">
-      <h2 class="h2">Four tabs, each answering one question</h2>
-      <div class="tabs">
-        <div class="tile"><h3>Hjem</h3><p>What is it like at home right now?</p></div>
-        <div class="tile"><h3>Plan</h3><p>When is it warm, and how warm?</p></div>
-        <div class="tile"><h3>Aktivitet</h3><p>Is anything wrong?</p></div>
-        <div class="tile"><h3>Profil</h3><p>Things you set up once.</p></div>
+      <h2 class="max-w-[19ch] text-h2 font-bold text-balance">Four tabs, each answering one question</h2>
+      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 *:rounded-[1.75rem] *:border *:border-ally-line *:bg-white *:p-6 [&_h3]:text-[1.375rem] [&_h3]:font-bold [&_h3]:tracking-[-.035em] [&_p]:mt-[.4rem] [&_p]:text-ally-muted">
+        <div><h3>Hjem</h3><p>What is it like at home right now?</p></div>
+        <div><h3>Plan</h3><p>When is it warm, and how warm?</p></div>
+        <div><h3>Aktivitet</h3><p>Is anything wrong?</p></div>
+        <div><h3>Profil</h3><p>Things you set up once.</p></div>
       </div>
-      <img class="ia" src="img/ally/ia.jpg" alt="Information architecture before and after: two hardware-based tabs become four task-based tabs." width="2720" height="1640" loading="lazy">
-      <p class="body" style="margin-top:1.5rem">The biggest moves were regroupings, not new features. The schedule, levels and limits moved to Plan. Message Center became Aktivitet. The gateway moved out of the room grid.</p>
+      <img class="mt-10 rounded-3xl bg-[#EEEEEC]" src="img/ally/ia.jpg" alt="Information architecture before and after: two hardware-based tabs become four task-based tabs." width="2720" height="1640" loading="lazy">
+      <p class="mt-6 max-w-[34rem] text-ally-muted">The biggest moves were regroupings, not new features. The schedule, levels and limits moved to Plan. Message Center became Aktivitet. The gateway moved out of the room grid.</p>
     </div>
   </section>
 
-  <section class="screen">
-    <div class="wrap split">
-      <img class="phone" src="img/ally/home.png" alt="Hjem screen with room tiles." loading="lazy">
+  <!-- Screens alternate: the phone sits right, left, right on wide screens -->
+  <section class="py-band">
+    <div class="wrap grid items-center gap-[clamp(2rem,6vw,6rem)] lg:grid-cols-2">
+      <img class="w-full max-w-[21rem] justify-self-center lg:order-2" src="img/ally/home.png" alt="Hjem screen with room tiles." loading="lazy">
       <div>
-        <span class="pill">Hjem</span>
-        <h3>You see which room needs you before reading a number</h3>
-        <div class="body stack">
+        <span class="inline-block rounded-full bg-ally-pink px-[.85rem] py-[.35rem] text-note font-semibold text-ally-deep">Hjem</span>
+        <h3 class="mt-[.9rem] mb-[1.1rem] max-w-[20ch] text-h3 leading-[1.08] font-bold tracking-[-.035em] text-balance">You see which room needs you before reading a number</h3>
+        <div class="max-w-[34rem] space-y-5 text-ally-muted">
           <p>The heating bathroom gets the large tile with the drawn thermostat; rooms that are fine stay small. Each tile merges thermostat and sensor into one reading.</p>
           <p>The “7 enheder online” pill answers “is anything wrong?”. Husets tilstand joins Ferie with the Hjemme, Ude and Pause levels in one control, with red only on the active mode.</p>
         </div>
@@ -189,13 +116,13 @@ h1,h2,h3{letter-spacing:-.035em}
     </div>
   </section>
 
-  <section class="screen">
-    <div class="wrap split">
-      <img class="phone" src="img/ally/room.png" alt="Rum screen: the thermostat drawn large with minus and plus buttons on either side." loading="lazy">
+  <section class="py-band">
+    <div class="wrap grid items-center gap-[clamp(2rem,6vw,6rem)] lg:grid-cols-2">
+      <img class="w-full max-w-[21rem] justify-self-center" src="img/ally/room.png" alt="Rum screen: the thermostat drawn large with minus and plus buttons on either side." loading="lazy">
       <div>
-        <span class="pill">Rum</span>
-        <h3>One room, one screen, and the device itself is the dial</h3>
-        <div class="body stack">
+        <span class="inline-block rounded-full bg-ally-pink px-[.85rem] py-[.35rem] text-note font-semibold text-ally-deep">Rum</span>
+        <h3 class="mt-[.9rem] mb-[1.1rem] max-w-[20ch] text-h3 leading-[1.08] font-bold tracking-[-.035em] text-balance">One room, one screen, and the device itself is the dial</h3>
+        <div class="max-w-[34rem] space-y-5 text-ally-muted">
           <p>The target is shown on the thermostat’s own display and changed with two large − / + buttons, 0,5° per tap.</p>
           <p>Sensor and thermostat used to be two screens with different patterns. Humidity and comfort now sit as tiles, and a dark “Næste skift” tile shows what the plan does next without leaving the room.</p>
         </div>
@@ -203,13 +130,13 @@ h1,h2,h3{letter-spacing:-.035em}
     </div>
   </section>
 
-  <section class="screen">
-    <div class="wrap split">
-      <img class="phone" src="img/ally/plan.png" alt="Plan screen: today as a timeline with a red Nu marker, temperature levels as tiles below." loading="lazy">
+  <section class="py-band">
+    <div class="wrap grid items-center gap-[clamp(2rem,6vw,6rem)] lg:grid-cols-2">
+      <img class="w-full max-w-[21rem] justify-self-center lg:order-2" src="img/ally/plan.png" alt="Plan screen: today as a timeline with a red Nu marker, temperature levels as tiles below." loading="lazy">
       <div>
-        <span class="pill">Plan</span>
-        <h3>Three buried screens in one tab, opening straight on today</h3>
-        <div class="body stack">
+        <span class="inline-block rounded-full bg-ally-pink px-[.85rem] py-[.35rem] text-note font-semibold text-ally-deep">Plan</span>
+        <h3 class="mt-[.9rem] mb-[1.1rem] max-w-[20ch] text-h3 leading-[1.08] font-bold tracking-[-.035em] text-balance">Three buried screens in one tab, opening straight on today</h3>
+        <div class="max-w-[34rem] space-y-5 text-ally-muted">
           <p>The old schedule opened on a confirm dialog. Plan opens on today as a timeline, with a “Nu” row that shows where in the plan you are.</p>
           <p>The levels are tiles. Hjemme is the large red one because it is used most, and changing it takes two taps, down from four.</p>
         </div>
@@ -217,19 +144,21 @@ h1,h2,h3{letter-spacing:-.035em}
     </div>
   </section>
 
-  <section class="sec" style="padding-top:2rem">
-    <div class="wrap trio">
-      <div class="tile">
+  <section class="pt-8 pb-sec">
+    <div class="wrap grid max-w-[24rem] gap-6 lg:max-w-none lg:grid-cols-3
+                *:flex *:flex-col *:gap-4 *:rounded-[1.75rem] *:border *:border-ally-line *:bg-white *:p-6
+                [&_h3]:text-[1.375rem] [&_h3]:leading-[1.15] [&_h3]:font-bold [&_h3]:tracking-[-.035em] [&_img]:mx-auto [&_img]:w-full [&_img]:max-w-[17rem] [&_p]:text-ally-muted">
+      <div>
         <img src="img/ally/device.png" alt="Enhed screen with battery, connection and software tiles above grouped settings." loading="lazy">
         <h3>One settings screen per device</h3>
         <p>Enhed replaces a sheet, a gear page and a drawer page. Every toggle carries one explaining line.</p>
       </div>
-      <div class="tile">
+      <div>
         <img src="img/ally/activity.png" alt="Aktivitet screen with labelled filter chips, a status tile and a history timeline." loading="lazy">
         <h3>Alerts get their own tab</h3>
         <p>Status first, history second. Icon-only tabs became labelled chips, and “no alarms” is said positively.</p>
       </div>
-      <div class="tile">
+      <div>
         <img src="img/ally/add-device.png" alt="Tilføj enhed screen: a stepped pairing flow with the gateway drawn with two green lights." loading="lazy">
         <h3>A setup that shows what “ready” looks like</h3>
         <p>Pairing is a stepped flow. The gateway is drawn with two green lights, so people compare the picture with the box on their shelf.</p>
@@ -237,38 +166,38 @@ h1,h2,h3{letter-spacing:-.035em}
     </div>
   </section>
 
-  <section class="sec ipad">
-    <div class="wrap split">
+  <section class="bg-ally-line py-sec">
+    <div class="wrap grid items-center gap-[clamp(2rem,6vw,6rem)] lg:grid-cols-2">
       <div>
-        <span class="pill">iPad dashboard</span>
-        <h2 class="h2" style="margin:1rem 0 1.25rem">The house at a glance, from across the kitchen</h2>
-        <div class="body stack">
+        <span class="inline-block rounded-full bg-ally-pink px-[.85rem] py-[.35rem] text-note font-semibold text-ally-deep">iPad dashboard</span>
+        <h2 class="mt-4 mb-5 max-w-[19ch] text-h2 font-bold text-balance">The house at a glance, from across the kitchen</h2>
+        <div class="max-w-[34rem] space-y-5 text-ally-muted">
           <p>A shared device on a wall or table, read at one to two metres. Whole-house things on the left, rooms in the centre, the selected room on the right.</p>
           <p>Every room tile has − / + on it, so a whole house can be adjusted without navigating.</p>
         </div>
       </div>
-      <img src="img/ally/ipad.jpg" alt="iPad room dashboard with house mode on the left, room tiles in the centre and the selected room on the right." width="2360" height="1640" loading="lazy">
+      <img class="mx-[.6rem] mt-4 rounded-3xl shadow-[0_0_0_.6rem_#111827,0_40px_80px_rgba(17,24,39,.3)]" src="img/ally/ipad.jpg" alt="iPad room dashboard with house mode on the left, room tiles in the centre and the selected room on the right." width="2360" height="1640" loading="lazy">
     </div>
   </section>
 
-  <section class="sec widget">
+  <section class="py-sec">
     <div class="wrap">
-      <span class="pill">iOS widget</span>
-      <h2 class="h2" style="margin-top:1rem;max-width:22ch">Change one room from the home screen, with zero navigation</h2>
-      <img src="img/ally/widget.jpg" alt="Widgets in light and dark mode, small and medium sizes, plus the edit sheet for choosing a room." width="2220" height="1120" loading="lazy">
+      <span class="inline-block rounded-full bg-ally-pink px-[.85rem] py-[.35rem] text-note font-semibold text-ally-deep">iOS widget</span>
+      <h2 class="mt-4 max-w-[22ch] text-h2 font-bold text-balance">Change one room from the home screen, with zero navigation</h2>
+      <img class="mt-10 rounded-3xl bg-white" src="img/ally/widget.jpg" alt="Widgets in light and dark mode, small and medium sizes, plus the edit sheet for choosing a room." width="2220" height="1120" loading="lazy">
     </div>
   </section>
 
-  <section class="sec reflect">
-    <div class="wrap split top">
-      <div class="stack">
-        <h2 class="h2">Most of the friction was structural, not visual</h2>
-        <p class="lede">The biggest gains came from regrouping existing functions, not from new features or a new look.</p>
-        <p class="body">This is a concept based on my own walkthrough, with no user research behind it. The rooms are examples and their readings are made up.</p>
+  <section class="bg-ally-navy py-sec text-ally-snow">
+    <div class="wrap grid items-start gap-[clamp(2rem,6vw,6rem)] lg:grid-cols-2">
+      <div class="space-y-5">
+        <h2 class="max-w-[19ch] text-h2 font-bold text-balance">Most of the friction was structural, not visual</h2>
+        <p class="max-w-xl text-lede text-ally-mist">The biggest gains came from regrouping existing functions, not from new features or a new look.</p>
+        <p class="max-w-[34rem] text-ally-mist">This is a concept based on my own walkthrough, with no user research behind it. The rooms are examples and their readings are made up.</p>
       </div>
       <div>
-        <h3>What I would validate next</h3>
-        <ul class="todo">
+        <h3 class="mb-4 text-[1.5rem] font-bold tracking-[-.035em]">What I would validate next</h3>
+        <ul class="space-y-3 *:rounded-[1.25rem] *:bg-ally-slate *:px-5 *:py-[1.1rem]">
           <li>A tree test of the four tabs against the current two, with tasks like “set the away temperature”.</li>
           <li>A usability test of the − / + control against the old scroll wheel.</li>
           <li>Whether Ferie belongs in “Husets tilstand” or needs its own date range.</li>
@@ -278,15 +207,18 @@ h1,h2,h3{letter-spacing:-.035em}
     </div>
   </section>
 
-  <a class="next" href="better-vq.html"><span>Next case</span><strong>Better VQ</strong></a>
+  <a class="group block bg-vq-teal px-gut py-[clamp(3rem,8vw,6rem)] text-vq-frost" href="better-vq.html">
+    <span class="mb-3 block font-semibold opacity-80">Next case</span>
+    <strong class="block text-next font-bold transition-transform duration-300 ease-[ease] group-hover:translate-x-[.15em]">Better VQ</strong>
+  </a>
 </main>
 
-<footer class="foot">
-  <div class="foot-row">
-    <p>Working on a product that has outgrown its first design?</p>
-    <a class="hello" href="mailto:mads506n@gmail.com">Say hello!</a>
+<footer class="flex flex-col overflow-clip bg-ally-navy px-gut py-[clamp(1.25rem,2.5vw,2.25rem)] text-ally-snow">
+  <div class="order-2 mt-[clamp(1.25rem,2.5vw,2.25rem)] flex flex-wrap items-center justify-between gap-6">
+    <p class="max-w-[24ch] text-[clamp(1.125rem,2vw,1.5rem)] leading-[1.3]">Working on a product that has outgrown its first design?</p>
+    <a class="inline-block rounded-full bg-ally-red px-[1.6em] py-[.85em] font-display text-[clamp(1.25rem,2.4vw,1.75rem)] font-bold text-white transition-transform duration-200 hover:scale-104 hover:-rotate-3" href="mailto:mads506n@gmail.com">Say hello!</a>
   </div>
-  <p class="name" data-name>Mads Buciek</p>
+  <p class="name order-1 md:mb-[.48em] md:origin-top md:scale-y-160" data-name>Mads Buciek</p>
 </footer>
 
 <script src="js/site.js"></script>

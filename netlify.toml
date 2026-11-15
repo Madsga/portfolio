@@ -1,3 +1,7 @@
-# The site is static: no build step, and only site/ is published.
+# Tailwind compiles site/css/site.css on deploy; only site/ is published.
 [build]
+  command = "npm run build"
   publish = "site"
+
+[build.environment]
+  NODE_VERSION = "26"

@@ -3,3 +3,7 @@ source/
 
 .DS_Store
 .claude/settings.local.json
+
+# Dependencies and the compiled stylesheet (built by `npm run build`)
+node_modules/
+site/css/site.css

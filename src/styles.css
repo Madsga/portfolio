@@ -1,0 +1,162 @@
+/* Tailwind entry. Compiled to site/css/site.css by `npm run build`.
+   Pages are styled with utilities in the markup; this file only holds the
+   design tokens, a few global rules, and the animated name, which site.js drives. */
+@import "tailwindcss" source("../site");
+
+@theme {
+  /* Only the colours the site uses: each case wears its product's palette */
+  --color-*: initial;
+  --color-white: #fff;
+  --color-black: #000;
+
+  /* Home */
+  --color-home-bg: #F4F5F3;
+  --color-home-ink: #1E2A44;
+  --color-home-muted: #5A6377;
+  --color-sun: #FFD84A;
+
+  /* Danfoss Ally */
+  --color-ally-bg: #F3F4F6;
+  --color-ally-ink: #111827;
+  --color-ally-muted: #4B5563;
+  --color-ally-sub: #6B7280;
+  --color-ally-line: #E5E7EB;
+  --color-ally-edge: #D1D5DB;
+  --color-ally-red: #D9001B;
+  --color-ally-deep: #B40016;
+  --color-ally-pink: #FDE2E6;
+  --color-ally-blush: #FFF5F5;
+  --color-ally-okbg: #E3F6EC;
+  --color-ally-ok: #0B6B3A;
+  --color-ally-navy: #0F172A;
+  --color-ally-slate: #1E293B;
+  --color-ally-mist: #CBD5E1;
+  --color-ally-snow: #F8FAFC;
+
+  /* Better VQ */
+  --color-vq-bg: #F2F4F5;
+  --color-vq-ink: #0E1A1D;
+  --color-vq-muted: #4A5A5E;
+  --color-vq-teal: #0B4A55;
+  --color-vq-mint: #6FD6C8;
+  --color-vq-pale: #BFE3E8;
+  --color-vq-ice: #D4E8EB;
+  --color-vq-frost: #F1F5F5;
+  --color-vq-grey: #B7C7CA;
+  --color-vq-line: #C9D3D6;
+  --color-vq-slotline: #D3DCDE;
+  --color-vq-stone: #5B6B70;
+  --color-vq-rule: #2F6872;
+  --color-vq-paper: #ECECEE;
+  --color-vq-night: #0D0D0D;
+  --color-vq-black: #0A0A0A;
+  --color-vq-coal: #0C1517;
+  --color-vq-card: #1A1B1E;
+  --color-vq-bezel: #111214;
+  --color-vq-rim: #2E2F33;
+  --color-vq-chalk: #F2F2F2;
+  --color-vq-ash: #BDBDBD;
+  --color-vq-fog: #D9D9D9;
+
+  /* RenovAI */
+  --color-renov-bg: #17161B;
+  --color-renov-ink: #F5F1EC;
+  --color-renov-muted: #B5ADA6;
+  --color-renov-dim: #8F8781;
+  --color-renov-orange: #F56C14;
+  --color-renov-panel: #221E22;
+  --color-renov-line: #3A3236;
+  --color-renov-foot: #0F0E12;
+  --color-renov-ember: #6B3A1E;
+  --color-renov-rule: #5A3A2A;
+  --color-renov-rule2: #4A2F24;
+  --color-renov-toggle: #5A4A44;
+  --color-renov-okbg: #1E3A2A;
+  --color-renov-ok: #7FE0A4;
+
+  /* 30 days */
+  --color-days-bg: #F2EEE6;
+  --color-days-ink: #1A1814;
+  --color-days-muted: #5E574C;
+  --color-days-sand: #A8A196;
+  --color-days-soft: #E8E2D6;
+  --color-days-orange: #E07A3F;
+  --color-days-clock: #E8894F;
+  --color-days-rust: #B4521C;
+
+  /* Toast */
+  --color-toast: #111827;
+
+  --font-display: "Archivo", system-ui, sans-serif;
+  --font-inter: "Inter", system-ui, sans-serif;
+  --font-manrope: "Manrope", "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Mobile first; these replace the old max-width breakpoints */
+  --breakpoint-*: initial;
+  --breakpoint-sm: 32.5rem;  /* 520px */
+  --breakpoint-md: 43.75rem; /* 700px */
+  --breakpoint-lg: 51.25rem; /* 820px */
+  --breakpoint-xl: 56.25rem; /* 900px */
+  --breakpoint-2xl: 62.5rem; /* 1000px */
+
+  /* Page gutter: px-gut, mx-gut … */
+  --spacing-gut: clamp(1rem, 4vw, 3rem);
+
+  /* Shared type scale for the case pages */
+  --text-base: 1.0625rem;
+  --text-base--line-height: 1.55;
+  --text-h2: clamp(2rem, 4.6vw, 3.75rem);
+  --text-h2--line-height: 1.05;
+  --text-h2--letter-spacing: -.03em;
+  --text-h3: clamp(1.75rem, 3.4vw, 2.75rem);
+  --text-h3--line-height: 1.1;
+  --text-lede: clamp(1.125rem, 1.6vw, 1.375rem);
+  --text-lede--line-height: 1.5;
+  --text-note: .9375rem;
+  --text-next: clamp(2.5rem, 8vw, 6.5rem);
+  --text-next--line-height: 1;
+  --text-next--letter-spacing: -.04em;
+
+  /* Section rhythm: py-sec, and py-band for tighter bands. (Not "block": it would turn inline-block into a size.) */
+  --spacing-sec: clamp(4rem, 10vw, 8rem);
+  --spacing-band: clamp(3rem, 7vw, 5.5rem);
+
+  --animate-blink: blink 1s steps(1) infinite;
+  @keyframes blink { 50% { opacity: 0 } }
+}
+
+/* The centred content column */
+@utility wrap {
+  width: min(100% - 2 * var(--spacing-gut), 76rem);
+  margin-inline: auto;
+}
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body { @apply text-base antialiased overflow-x-clip; }
+  :focus-visible { outline: 3px solid var(--focus, currentColor); outline-offset: 3px; border-radius: 6px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+  }
+
+  /* Netlify's free plan injects a "Powered by Netlify" badge as an iframe; keep it off the pages */
+  #nl-badge-frame { display: none !important; }
+}
+
+/* The name: site.js splits it into words (.word), fixed-width letter slots (.l)
+   and glyphs (.g), then fits, lenses and stretches it. */
+@layer components {
+  .name { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; line-height: .8; white-space: nowrap; font-size: 12vw; user-select: none; -webkit-user-select: none; touch-action: pan-y; }
+  .name .word { display: inline-block; }
+  .name .word + .word { margin-left: .2em; }
+  .name .l { display: inline-flex; justify-content: center; transform-origin: 50% 100%; }
+  .name .g { display: inline-block; font-variation-settings: "wdth" 100, "wght" 800; transition: transform .55s cubic-bezier(.2,.9,.3,1.35), font-variation-settings .55s ease; }
+  .name.lens .g { transition-duration: .09s; }
+  .name.snap .l { transition: transform .75s cubic-bezier(.3,1.8,.45,1); }
+  @media (max-width: 700px) {
+    .name .word { display: block; }
+    .name .word + .word { margin-left: 0; margin-top: .08em; }
+  }
+}
