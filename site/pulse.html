@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse – Mads Buciek</title>
+<meta name="description" content="Pulse: a dashboard that shows design system teams where their system is used, where Figma, Storybook and code have drifted apart, and what the system saves.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body class="bg-pulse-bg font-plex text-pulse-ink [--focus:var(--color-pulse-link)]">
+
+<header class="absolute inset-x-0 top-0 z-5 flex items-center justify-between gap-4 px-gut py-5 text-[1rem] font-semibold">
+  <a class="underline-offset-[.25em] hover:underline" href="index.html">Mads Buciek</a>
+  <a class="underline-offset-[.25em] hover:underline" href="index.html#work">All work</a>
+</header>
+
+<main>
+  <!-- Hero: the component strip from Pulse's Overview, built live -->
+  <section class="flex min-h-svh flex-col overflow-clip pt-28 bg-[radial-gradient(70rem_30rem_at_50%_100%,rgba(79,127,166,.22),transparent_70%)]">
+    <div class="wrap">
+      <p class="text-[1.25rem] font-semibold">Pulse<small class="block text-note font-normal text-pulse-muted">Design system health</small></p>
+      <h1 class="mt-8 mb-6 max-w-[14ch] text-[clamp(2.5rem,6.6vw,6rem)] leading-none font-medium tracking-[-.04em]">Prove your design system is worth it.</h1>
+      <p class="max-w-[34rem] text-lede text-pulse-muted">One live view of where the system is used, where Figma, Storybook and code have drifted apart, and what that costs in hours. For the person who has to defend the system to leadership with evidence rather than opinion.</p>
+      <div class="mt-8 flex flex-wrap gap-[.6rem] *:rounded *:border *:border-pulse-line *:bg-pulse-panel *:px-[.8rem] *:py-[.45rem] *:text-note" aria-label="The three questions Pulse answers"><span>Is it used?</span><span>Where is it drifting?</span><span>What does it save?</span></div>
+      <a class="mt-8 inline-flex items-center gap-[.6rem] rounded border border-pulse-edge bg-pulse-raise px-5 py-[.8rem] font-medium transition-colors duration-150 hover:bg-[#243a5c]" href="https://pulse-nine-dusky-95.vercel.app/" target="_blank" rel="noopener">Open the live prototype <span aria-hidden="true">↗</span></a>
+
+      <div class="mt-[clamp(2.5rem,6vw,4rem)]">
+        <p class="mb-4 max-w-[30ch] text-[clamp(1.125rem,2vw,1.5rem)] font-medium tracking-[-.015em]">65 of 84 components match across Figma, Storybook and code.</p>
+        <div class="flex h-[clamp(4rem,9vw,7rem)] items-end gap-[3px]" id="strip" role="img" aria-label="84 components: 65 aligned, 8 not in all three sources, 11 with open drift."></div>
+        <div class="mt-4 flex flex-wrap gap-x-6 gap-y-[.4rem] text-note text-pulse-muted *:before:mr-2 *:before:inline-block *:before:h-[.85rem] *:before:w-[.6rem] *:before:align-[-.1em] *:before:content-['']" aria-hidden="true">
+          <span class="before:bg-pulse-steel">65 aligned</span>
+          <span class="before:outline before:-outline-offset-1 before:outline-pulse-steel">8 not in all three sources</span>
+          <span class="before:bg-pulse-peach">11 with open drift, taller where it reaches further</span>
+        </div>
+      </div>
+    </div>
+    <img class="mx-auto mt-[clamp(2.5rem,6vw,4rem)] w-[min(100%_-_2*var(--spacing-gut),76rem)] rounded-t-md border border-b-0 border-pulse-line shadow-[0_40px_90px_rgba(0,0,0,.5)]" src="img/pulse/overview.jpg" alt="Pulse Overview: 65 of 84 components match, 72% adoption, 11 open drift items and 640 to 1,760 hours saved in 8 weeks." width="2400" height="1500">
+  </section>
+
+  <section class="py-sec">
+    <div class="wrap grid items-start gap-[clamp(2rem,6vw,6rem)] lg:grid-cols-2">
+      <div class="space-y-5">
+        <h2 class="max-w-[19ch] text-h2 font-medium text-balance">Design systems are trusted, not adopted</h2>
+        <p class="max-w-xl text-lede text-pulse-muted">Teams that run a design system cannot show where it is used, where it has drifted from the code, or what it saves. Without that evidence they lose funding and mandate, and product teams stop trusting the system. Pulse is a concept for that evidence.</p>
+      </div>
+      <dl class="grid grid-cols-[7.5rem_1fr] gap-x-6 gap-y-[.9rem] border-t-2 border-pulse-line pt-5 [&>dd]:text-pulse-muted [&>dt]:font-semibold">
+        <dt>Role</dt><dd>Product designer: research, strategy, UX and UI</dd>
+        <dt>Duration</dt><dd>6 weeks planned, from discovery to a tested prototype</dd>
+        <dt>Status</dt><dd>Desk research done. Interviews, survey and concept test are planned, not run.</dd>
+        <dt>Prototype</dt><dd><a class="text-pulse-link underline underline-offset-[.2em]" href="https://pulse-nine-dusky-95.vercel.app/" target="_blank" rel="noopener">Live, with a sample workspace</a></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="pb-sec">
+    <div class="wrap">
+      <h2 class="max-w-[20ch] text-h2 font-medium text-balance">The system exists. The organisation has not committed to it.</h2>
+      <div class="mt-12 grid border-t border-pulse-line sm:grid-cols-2 [&_b]:block [&_b]:text-[clamp(3.5rem,9vw,7.5rem)] [&_b]:leading-none [&_b]:font-medium [&_b]:tracking-[-.05em] [&_span]:text-pulse-muted">
+        <div class="pt-6 sm:pr-6"><b>91%</b><span>of practitioners trust their design system</span></div>
+        <div class="mt-6 border-t border-pulse-line pt-6 sm:mt-0 sm:border-t-0 sm:border-l sm:pl-6"><b class="text-pulse-peach">38%</b><span>say it is widely or fully adopted</span></div>
+      </div>
+      <ul class="mt-12 grid gap-px border border-pulse-line bg-pulse-line lg:grid-cols-3 *:bg-pulse-bg *:p-7 [&_h3]:mb-2 [&_h3]:text-[1.25rem] [&_h3]:font-semibold [&_p]:text-pulse-muted">
+        <li><h3>Adoption is invisible</h3><p>Teams ship UI without anyone knowing which products use which components, or which one-offs duplicate an existing component.</p></li>
+        <li><h3>Sources drift apart</h3><p>Figma, Storybook and production change separately. A screen that no longer matches is easy to spot; a component used in an unintended way needs human judgment.</p></li>
+        <li><h3>Value is hard to prove</h3><p>Few teams measure, and most lack the people to do it by hand.</p></li>
+      </ul>
+      <ul class="mt-12 grid gap-8 sm:grid-cols-2 xl:grid-cols-4 *:border-t-2 *:border-pulse-steel *:pt-4 [&_b]:mb-[.6rem] [&_b]:block [&_b]:font-plexmono [&_b]:text-[2.25rem] [&_b]:leading-none [&_b]:font-medium [&_b]:tracking-[-.03em] [&_p]:text-note [&_p]:text-pulse-muted">
+        <li><b>93/56</b><p>93% of systems have foundations; only 56% have documented UX patterns.</p></li>
+        <li><b>73%</b><p>of teams with poor adoption cite a lack of company mandate. 55% cite weak governance.</p></li>
+        <li><b>61%</b><p>of teams say they lack the people to meet their goals, though 83% have a dedicated team.</p></li>
+        <li><b>16%</b><p>tracked metrics in Sparkbox’s 2022 survey. Different sample, so read it as direction, not trend.</p></li>
+      </ul>
+      <p class="mt-6 text-[.875rem] text-pulse-muted [&_a]:text-pulse-link [&_a]:underline">Sources: zeroheight Design Systems Report 2026 (147 practitioners), as summarised by <a href="https://news.designrush.com/design-system-adoption-sequencing" target="_blank" rel="noopener">DesignRush</a>; <a href="https://sparkbox.com/foundry/finding_and_fixing_design_system_drift" target="_blank" rel="noopener">Sparkbox on drift</a>; <a href="https://designsystemssurvey.seesparkbox.com" target="_blank" rel="noopener">Sparkbox survey</a>. Figures as of 10 November 2026.</p>
+    </div>
+  </section>
+
+  <section class="pb-sec">
+    <div class="wrap">
+      <h2 class="max-w-[22ch] text-h2 font-medium text-balance">Built for the design system lead. Read by everyone else.</h2>
+      <div class="mt-10 overflow-x-auto" tabindex="0" role="region" aria-label="Users and jobs to be done">
+        <table class="w-full min-w-[44rem] text-note [&_:is(th,td)]:border-b [&_:is(th,td)]:border-pulse-line [&_:is(th,td)]:py-[.9rem] [&_:is(th,td)]:pr-5 [&_:is(th,td)]:text-left [&_:is(th,td)]:align-top [&_td]:text-pulse-muted [&_tbody_th]:font-semibold [&_thead_th]:text-[.875rem] [&_thead_th]:font-medium [&_thead_th]:text-pulse-muted">
+          <thead><tr><th>User</th><th>Job to be done</th><th>Pain today</th><th>What they need from Pulse</th></tr></thead>
+          <tbody>
+            <tr><th>Design system lead</th><td>Show leadership the system is worth funding, and keep it healthy</td><td>Reports built by hand from several tools, with numbers they do not fully trust</td><td>One trusted view, plus a summary to send on</td></tr>
+            <tr><th>Product designer</th><td>Build screens without rebuilding what exists</td><td>Cannot tell if a component is current, or whether code matches Figma</td><td>Clear status per component, and where to ask for a change</td></tr>
+            <tr><th>Frontend engineer</th><td>Ship UI without hunting for the right component</td><td>Finds Figma and code out of step and rebuilds a one-off</td><td>The drift that affects their work, with the fix path</td></tr>
+            <tr><th>Head of design or engineering</th><td>Decide where to invest, and whether the system pays back</td><td>Hears anecdotes, not evidence</td><td>Plain-language impact: adoption, drift, hours saved</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-5 max-w-[40rem] text-note text-pulse-muted">These profiles are hypotheses from desk research and my own experience owning a design system across Figma and code. The planned interviews are there to correct them.</p>
+    </div>
+  </section>
+
+  <section class="pb-sec">
+    <div class="wrap">
+      <h2 class="max-w-[20ch] text-h2 font-medium text-balance">Three sources in. Five views and one action queue out.</h2>
+      <p class="mt-5 max-w-xl text-lede text-pulse-muted">Pulse reads Figma, Storybook and the code repositories. The Overview answers the three leadership questions at a glance; the other views explain each answer and turn it into a fix.</p>
+      <ul class="mt-10 grid grid-cols-2 gap-px border border-pulse-line bg-pulse-line xl:grid-cols-6 *:bg-pulse-panel *:p-5 [&_b]:mb-[.35rem] [&_b]:block [&_b]:font-semibold [&_span]:text-note [&_span]:text-pulse-muted">
+        <li><b>Overview</b><span>The three answers</span></li>
+        <li><b>Adoption</b><span>Used, ignored or missing</span></li>
+        <li><b>Drift</b><span>Ranked by reach</span></li>
+        <li><b>Components</b><span>Usage and status</span></li>
+        <li><b>Impact</b><span>Hours saved, as a range</span></li>
+        <li><b>Settings</b><span>Sources and audit log</span></li>
+        <li class="col-span-full flex flex-wrap justify-between gap-4 bg-pulse-raise!"><b>Action queue</b><span>Findings become issues or pull requests, after a person approves</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="border-t border-pulse-line py-band">
+    <div class="wrap">
+      <div class="mb-10 grid items-end gap-[clamp(1.5rem,5vw,5rem)] lg:grid-cols-2">
+        <div><span class="font-plexmono text-[.875rem] text-pulse-link">Adoption</span><h3 class="mt-[.6rem] text-h3 font-medium tracking-[-.03em] text-balance">Low usage has two causes, so it gets two labels</h3></div>
+        <div class="space-y-[.9rem] text-pulse-muted [&_b]:text-pulse-ink">
+          <p>Custom UI that duplicates a library component is <b>ignored</b>: the team may need support. Custom UI with no library match is <b>missing</b>: the system may need a new component. They need different fixes, so the view keeps them apart.</p>
+          <p>The classification is automatic, and the lead can override it. Their call is kept across scans and logged.</p>
+        </div>
+      </div>
+      <img class="w-full rounded-md border border-pulse-line shadow-[0_40px_90px_rgba(0,0,0,.5)]" src="img/pulse/adoption.jpg" alt="Adoption view: 72% of component-like UI comes from the library, split into library instances, ignored custom UI and missing custom UI, then by team." width="2400" height="1500" loading="lazy">
+      <div class="mt-4 flex flex-wrap gap-x-6 gap-y-[.4rem] text-note text-pulse-muted *:before:mr-2 *:before:inline-block *:before:h-[.85rem] *:before:w-[.6rem] *:before:align-[-.1em] *:before:content-['']">
+        <span class="before:bg-pulse-steel">Library instances</span>
+        <span class="before:bg-[repeating-linear-gradient(135deg,var(--color-pulse-steel)_0_2px,transparent_2px_5px)]">Custom, although the library has a match</span>
+        <span class="before:outline before:-outline-offset-1 before:outline-pulse-muted">Custom, with no library match</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-pulse-line py-band">
+    <div class="wrap">
+      <div class="mb-10 grid items-end gap-[clamp(1.5rem,5vw,5rem)] lg:grid-cols-2">
+        <div><span class="font-plexmono text-[.875rem] text-pulse-link">Drift</span><h3 class="mt-[.6rem] text-h3 font-medium tracking-[-.03em] text-balance">Every difference is triaged by how far it reaches</h3></div>
+        <p class="text-pulse-muted">Drift is ranked by reach, then by usage, on a four-level scale adapted from Sparkbox. Pulse surfaces and sorts; it does not auto-fix, because component drift needs a person to judge what a change touches.</p>
+      </div>
+      <img class="w-full rounded-md border border-pulse-line shadow-[0_40px_90px_rgba(0,0,0,.5)]" src="img/pulse/drift.jpg" alt="Drift view: 11 open differences between Figma, Storybook and code, each with its level and number of uses." width="2400" height="1500" loading="lazy">
+      <ul class="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4 *:rounded *:border *:border-pulse-line *:bg-pulse-panel *:p-4 [&_b]:block [&_b]:font-semibold [&_li>span]:text-[.875rem] [&_li>span]:text-pulse-muted">
+        <li><span class="mb-[.6rem] flex gap-[2px] *:h-[.85rem] *:w-[.4rem] *:rounded-[1px] *:border *:border-pulse-red *:bg-pulse-red" aria-hidden="true"><i></i><i></i><i></i><i></i></span><b>Must deprecate</b><span>Toast: two code versions of one component</span></li>
+        <li><span class="mb-[.6rem] flex gap-[2px] *:h-[.85rem] *:w-[.4rem] *:rounded-[1px] *:border *:border-pulse-ink" aria-hidden="true"><i class="bg-pulse-ink"></i><i class="bg-pulse-ink"></i><i class="bg-pulse-ink"></i><i></i></span><b>Per-instance decision</b><span>Button: a variant that exists in code only</span></li>
+        <li><span class="mb-[.6rem] flex gap-[2px] *:h-[.85rem] *:w-[.4rem] *:rounded-[1px] *:border *:border-pulse-ink" aria-hidden="true"><i class="bg-pulse-ink"></i><i class="bg-pulse-ink"></i><i></i><i></i></span><b>Mechanically migratable</b><span>Input: spacing differs between Figma and code</span></li>
+        <li><span class="mb-[.6rem] flex gap-[2px] *:h-[.85rem] *:w-[.4rem] *:rounded-[1px] *:border *:border-pulse-ink" aria-hidden="true"><i class="bg-pulse-ink"></i><i></i><i></i><i></i></span><b>Silently safe</b><span>Badge: a difference nobody will notice</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="border-t border-pulse-line py-band">
+    <div class="wrap">
+      <div class="mb-10 grid items-end gap-[clamp(1.5rem,5vw,5rem)] lg:grid-cols-2">
+        <div><span class="font-plexmono text-[.875rem] text-pulse-link">Components</span><h3 class="mt-[.6rem] text-h3 font-medium tracking-[-.03em] text-balance">Every number traces back to the component behind it</h3></div>
+        <p class="text-pulse-muted">Numbers nobody can trace will not be shown to leadership. So every figure opens onto its source: the map sizes each component by use and marks its drift, and each component links straight to Figma, Storybook and code.</p>
+      </div>
+      <img class="w-full rounded-md border border-pulse-line shadow-[0_40px_90px_rgba(0,0,0,.5)]" src="img/pulse/components.jpg" alt="Components view: a map of the 14 most-used components sized by instances, with Button selected showing its variants, usage by team and change history." width="2400" height="1500" loading="lazy">
+    </div>
+  </section>
+
+  <section class="border-t border-pulse-line py-band">
+    <div class="wrap">
+      <div class="mb-10 grid items-end gap-[clamp(1.5rem,5vw,5rem)] lg:grid-cols-2">
+        <div><span class="font-plexmono text-[.875rem] text-pulse-link">Impact</span><h3 class="mt-[.6rem] text-h3 font-medium tracking-[-.03em] text-balance">Hours saved as a range, with the assumptions in plain sight</h3></div>
+        <div class="space-y-[.9rem] text-pulse-muted">
+          <p>A single number would be punchier, and less credible. Pulse shows a low and a high estimate from assumptions the lead can edit, and turns them into a one-page summary for leadership.</p>
+          <p>Try it with your own team’s numbers.</p>
+        </div>
+      </div>
+
+      <!-- The Impact view's own formula, live -->
+      <div class="grid gap-px border border-pulse-line bg-pulse-line lg:grid-cols-[1.1fr_.9fr] *:bg-pulse-panel *:p-[clamp(1.25rem,3vw,2rem)]">
+        <div>
+          <h4 class="mb-[.4rem] text-[1.125rem] font-semibold">How it is worked out</h4>
+          <p class="mb-5 font-plexmono text-note text-pulse-muted">saved = reused instances × (hours to build − hours to use)</p>
+          <div class="grid grid-cols-2 gap-4 [&_input]:w-full [&_input]:rounded [&_input]:border [&_input]:border-pulse-edge [&_input]:bg-pulse-bg [&_input]:px-3 [&_input]:py-[.6rem] [&_input]:font-plexmono [&_label]:mb-[.35rem] [&_label]:block [&_label]:text-note [&_label]:font-medium" id="calc">
+            <div class="col-span-2 sm:col-span-1"><label for="n">Instances reused</label><input id="n" inputmode="decimal" value="640"></div>
+            <div class="hidden sm:block"></div>
+            <div><label for="bl">Hours to build, low</label><input id="bl" inputmode="decimal" value="1,5"></div>
+            <div><label for="bh">Hours to build, high</label><input id="bh" inputmode="decimal" value="3"></div>
+            <div><label for="ul">Hours to use, low</label><input id="ul" inputmode="decimal" value="0,25"></div>
+            <div><label for="uh">Hours to use, high</label><input id="uh" inputmode="decimal" value="0,5"></div>
+          </div>
+          <p class="mt-4 text-note text-pulse-muted">The low end pairs low build time with high use time.</p>
+          <button class="mt-5 cursor-pointer rounded border border-pulse-edge bg-pulse-raise px-4 py-[.55rem] font-medium" type="button" id="reset">Reset to defaults</button>
+        </div>
+        <div aria-live="polite">
+          <p class="text-note text-pulse-muted">The library saved an estimated</p>
+          <p class="mt-[.6rem] mb-[.4rem] text-[clamp(2.5rem,6vw,4.25rem)] leading-none font-medium tracking-[-.04em] tabular-nums" id="range">640–1,760 hours</p>
+          <p class="text-note text-pulse-muted">in 8 weeks, in the prototype’s sample workspace.</p>
+          <div class="relative mt-6 mb-3 h-6 border border-pulse-line bg-pulse-bg bg-[repeating-linear-gradient(135deg,var(--color-pulse-steel)_0_2px,transparent_2px_6px)]" aria-hidden="true"><div class="absolute inset-y-0 left-0 bg-pulse-steel transition-[width] duration-300" id="lo"></div></div>
+          <div class="flex flex-wrap gap-x-6 gap-y-[.4rem] text-note text-pulse-muted *:before:mr-2 *:before:inline-block *:before:h-[.85rem] *:before:w-[.6rem] *:before:align-[-.1em] *:before:content-['']" aria-hidden="true">
+            <span class="before:bg-pulse-steel">Low estimate</span>
+            <span class="before:bg-[repeating-linear-gradient(135deg,var(--color-pulse-steel)_0_2px,transparent_2px_5px)]">Up to the high estimate</span>
+          </div>
+        </div>
+      </div>
+      <img class="mt-10 w-full rounded-md border border-pulse-line shadow-[0_40px_90px_rgba(0,0,0,.5)]" src="img/pulse/impact.jpg" alt="Impact view: weekly hours saved as low and high estimates, the editable assumptions, and a preview of the leadership summary." width="2400" height="1500" loading="lazy">
+    </div>
+  </section>
+
+  <section class="border-t border-pulse-line py-band">
+    <div class="wrap">
+      <div class="mb-10 grid items-end gap-[clamp(1.5rem,5vw,5rem)] lg:grid-cols-2">
+        <div><span class="font-plexmono text-[.875rem] text-pulse-link">Settings</span><h3 class="mt-[.6rem] text-h3 font-medium tracking-[-.03em] text-balance">Reads freely. Writes only after you approve.</h3></div>
+        <p class="text-pulse-muted">The lead stays in control of changes to repositories and Figma files. Every write is recorded in an audit log, and data is shown by team and product, never by person.</p>
+      </div>
+      <img class="w-full rounded-md border border-pulse-line shadow-[0_40px_90px_rgba(0,0,0,.5)]" src="img/pulse/settings.jpg" alt="Settings view: GitHub, Storybook and Figma connected, team mapping to repository folders and Figma projects, roles and the audit log." width="2400" height="1500" loading="lazy">
+    </div>
+  </section>
+
+  <section class="border-t border-pulse-line py-sec">
+    <div class="wrap">
+      <h2 class="max-w-[20ch] text-h2 font-medium text-balance">Six decisions, and what each one costs</h2>
+      <div class="mt-10 overflow-x-auto" tabindex="0" role="region" aria-label="Design decisions and trade-offs">
+        <table class="w-full min-w-[44rem] text-note [&_:is(th,td)]:border-b [&_:is(th,td)]:border-pulse-line [&_:is(th,td)]:py-[.9rem] [&_:is(th,td)]:pr-5 [&_:is(th,td)]:text-left [&_:is(th,td)]:align-top [&_td]:text-pulse-muted [&_tbody_th]:font-semibold [&_thead_th]:text-[.875rem] [&_thead_th]:font-medium [&_thead_th]:text-pulse-muted">
+          <thead><tr><th>Decision</th><th>Why</th><th>Trade-off</th></tr></thead>
+          <tbody>
+            <tr><th>Lead with three questions, not a wall of charts</th><td>Leads and leaders ask the same three things</td><td>Less open exploration on the first screen; drill-downs cover it</td></tr>
+            <tr><th>Every number links to its sources</th><td>Untraceable numbers will not reach leadership</td><td>A heavier data model and slower views</td></tr>
+            <tr><th>Separate “ignored” from “missing”</th><td>They need different fixes</td><td>Needs classification logic, so the lead can override it</td></tr>
+            <tr><th>Triage drift by reach; never auto-fix</th><td>Component drift needs human judgment</td><td>More clicks than automatic fixes, but safer</td></tr>
+            <tr><th>Hours saved as a range with editable assumptions</th><td>Avoids false precision, keeps the figure credible</td><td>A less punchy headline number</td></tr>
+            <tr><th>Read freely, write only on approval</th><td>Keeps the lead in control of repositories and Figma</td><td>A slower loop from finding to fix</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-sec">
+    <div class="wrap">
+      <h2 class="max-w-[22ch] text-h2 font-medium text-balance">What the concept test has to show</h2>
+      <p class="mt-5 max-w-xl text-lede text-pulse-muted">These are targets for 5–6 moderated sessions on the prototype, with seeded drift issues. Nothing has been run yet.</p>
+      <div class="mt-10 overflow-x-auto" tabindex="0" role="region" aria-label="Goals and targets">
+        <table class="w-full min-w-[40rem] text-note [&_:is(th,td)]:border-b [&_:is(th,td)]:border-pulse-line [&_:is(th,td)]:py-[.9rem] [&_:is(th,td)]:pr-5 [&_:is(th,td)]:text-left [&_:is(th,td)]:align-top [&_td]:text-pulse-muted [&_tbody_th]:font-semibold [&_thead_th]:text-[.875rem] [&_thead_th]:font-medium [&_thead_th]:text-pulse-muted">
+          <thead><tr><th>Goal</th><th>How I will measure it</th><th>Target</th></tr></thead>
+          <tbody>
+            <tr><th>See adoption per team</th><td>Time for a lead to name the team with the lowest adoption</td><td>Under 30 seconds</td></tr>
+            <tr><th>Find drift before it ships</th><td>Share of seeded drift issues found</td><td>At least 80%</td></tr>
+            <tr><th>Prove value to leadership</th><td>Time to produce a leadership summary</td><td>Under 10 minutes</td></tr>
+            <tr><th>Trust the numbers</th><td>Participants who would show the figures to leadership</td><td>At least 4 of 6</td></tr>
+            <tr><th>Act on findings</th><td>Participants who create a fix from a finding without help</td><td>At least 5 of 6</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-pulse-line bg-pulse-panel py-sec">
+    <div class="wrap grid items-start gap-[clamp(2rem,6vw,6rem)] lg:grid-cols-2">
+      <div class="space-y-5">
+        <h2 class="max-w-[19ch] text-h2 font-medium text-balance">The case is only as strong as the research behind it</h2>
+        <p class="max-w-xl text-lede text-pulse-muted">And the primary research has not happened yet. Adoption is a prerequisite, not proof of value: a team can use every component and still ship poor UI, so Impact pairs adoption with delivery time and drift resolved.</p>
+        <h3 class="pt-4 text-[1.125rem] font-semibold">Limitations</h3>
+        <ul class="space-y-2 *:border-l-2 *:border-pulse-line *:py-[.4rem] *:pl-4 *:text-pulse-muted">
+          <li>Industry figures come from summaries of the zeroheight report, not the full report.</li>
+          <li>Survey respondents likely over-represent mature teams.</li>
+          <li>Two of the insights and the user profiles come from my own experience and are untested.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="mb-3 text-[1.125rem] font-semibold">Next steps</h3>
+        <ul class="*:flex *:gap-3 *:border-b *:border-pulse-line *:py-[.8rem] *:text-pulse-muted *:before:mt-1 *:before:size-4 *:before:flex-none *:before:rounded-[3px] *:before:border *:before:border-pulse-muted *:before:content-['']">
+          <li>Recruit and run 8–10 interviews with leads, designers, engineers and leaders</li>
+          <li>Review zeroheight, Supernova, Knapsack, Omlet, Figma analytics and Storybook</li>
+          <li>Update the insights with real quotes, and drop any that fail</li>
+          <li>Run the concept test against the targets above</li>
+          <li>Pilot with two product teams on real repositories for 4–6 weeks</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <a class="group block bg-ally-bg px-gut py-[clamp(3rem,8vw,6rem)] font-inter text-ally-ink" href="ally.html">
+    <span class="mb-3 block font-semibold opacity-80">Next case</span>
+    <strong class="block text-next font-bold transition-transform duration-300 ease-[ease] group-hover:translate-x-[.15em]">Ally redesign</strong>
+  </a>
+</main>
+
+<footer class="flex flex-col overflow-clip bg-pulse-foot px-gut py-[clamp(1.25rem,2.5vw,2.25rem)] text-pulse-ink">
+  <div class="order-2 mt-[clamp(1.25rem,2.5vw,2.25rem)] flex flex-wrap items-center justify-between gap-6">
+    <p class="max-w-[24ch] text-[clamp(1.125rem,2vw,1.5rem)] leading-[1.3]">Working on a product that has outgrown its first design?</p>
+    <a class="inline-block rounded-full bg-pulse-link px-[1.6em] py-[.85em] font-display text-[clamp(1.25rem,2.4vw,1.75rem)] font-bold text-pulse-bg transition-transform duration-200 hover:scale-104 hover:-rotate-3" href="mailto:hello@madsbuciek.com">Say hello!</a>
+  </div>
+  <p class="name order-1 md:mb-[.48em] md:origin-top md:scale-y-160" data-name>Mads Buciek</p>
+</footer>
+
+<script src="js/site.js"></script>
+<script>
+(() => {
+  // The component strip: 65 aligned, 8 not in all three sources, 11 drifting (taller reaches further).
+  // Bars rise once on load, left to right; reduced motion skips the animation.
+  const strip = document.getElementById('strip');
+  const motion = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const drift = [42, 46, 50, 55, 55, 60, 66, 70, 76, 84, 100];
+  let i = 0;
+  const bar = (cls, h = 34) => {
+    const b = document.createElement('i');
+    b.className = 'min-w-0 flex-1 origin-bottom rounded-[1px] ' + cls + (motion ? ' animate-rise' : '');
+    b.style.height = h + '%';
+    b.style.animationDelay = i++ * 9 + 'ms';
+    strip.append(b);
+  };
+  for (let k = 0; k < 65; k++) bar('bg-pulse-steel');
+  for (let k = 0; k < 8; k++) bar('outline -outline-offset-1 outline-pulse-steel');
+  drift.forEach((h, k) => bar(k === drift.length - 1 ? 'bg-pulse-red' : 'bg-pulse-peach', h));
+
+  // Hours saved, with the prototype's defaults; Danish decimal commas are accepted.
+  const ids = ['n', 'bl', 'bh', 'ul', 'uh'];
+  const defaults = { n: '640', bl: '1,5', bh: '3', ul: '0,25', uh: '0,5' };
+  const read = (id) => parseFloat(document.getElementById(id).value.replace(/\s/g, '').replace(',', '.'));
+  const fmt = (x) => Math.round(Math.max(0, x)).toLocaleString('en-US');
+  const range = document.getElementById('range');
+  const draw = () => {
+    const v = Object.fromEntries(ids.map((id) => [id, read(id)]));
+    if (ids.some((id) => !isFinite(v[id]))) { range.textContent = 'Enter a number in each field'; return; }
+    const lo = v.n * (v.bl - v.uh), hi = v.n * (v.bh - v.ul);
+    const a = Math.min(lo, hi), b = Math.max(lo, hi);
+    range.textContent = `${fmt(a)}–${fmt(b)} hours`;
+    document.getElementById('lo').style.width = (Math.max(0, a) / Math.max(b, 1)) * 100 + '%';
+  };
+  ids.forEach((id) => document.getElementById(id).addEventListener('input', draw));
+  document.getElementById('reset').onclick = () => { ids.forEach((id) => (document.getElementById(id).value = defaults[id])); draw(); };
+  draw();
+})();
+</script>
+</body>
+</html>

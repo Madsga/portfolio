@@ -84,6 +84,20 @@
   --color-days-clock: #E8894F;
   --color-days-rust: #B4521C;
 
+  /* Pulse */
+  --color-pulse-bg: #0F1B2D;
+  --color-pulse-panel: #13233A;
+  --color-pulse-raise: #1B2C47;
+  --color-pulse-line: #2A3F5E;
+  --color-pulse-edge: #3E5A86;
+  --color-pulse-ink: #E6EDF7;
+  --color-pulse-muted: #A9B8CC;
+  --color-pulse-steel: #4F7FA6;
+  --color-pulse-link: #8CC8F5;
+  --color-pulse-peach: #F7C59F;
+  --color-pulse-red: #EE8A8A;
+  --color-pulse-foot: #0A1322;
+
   /* Toast */
   --color-toast: #111827;
 
@@ -91,6 +105,8 @@
   --font-inter: "Inter", system-ui, sans-serif;
   --font-manrope: "Manrope", "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
+  --font-plex: "IBM Plex Sans", system-ui, sans-serif;
+  --font-plexmono: "IBM Plex Mono", ui-monospace, monospace;
 
   /* Mobile first; these replace the old max-width breakpoints */
   --breakpoint-*: initial;
@@ -123,6 +139,8 @@
   --spacing-band: clamp(3rem, 7vw, 5.5rem);
 
   --animate-blink: blink 1s steps(1) infinite;
+  --animate-rise: rise .7s cubic-bezier(.2,.8,.2,1) both;
+  @keyframes rise { from { transform: scaleY(0); opacity: 0 } }
   @keyframes blink { 50% { opacity: 0 } }
 }
 
