@@ -31,8 +31,9 @@
                     bg-[repeating-linear-gradient(90deg,transparent_0_27px,rgba(30,42,68,.07)_27px_28px)]
                     [--pb:30vw] [--pt:13.5rem] md:[--pb:5vw] md:[--pt:11.5rem] 2xl:[--pt:5rem]">
       <div class="min-h-0">
-        <p class="relative z-2 max-w-[24em] text-[1.375rem] leading-[1.15] font-medium tracking-[-.02em] text-balance
-                  2xl:max-w-[calc(50vw_-_(100svh_-_var(--pt)_-_var(--pb))_*_.4_-_var(--spacing-gut)_-_1.5rem)] 2xl:text-[clamp(1.25rem,2vw,2rem)]" data-fade>Senior product designer building solutions for scaling SaaS and enterprise software.</p>
+        <!-- Tagline: hover it and the words fall into the hero (js/falling-text.js). Not positioned, so the words fall against the section. -->
+        <p class="max-w-[24em] text-[1.375rem] leading-[1.15] font-medium tracking-[-.02em] text-balance
+                  2xl:max-w-[calc(50vw_-_(100svh_-_var(--pt)_-_var(--pb))_*_.4_-_var(--spacing-gut)_-_1.5rem)] 2xl:text-[clamp(1.25rem,2vw,2rem)]" data-fade data-falling-text>Senior product designer building solutions for scaling SaaS and enterprise software.</p>
         <!-- Portrait: large, centred, sitting behind the name; sharpens on hover, focus or tap -->
         <button class="group absolute bottom-(--pb) left-1/2 z-0 block aspect-[798/1201] h-[calc(100svh_-_var(--pt)_-_var(--pb))] max-w-[calc(100%_-_2*var(--spacing-gut))] -translate-x-1/2 cursor-pointer" type="button" data-portrait aria-label="Portrait of Mads Buciek. Activate to bring it into focus.">
           <img class="size-full object-contain object-bottom blur-[18px] saturate-85 transition-[filter] duration-700 ease-[ease] group-hover:filter-none group-focus-visible:filter-none group-[.clear]:filter-none" src="img/portrait.png" alt="" width="798" height="1201">
@@ -131,5 +132,13 @@
 </footer>
 
 <script src="js/site.js"></script>
+<script src="js/vendor/matter.min.js"></script>
+<script src="js/falling-text.js"></script>
+<script>
+  // The tagline falls apart on hover, lands on top of the name, and flies back once the pile settles.
+  const tagline = document.querySelector('[data-falling-text]');
+  const hero = tagline.closest('section');
+  fallingText(tagline, { bounds: hero, floor: hero.querySelector('h1[data-name]'), trigger: 'hover', restoreDelay: 2.5 });
+</script>
 </body>
 </html>

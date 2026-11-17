@@ -163,6 +163,15 @@
   #nl-badge-frame { display: none !important; }
 }
 
+/* Falling text (js/falling-text.js): words become pieces that drop into their bounds on hover. */
+@layer components {
+  .falling-text__piece { display: inline-block; white-space: pre; }
+  [data-fall-phase] .falling-text { user-select: none; -webkit-user-select: none; }
+  [data-fall-phase] .falling-text__piece { z-index: 2; will-change: transform; }
+  [data-fall-phase="falling"] .falling-text__piece { cursor: grab; touch-action: none; }
+  [data-fall-dragging], [data-fall-dragging] .falling-text__piece { cursor: grabbing; }
+}
+
 /* The name: site.js splits it into words (.word), fixed-width letter slots (.l)
    and glyphs (.g), then fits, lenses and stretches it. */
 @layer components {
