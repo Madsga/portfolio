@@ -1,4 +1,5 @@
-// Shared behaviour: the name's lens (fisheye) on hover and its vertical stretch on scroll.
+// Shared behaviour: the footer name's lens (fisheye) on hover, the hero name's stretch on scroll,
+// the portrait's tap-to-focus and the email fallback.
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const names = [...document.querySelectorAll('[data-name]')];
@@ -88,20 +89,20 @@
     el.addEventListener('pointercancel', reset);
   }
 
-  // Stretch: while the pinned hero is scrolled through, the letters grow upward.
-  // When the next section arrives they spring back to rest.
-  const pin = document.querySelector('[data-pin]');
-  const heroName = pin && pin.querySelector('[data-name]');
-  const fade = pin ? [...pin.querySelectorAll('[data-fade]')] : [];
+  // Stretch: as the hero scrolls away, the name's letters grow upward;
+  // once the hero has gone, they spring back to rest.
+  const hero = document.querySelector('[data-hero]');
+  const heroName = hero && hero.querySelector('[data-pressure]');
+  const fade = hero ? [...hero.querySelectorAll('[data-fade]')] : [];
   function onScroll() {
-    if (!pin || reduce) return;
-    const travel = pin.offsetHeight - innerHeight;
-    const p = Math.min(1, Math.max(0, scrollY / travel));
-    const letters = [...heroName.querySelectorAll('.l')];
+    if (!hero || !heroName || reduce) return;
+    const p = Math.min(1, Math.max(0, scrollY / hero.offsetHeight));
+    const letters = [...heroName.querySelectorAll('[data-letter]')];
+    if (!letters.length) return;
     const done = p >= 0.985;
     heroName.classList.toggle('snap', done);
-    const h = letters[0].offsetHeight;
-    const max = Math.max(1.5, (innerHeight * 0.86) / h);
+    const h = letters[0].offsetHeight || 1;
+    const max = Math.max(1.5, (hero.offsetHeight * 0.8) / h);
     letters.forEach((l, i) => {
       const lag = 0.72 + 0.28 * Math.abs(Math.sin(i * 1.7 + 0.6));
       const s = done ? 1 : 1 + p * (max - 1) * lag;

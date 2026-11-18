@@ -24,24 +24,23 @@
 </header>
 
 <main id="top">
-  <!-- Pinned hero: the page scrolls past it while the name stretches (site.js) -->
-  <div class="h-svh in-[.motion]:h-[190svh]" data-pin>
-    <!-- --pt/--pb: the space the portrait leaves above and below it. Pinstripes borrowed from the shirt in the portrait. -->
-    <section class="sticky top-0 grid h-svh grid-rows-[1fr_auto] overflow-clip px-gut pt-18 pb-[clamp(1rem,2.5vw,2rem)] md:pt-22
-                    bg-[repeating-linear-gradient(90deg,transparent_0_27px,rgba(30,42,68,.07)_27px_28px)]
-                    [--pb:30vw] [--pt:13.5rem] md:[--pb:5vw] md:[--pt:11.5rem] 2xl:[--pt:5rem]">
-      <div class="min-h-0">
-        <!-- Tagline: hover it and the words fall into the hero (js/falling-text.js). Not positioned, so the words fall against the section. -->
-        <p class="max-w-[24em] text-[1.375rem] leading-[1.15] font-medium tracking-[-.02em] text-balance
-                  2xl:max-w-[calc(50vw_-_(100svh_-_var(--pt)_-_var(--pb))_*_.4_-_var(--spacing-gut)_-_1.5rem)] 2xl:text-[clamp(1.25rem,2vw,2rem)]" data-fade data-falling-text>Senior product designer building solutions for scaling SaaS and enterprise software.</p>
-        <!-- Portrait: large, centred, sitting behind the name; sharpens on hover, focus or tap -->
-        <button class="group absolute bottom-(--pb) left-1/2 z-0 block aspect-[798/1201] h-[calc(100svh_-_var(--pt)_-_var(--pb))] max-w-[calc(100%_-_2*var(--spacing-gut))] -translate-x-1/2 cursor-pointer" type="button" data-portrait aria-label="Portrait of Mads Buciek. Activate to bring it into focus.">
-          <img class="size-full object-contain object-bottom blur-[18px] saturate-85 transition-[filter] duration-700 ease-[ease] group-hover:filter-none group-focus-visible:filter-none group-[.clear]:filter-none" src="img/portrait.png" alt="" width="798" height="1201">
-        </button>
-      </div>
-      <h1 class="name pointer-events-none relative z-1 text-home-ink [&_.l]:pointer-events-auto" data-name>Mads Buciek</h1>
-    </section>
-  </div>
+  <!-- Hero: two thirds of the screen, so the first case peeks in below it.
+       --pt is the space the tagline keeps above the portrait. The name stretches as the hero scrolls away (site.js). -->
+  <section class="relative grid h-[66.667svh] min-h-[30rem] grid-rows-[1fr_auto] overflow-clip px-gut pt-18 pb-[clamp(1rem,2.5vw,2rem)] md:pt-22
+                  [--pt:13.5rem] md:[--pt:11.5rem] 2xl:[--pt:5rem]" data-hero>
+    <div class="min-h-0">
+      <!-- Tagline: hover it and the words fall onto the name (js/falling-text.js). Not positioned, so the words fall against the section. -->
+      <p class="max-w-[24em] text-[1.375rem] leading-[1.15] font-medium tracking-[-.02em] text-balance
+                2xl:max-w-[calc(50vw_-_(max(66.667svh,30rem)_-_var(--pt))_*_.375_-_var(--spacing-gut)_-_1.5rem)] 2xl:text-[clamp(1.25rem,2vw,2rem)]" data-fade data-falling-text>Senior product designer building solutions for scaling SaaS and enterprise software.</p>
+      <!-- Portrait: large, centred, sitting behind the name; sharpens on hover, focus or tap -->
+      <button class="group absolute bottom-0 left-1/2 z-0 block aspect-[3/4] h-[calc(100%_-_var(--pt))] max-w-[calc(100%_-_2*var(--spacing-gut))] -translate-x-1/2 cursor-pointer" type="button" data-portrait aria-label="Portrait of Mads Buciek. Activate to bring it into focus.">
+        <img class="size-full object-contain object-bottom blur-[18px] transition-[filter] duration-700 ease-[ease] group-hover:filter-none group-focus-visible:filter-none group-[.clear]:filter-none" src="img/portrait.webp" alt="" width="1500" height="2000">
+      </button>
+    </div>
+    <!-- The name: letters swell under the pointer and a wave rolls through them at rest (js/text-pressure.js).
+         White with a difference blend, so it reads dark on the page and light over the black T-shirt. -->
+    <h1 class="pointer-events-none relative z-1 flex justify-between font-display leading-none whitespace-nowrap text-white uppercase mix-blend-difference select-none" data-pressure>Mads Buciek</h1>
+  </section>
 
   <!-- Work: four doors, each already wearing its product's skin -->
   <section id="work" aria-labelledby="work-h">
@@ -132,13 +131,15 @@
 </footer>
 
 <script src="js/site.js"></script>
+<script src="js/text-pressure.js"></script>
+<script>textPressure(document.querySelector('[data-pressure]'), { container: document.querySelector('[data-hero]'), idle: 'wave' });</script>
 <script src="js/vendor/matter.min.js"></script>
 <script src="js/falling-text.js"></script>
 <script>
   // The tagline falls apart on hover, lands on top of the name, and flies back once the pile settles.
   const tagline = document.querySelector('[data-falling-text]');
-  const hero = tagline.closest('section');
-  fallingText(tagline, { bounds: hero, floor: hero.querySelector('h1[data-name]'), trigger: 'hover', restoreDelay: 2.5 });
+  const hero = document.querySelector('[data-hero]');
+  fallingText(tagline, { bounds: hero, floor: hero.querySelector('h1[data-pressure]'), trigger: 'hover', restoreDelay: 2.5 });
 </script>
 </body>
 </html>

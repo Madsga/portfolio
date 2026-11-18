@@ -163,6 +163,13 @@
   #nl-badge-frame { display: none !important; }
 }
 
+/* Text pressure (js/text-pressure.js): the hero name. Each letter is its own variable-font instance;
+   the stretch on scroll scales it upward from its baseline and springs back with .snap. */
+@layer components {
+  .text-pressure [data-letter] { display: inline-block; transform-origin: 50% 100%; }
+  .text-pressure.snap [data-letter] { transition: transform .75s cubic-bezier(.3,1.8,.45,1); }
+}
+
 /* Falling text (js/falling-text.js): words become pieces that drop into their bounds on hover. */
 @layer components {
   .falling-text__piece { display: inline-block; white-space: pre; }
