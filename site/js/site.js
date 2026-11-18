@@ -1,94 +1,7 @@
-// Shared behaviour: the footer name's lens (fisheye) on hover, the hero name's stretch on scroll,
-// the portrait's tap-to-focus and the email fallback.
+// Shared behaviour: the hero name's stretch on scroll, the portrait's tap-to-focus and the email fallback.
+// Both names' pointer effect is js/text-pressure.js.
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const names = [...document.querySelectorAll('[data-name]')];
-
-  // Split each name into words and letters. Each letter is a fixed-width slot (.l)
-  // holding a glyph (.g), so the glyph can swell without pushing its neighbours.
-  names.forEach((el) => {
-    const text = el.textContent.trim();
-    el.textContent = '';
-    const sr = document.createElement('span');
-    sr.className = 'sr-only';
-    sr.textContent = text;
-    el.append(sr);
-    text.split(' ').forEach((word) => {
-      const w = document.createElement('span');
-      w.className = 'word';
-      w.setAttribute('aria-hidden', 'true');
-      [...word].forEach((ch) => {
-        const l = document.createElement('span');
-        l.className = 'l';
-        const g = document.createElement('span');
-        g.className = 'g';
-        g.textContent = ch;
-        l.append(g);
-        w.append(l);
-      });
-      el.append(w);
-    });
-  });
-
-  // Fit the name to the full width of its parent: one line on wide screens,
-  // one word per line (each fitted on its own) on narrow ones.
-  function fit() {
-    const narrow = innerWidth <= 700;
-    names.forEach((el) => {
-      const cs = getComputedStyle(el.parentElement);
-      const avail = el.parentElement.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
-      const words = [...el.querySelectorAll('.word')];
-      el.style.fontSize = '100px';
-      words.forEach((w) => (w.style.fontSize = ''));
-      if (!el.dataset.frozen) {
-        el.querySelectorAll('.l').forEach((l) => (l.style.width = l.getBoundingClientRect().width / 100 + 'em'));
-        el.dataset.frozen = '1';
-      }
-      if (narrow) {
-        words.forEach((w) => {
-          w.style.fontSize = (100 * avail) / w.getBoundingClientRect().width + 'px';
-        });
-      } else {
-        const first = words[0].getBoundingClientRect();
-        const last = words[words.length - 1].getBoundingClientRect();
-        el.style.fontSize = (100 * avail) / (last.right - first.left) + 'px';
-      }
-    });
-    onScroll();
-  }
-
-  // Lens: letters near the pointer grow, widen and get heavier, and push their
-  // neighbours outward, like a fisheye passing over the word.
-  function lens(el) {
-    const glyphs = [...el.querySelectorAll('.g')];
-    let raf = 0, px = 0, py = 0;
-    const paint = () => {
-      raf = 0;
-      glyphs.forEach((g) => {
-        const r = g.parentElement.getBoundingClientRect();
-        const size = parseFloat(getComputedStyle(g).fontSize);
-        const sigma = size * 0.75;
-        const dx = r.left + r.width / 2 - px;
-        const dy = (r.top + r.height / 2 - py) * 0.6;
-        const f = Math.exp(-(dx * dx + dy * dy) / (2 * sigma * sigma));
-        const push = (dx / sigma) * f * size * 0.16;
-        g.style.transform = `translateX(${push.toFixed(1)}px) scale(${(1 + 0.38 * f).toFixed(3)})`;
-        g.style.fontVariationSettings = `"wdth" ${(100 + 25 * f).toFixed(1)}, "wght" ${(800 + 100 * f).toFixed(0)}`;
-      });
-    };
-    el.addEventListener('pointermove', (e) => {
-      px = e.clientX; py = e.clientY;
-      el.classList.add('lens');
-      if (!raf) raf = requestAnimationFrame(paint);
-    });
-    const reset = () => {
-      el.classList.remove('lens');
-      glyphs.forEach((g) => { g.style.transform = ''; g.style.fontVariationSettings = ''; });
-    };
-    el.addEventListener('pointerleave', reset);
-    el.addEventListener('pointercancel', reset);
-  }
-
   // Stretch: as the hero scrolls away, the name's letters grow upward;
   // once the hero has gone, they spring back to rest.
   const hero = document.querySelector('[data-hero]');
@@ -113,12 +26,10 @@
 
   if (!reduce) {
     document.documentElement.classList.add('motion');
-    names.forEach(lens);
     addEventListener('scroll', onScroll, { passive: true });
   }
-  addEventListener('resize', fit);
-  fit();
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  addEventListener('resize', onScroll);
+  onScroll();
 
   // Portrait: sharpen on tap for touch screens (hover and keyboard focus are in CSS).
   document.querySelectorAll('[data-portrait]').forEach((p) => {

@@ -3,6 +3,7 @@
 // rolls through the word, and a click sends a ripple outward. Reduced motion keeps the idle wave off.
 //
 //   textPressure(h1, { idle: 'wave', axes: { wdth: [62, 125], wght: [100, 900] } })
+//   <p data-text-pressure>…</p>   starts on its own, sized to its parent
 //
 // The element's text is split into one span per character ([data-letter]); a screen reader gets
 // the plain text once. The letters spread across the element's full width (flex).
@@ -182,4 +183,7 @@
   }
 
   window.textPressure = textPressure;
+
+  // Auto-start: any element marked [data-text-pressure] (the footer name), sized to its parent.
+  document.querySelectorAll('[data-text-pressure]').forEach((el) => textPressure(el, { container: el.parentElement }));
 })();

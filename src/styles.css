@@ -165,7 +165,7 @@
   #nl-badge-frame { display: none !important; }
 }
 
-/* Text pressure (js/text-pressure.js): the hero name. Each letter is its own variable-font instance;
+/* Text pressure (js/text-pressure.js): the hero and footer names. Each letter is its own variable-font instance;
    the stretch on scroll scales it upward from its baseline and springs back with .snap. */
 @layer components {
   .text-pressure [data-letter] { display: inline-block; transform-origin: 50% 100%; }
@@ -181,18 +181,3 @@
   [data-fall-dragging], [data-fall-dragging] .falling-text__piece { cursor: grabbing; }
 }
 
-/* The name: site.js splits it into words (.word), fixed-width letter slots (.l)
-   and glyphs (.g), then fits, lenses and stretches it. */
-@layer components {
-  .name { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; line-height: .8; white-space: nowrap; font-size: 12vw; user-select: none; -webkit-user-select: none; touch-action: pan-y; }
-  .name .word { display: inline-block; }
-  .name .word + .word { margin-left: .2em; }
-  .name .l { display: inline-flex; justify-content: center; transform-origin: 50% 100%; }
-  .name .g { display: inline-block; font-variation-settings: "wdth" 100, "wght" 800; transition: transform .55s cubic-bezier(.2,.9,.3,1.35), font-variation-settings .55s ease; }
-  .name.lens .g { transition-duration: .09s; }
-  .name.snap .l { transition: transform .75s cubic-bezier(.3,1.8,.45,1); }
-  @media (max-width: 700px) {
-    .name .word { display: block; }
-    .name .word + .word { margin-left: 0; margin-top: .08em; }
-  }
-}
