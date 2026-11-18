@@ -26,7 +26,7 @@
 <main id="top">
   <!-- Hero: two thirds of the screen, so the first case peeks in below it.
        --pt is the space the tagline keeps above the portrait. The name stretches as the hero scrolls away (site.js). -->
-  <section class="relative grid h-[66.667svh] min-h-[30rem] grid-rows-[1fr_auto] overflow-clip px-gut pt-18 pb-[clamp(1rem,2.5vw,2rem)] md:pt-22
+  <section class="relative grid h-[66.667svh] min-h-[30rem] grid-rows-[1fr_auto] overflow-clip px-gut pt-18 pb-0 md:pt-22
                   [--pt:13.5rem] md:[--pt:11.5rem] 2xl:[--pt:5rem]" data-hero>
     <div class="min-h-0">
       <!-- Tagline: hover it and the words fall onto the name (js/falling-text.js). Not positioned, so the words fall against the section. -->
@@ -37,8 +37,10 @@
         <img class="size-full object-contain object-bottom blur-[18px] transition-[filter] duration-700 ease-[ease] group-hover:filter-none group-focus-visible:filter-none group-[.clear]:filter-none" src="img/portrait.webp" alt="" width="2000" height="1760">
       </button>
     </div>
-    <!-- The name: letters swell under the pointer and a wave rolls through them at rest (js/text-pressure.js). -->
-    <h1 class="pointer-events-none relative z-1 flex justify-between font-display leading-none whitespace-nowrap text-home-ink uppercase select-none" data-pressure>Mads Buciek</h1>
+    <!-- The name: letters swell under the pointer and a wave rolls through them at rest (js/text-pressure.js).
+         It sits on the portrait's bottom edge, and its ink is inverted against what's behind it:
+         navy on the page, light over the dark T-shirt. -->
+    <h1 class="pointer-events-none relative z-1 flex translate-y-[.12em] justify-between font-display leading-none whitespace-nowrap text-home-invert uppercase mix-blend-difference select-none" data-pressure>Mads Buciek</h1>
   </section>
 
   <!-- Work: four doors, each already wearing its product's skin -->
