@@ -33,12 +33,12 @@
       <p class="max-w-[24em] text-[1.375rem] leading-[1.15] font-medium tracking-[-.02em] text-balance
                 2xl:max-w-[calc(50vw_-_(max(66.667svh,30rem)_-_var(--pt))_*_.568_-_var(--spacing-gut)_-_1.5rem)] 2xl:text-[clamp(1.25rem,2vw,2rem)]" data-fade data-falling-text>Senior product designer building solutions for scaling SaaS and enterprise software.</p>
       <!-- Portrait: large, centred, sitting behind the name; sharpens on hover, focus or tap -->
-      <button class="group absolute bottom-0 left-1/2 z-0 block aspect-[25/22] h-[calc(100%_-_var(--pt))] max-w-[calc(100%_-_2*var(--spacing-gut))] -translate-x-1/2 cursor-pointer" type="button" data-portrait aria-label="Portrait of Mads Buciek. Activate to bring it into focus.">
+      <button class="group absolute bottom-(--lift,0px) left-1/2 z-0 block aspect-[25/22] h-[calc(100%_-_var(--pt)_-_var(--lift,0px))] max-w-[calc(100%_-_2*var(--spacing-gut))] -translate-x-1/2 cursor-pointer" type="button" data-portrait aria-label="Portrait of Mads Buciek. Activate to bring it into focus.">
         <img class="size-full object-contain object-bottom blur-[18px] transition-[filter] duration-700 ease-[ease] group-hover:filter-none group-focus-visible:filter-none group-[.clear]:filter-none" src="img/portrait.webp" alt="" width="2000" height="1760">
       </button>
     </div>
     <!-- The name: letters swell under the pointer and a wave rolls through them at rest (js/text-pressure.js).
-         It sits on the portrait's bottom edge, and its ink is inverted against what's behind it:
+         The portrait is lifted (--lift) so the name straddles its bottom edge, half on the photo, half below. Its ink is inverted against what's behind it:
          navy on the page, light over the dark T-shirt. -->
     <h1 class="pointer-events-none relative z-1 flex translate-y-[.12em] justify-between font-display leading-none whitespace-nowrap text-home-invert uppercase mix-blend-difference select-none" data-pressure>Mads Buciek</h1>
   </section>
@@ -133,7 +133,25 @@
 
 <script src="js/site.js"></script>
 <script src="js/text-pressure.js"></script>
-<script>textPressure(document.querySelector('[data-pressure]'), { container: document.querySelector('[data-hero]'), idle: 'wave' });</script>
+<script>
+  textPressure(document.querySelector('[data-pressure]'), { container: document.querySelector('[data-hero]'), idle: 'wave' });
+  // Lift the portrait so its bottom edge runs through the middle of the capitals.
+  // In Archivo with leading-none, the caps' centre sits about .49em below the top of the line.
+  (() => {
+    const hero = document.querySelector('[data-hero]');
+    const name = hero.querySelector('[data-pressure]');
+    const place = () => {
+      const h = hero.getBoundingClientRect();
+      const n = name.getBoundingClientRect();
+      const capCentre = n.top + 0.49 * parseFloat(name.style.fontSize || getComputedStyle(name).fontSize);
+      hero.style.setProperty('--lift', Math.max(0, h.bottom - capCentre).toFixed(1) + 'px');
+    };
+    new ResizeObserver(place).observe(name);
+    addEventListener('resize', place);
+    document.fonts?.ready.then(place);
+    place();
+  })();
+</script>
 <script src="js/vendor/matter.min.js"></script>
 <script src="js/falling-text.js"></script>
 <script>
