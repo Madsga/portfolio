@@ -15,7 +15,7 @@
 </head>
 <body class="bg-home-bg font-display text-home-ink [--focus:var(--color-home-ink)]">
 
-<header class="absolute inset-x-0 top-0 z-20 flex items-center justify-between px-gut py-[1.1rem] font-semibold">
+<header class="absolute inset-x-0 top-0 z-20 flex items-center justify-between px-gut py-[1.1rem] font-semibold text-white mix-blend-difference">
   <a class="underline-offset-[.25em] hover:underline" href="#top">Mads Buciek</a>
   <nav class="flex gap-7" aria-label="Main">
     <a class="underline-offset-[.25em] hover:underline" href="#work">Work</a>
@@ -24,23 +24,24 @@
 </header>
 
 <main id="top">
-  <!-- Hero: two thirds of the screen, so the first case peeks in below it.
-       --pt is the space the tagline keeps above the portrait. The name stretches as the hero scrolls away (site.js). -->
-  <section class="relative grid h-[66.667svh] min-h-[30rem] grid-rows-[1fr_auto] overflow-clip px-gut pt-18 pb-0 md:pt-22
-                  [--pt:13.5rem] md:[--pt:11.5rem] 2xl:[--pt:5rem]" data-hero>
-    <div class="min-h-0">
-      <!-- Tagline: hover it and the words fall onto the name (js/falling-text.js). Not positioned, so the words fall against the section. -->
-      <p class="max-w-[24em] text-[1.375rem] leading-[1.15] font-medium tracking-[-.02em] text-balance
-                2xl:max-w-[calc(50vw_-_(max(66.667svh,30rem)_-_var(--pt))_*_.568_-_var(--spacing-gut)_-_1.5rem)] 2xl:text-[clamp(1.25rem,2vw,2rem)]" data-fade data-falling-text>Senior product designer building solutions for scaling SaaS and enterprise software.</p>
-      <!-- Portrait: large, centred, sitting behind the name; sharpens on hover, focus or tap -->
-      <button class="group absolute bottom-(--lift,0px) left-1/2 z-0 block aspect-[25/22] h-[calc(100%_-_var(--pt)_-_var(--lift,0px))] max-w-[calc(100%_-_2*var(--spacing-gut))] -translate-x-1/2 cursor-pointer" type="button" data-portrait aria-label="Portrait of Mads Buciek. Activate to bring it into focus.">
-        <img class="size-full object-contain object-bottom blur-[18px] transition-[filter] duration-700 ease-[ease] group-hover:filter-none group-focus-visible:filter-none group-[.clear]:filter-none" src="img/portrait.webp" alt="" width="2000" height="1760">
-      </button>
+  <!-- Hero: navy ground, the name full-bleed across the top, the tagline under it in volt, and the portrait
+       standing in front of the name's lower edge. Proportions follow the design: 65% as tall as it is wide,
+       within the screen. --name-h (the name's cap height) is set by the script at the bottom.
+       --top is where the portrait starts: on phones below the tagline, wider up into the name. -->
+  <section class="relative h-[clamp(36rem,65vw,calc(100svh_-_2.5rem))] overflow-clip bg-hero-navy [--top:calc(var(--name-h,24.5vw)_+_8.5rem)] md:[--top:max(17vw,11.5rem)]" data-hero>
+    <!-- The name: letters swell under the pointer and a wave rolls through them at rest (js/text-pressure.js),
+         stretched tall and cropped at the top edge -->
+    <h1 class="pointer-events-none absolute inset-x-0 top-0 z-0 flex origin-top justify-between font-display leading-none whitespace-nowrap text-hero-name uppercase select-none" data-hero-name>Mads Buciek</h1>
+
+    <!-- Portrait: in front of the name. Where the pointer moves, it turns into a volt dither (js/portrait-dither.js). -->
+    <div class="absolute bottom-0 left-[52%] z-1 aspect-[25/22] h-[calc(100%_-_var(--top))] max-w-[96%] -translate-x-1/2" data-portrait>
+      <img class="size-full object-contain object-bottom" src="img/portrait.webp" alt="Portrait of Mads Buciek" width="2000" height="1760">
     </div>
-    <!-- The name: letters swell under the pointer and a wave rolls through them at rest (js/text-pressure.js).
-         The portrait is lifted (--lift) so the name straddles its bottom edge, half on the photo, half below. Its ink is inverted against what's behind it:
-         navy on the page, light over the dark T-shirt. -->
-    <h1 class="pointer-events-none relative z-1 flex translate-y-[.12em] justify-between font-display leading-none whitespace-nowrap text-home-invert uppercase mix-blend-difference select-none" data-pressure>Mads Buciek</h1>
+
+    <!-- Tagline: hover it and the words fall apart (js/falling-text.js). Not positioned, so the words fall against the section. -->
+    <div class="relative z-2 px-gut pt-[calc(var(--name-h,24.5vw)_+_max(2.2vw,1rem))]">
+      <p class="max-w-[23em] font-inter text-[clamp(1.125rem,1.65vw,2.1rem)] leading-[1.25] tracking-[-.035em] text-volt md:max-w-[min(23em,36vw)]" data-falling-text>Senior product designer designing solutions for scaling SaaS and enterprise software.</p>
+    </div>
   </section>
 
   <!-- Work: four doors, each already wearing its product's skin -->
@@ -133,32 +134,35 @@
 
 <script src="js/site.js"></script>
 <script src="js/text-pressure.js"></script>
+<script src="js/portrait-dither.js"></script>
 <script>
-  textPressure(document.querySelector('[data-pressure]'), { container: document.querySelector('[data-hero]'), idle: 'wave' });
-  // Lift the portrait so its bottom edge runs through the middle of the capitals.
-  // In Archivo with leading-none, the caps' centre sits about .49em below the top of the line.
   (() => {
     const hero = document.querySelector('[data-hero]');
-    const name = hero.querySelector('[data-pressure]');
+    const name = hero.querySelector('[data-hero-name]');
+    // Heavy at rest like the design; near the pointer the letters widen and get heavier still.
+    textPressure(name, { container: hero, idle: 'wave', axes: { wdth: [62, 125], wght: [800, 900] }, fitPressure: 0.35 });
+    // Stretch the name tall so its capitals fill the top quarter of the hero's width, and crop it at the top edge.
+    // In Archivo with leading-none, capitals start .148em below the line's top and are .686em tall.
     const place = () => {
-      const h = hero.getBoundingClientRect();
-      const n = name.getBoundingClientRect();
-      const capCentre = n.top + 0.49 * parseFloat(name.style.fontSize || getComputedStyle(name).fontSize);
-      hero.style.setProperty('--lift', Math.max(0, h.bottom - capCentre).toFixed(1) + 'px');
+      const fs = parseFloat(name.style.fontSize || getComputedStyle(name).fontSize);
+      const capH = 0.245 * hero.clientWidth;
+      const scale = capH / (0.686 * fs);
+      name.style.transform = `translateY(${(-0.148 * fs * scale).toFixed(1)}px) scaleY(${scale.toFixed(3)})`;
+      hero.style.setProperty('--name-h', capH.toFixed(1) + 'px');
     };
     new ResizeObserver(place).observe(name);
     addEventListener('resize', place);
     document.fonts?.ready.then(place);
     place();
+    portraitDither(hero.querySelector('[data-portrait]'), { area: hero, ink: '#CCFF00', ground: '#071B2D' });
   })();
 </script>
 <script src="js/vendor/matter.min.js"></script>
 <script src="js/falling-text.js"></script>
 <script>
-  // The tagline falls apart on hover, lands on top of the name, and flies back once the pile settles.
+  // The tagline falls apart on hover, drops to the bottom of the hero, and flies back once the pile settles.
   const tagline = document.querySelector('[data-falling-text]');
-  const hero = document.querySelector('[data-hero]');
-  fallingText(tagline, { bounds: hero, floor: hero.querySelector('h1[data-pressure]'), trigger: 'hover', restoreDelay: 2.5 });
+  fallingText(tagline, { bounds: document.querySelector('[data-hero]'), trigger: 'hover', restoreDelay: 2.5 });
 </script>
 </body>
 </html>

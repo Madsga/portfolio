@@ -14,6 +14,10 @@
   --color-home-ink: #1E2A44;
   --color-home-muted: #5A6377;
   --color-sun: #FFD84A;
+  /* Hero experiment (hero-experiments branch): navy ground, light name, volt accent */
+  --color-hero-navy: #071B2D;
+  --color-hero-name: #E7E7E7;
+  --color-volt: #CCFF00;
   /* The hero name's ink under a difference blend: |page − ink| = navy, so it reads navy on the page and turns light over the dark T-shirt */
   --color-home-invert: #D6CBAF;
 
