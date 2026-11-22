@@ -15,7 +15,7 @@
 </head>
 <body class="bg-home-bg font-display text-home-ink [--focus:var(--color-home-ink)]">
 
-<!-- Header: inverted against what is behind it, so it reads volt on the navy and deep blue on the name. Hidden on phones, where the name fills the top. -->
+<!-- Header: inverted against what is behind it, so it reads volt on the cobalt and near-black on the name. Hidden on phones, where the name fills the top. -->
 <header class="absolute inset-x-0 top-0 z-20 hidden items-center justify-between px-gut py-[1.1rem] font-semibold text-volt-invert mix-blend-difference md:flex">
   <a class="underline-offset-[.25em] hover:underline" href="#top">Mads Buciek</a>
   <nav class="flex gap-7" aria-label="Main">
@@ -25,12 +25,12 @@
 </header>
 
 <main id="top">
-  <!-- Hero: navy ground, the name full-bleed across the top, the tagline under it in volt, and the portrait
+  <!-- Hero: cobalt ground, the name full-bleed across the top, the tagline under it in volt, and the portrait
        standing in front of the name's lower edge. Proportions follow the design: 65% as tall as it is wide,
        within the screen. --name-h (the name's cap height) is set by the script at the bottom.
        --top is where the portrait starts: on phones below the tagline, wider up into the name, so the name
        runs slightly behind it. -->
-  <section class="sticky top-0 isolate h-[clamp(36rem,65vw,calc(100svh_-_2.5rem))] overflow-clip bg-hero-navy *:translate-y-[calc(var(--p,0)*-14%)] after:pointer-events-none after:absolute after:inset-0 after:z-10 after:bg-black after:opacity-[calc(var(--p,0)*.55)] after:content-[''] [--top:calc(var(--name-h,24.5vw)_+_8.5rem)] md:[--top:max(11.5vw,7rem)]" data-hero>
+  <section class="sticky top-0 isolate h-[clamp(36rem,65vw,calc(100svh_-_2.5rem))] overflow-clip bg-hero-bg *:translate-y-[calc(var(--p,0)*-14%)] after:pointer-events-none after:absolute after:inset-0 after:z-10 after:bg-black after:opacity-[calc(var(--p,0)*.55)] after:content-[''] [--top:calc(var(--name-h,24.5vw)_+_8.5rem)] md:[--top:max(11.5vw,7rem)]" data-hero>
     <!-- The name: letters swell under the pointer and a wave rolls through them at rest (js/text-pressure.js),
          stretched tall and cropped at the top edge -->
     <h1 class="pointer-events-none absolute inset-x-0 top-0 z-0 flex origin-top justify-between font-display leading-none whitespace-nowrap text-hero-name uppercase select-none" data-hero-name>Mads Buciek</h1>
@@ -154,7 +154,7 @@
     addEventListener('resize', place);
     document.fonts?.ready.then(place);
     place();
-    portraitDither(hero.querySelector('[data-portrait]'), { area: hero, ink: '#CCFF00', ground: '#071B2D', cell: 2 });
+    portraitDither(hero.querySelector('[data-portrait]'), { area: hero, ink: '#CCFF00', ground: '#1B2BB8', cell: 2 });
   })();
 </script>
 <script>

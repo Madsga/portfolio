@@ -14,12 +14,13 @@
   --color-home-ink: #1E2A44;
   --color-home-muted: #5A6377;
   --color-sun: #FFD84A;
-  /* Hero experiment (hero-experiments branch): navy ground, light name, volt accent */
-  --color-hero-navy: #071B2D;
+  /* Hero experiment (hero-experiments branch): cobalt ground, light name, volt accent */
+  --color-hero-bg: #1B2BB8;
   --color-hero-name: #E7E7E7;
   --color-volt: #CCFF00;
-  /* The home header's ink under a difference blend: shows as volt (#CCE400) on the navy, deep blue on the light name */
-  --color-volt-invert: #D3FF2D;
+  /* The home header's ink under a difference blend: as close to volt as cobalt allows (#CCD400),
+     and near-black (#00182F) on the light name */
+  --color-volt-invert: #E7FFB8;
   /* The hero name's ink under a difference blend: |page − ink| = navy, so it reads navy on the page and turns light over the dark T-shirt */
   --color-home-invert: #D6CBAF;
 
