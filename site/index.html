@@ -30,7 +30,7 @@
        within the screen. --name-h (the name's cap height) is set by the script at the bottom.
        --top is where the portrait starts: on phones below the tagline, wider up into the name, so the name
        runs slightly behind it. -->
-  <section class="relative h-[clamp(36rem,65vw,calc(100svh_-_2.5rem))] overflow-clip bg-hero-navy [--top:calc(var(--name-h,24.5vw)_+_8.5rem)] md:[--top:max(11.5vw,7rem)]" data-hero>
+  <section class="sticky top-0 isolate h-[clamp(36rem,65vw,calc(100svh_-_2.5rem))] overflow-clip bg-hero-navy *:translate-y-[calc(var(--p,0)*-14%)] after:pointer-events-none after:absolute after:inset-0 after:z-10 after:bg-black after:opacity-[calc(var(--p,0)*.55)] after:content-[''] [--top:calc(var(--name-h,24.5vw)_+_8.5rem)] md:[--top:max(11.5vw,7rem)]" data-hero>
     <!-- The name: letters swell under the pointer and a wave rolls through them at rest (js/text-pressure.js),
          stretched tall and cropped at the top edge -->
     <h1 class="pointer-events-none absolute inset-x-0 top-0 z-0 flex origin-top justify-between font-display leading-none whitespace-nowrap text-hero-name uppercase select-none" data-hero-name>Mads Buciek</h1>
@@ -46,8 +46,8 @@
     </div>
   </section>
 
-  <!-- Work: the cases stack. Each sticks to the top while the next slides over it; the covered case
-       drifts up and darkens (--p, set by the script at the bottom), so they move at different speeds. -->
+  <!-- Work: the cases stack, starting with the hero. Each sticks to the top while the next slides over it;
+       the covered one drifts up and darkens (--p, set by the script at the bottom). -->
   <section id="work" aria-label="Selected work" data-stack>
 
     <a class="group sticky top-0 isolate grid overflow-hidden *:translate-y-[calc(var(--p,0)*-14%)] after:pointer-events-none after:absolute after:inset-0 after:z-10 after:bg-black after:opacity-[calc(var(--p,0)*.55)] after:content-[''] bg-pulse-bg font-plex text-pulse-ink md:min-h-[clamp(26rem,48vw,40rem)] md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]" href="pulse.html">
@@ -161,7 +161,8 @@
   // Case stack: as the next case slides over a stuck one, the stuck one drifts up and darkens.
   // --p runs from 0 (next case just below it) to 1 (fully covered).
   (() => {
-    const doors = [...document.querySelectorAll('[data-stack] > a')];
+    // The hero is the first layer: the first case slides over it like the rest.
+    const doors = [document.querySelector('[data-hero]'), ...document.querySelectorAll('[data-stack] > a')];
     // A case taller than the screen sticks by its bottom edge instead, so all of it scrolls into view first.
     const pin = () => doors.forEach((d) => (d.style.top = Math.min(0, innerHeight - d.offsetHeight) + 'px'));
     pin();
