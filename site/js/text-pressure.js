@@ -185,5 +185,7 @@
   window.textPressure = textPressure;
 
   // Auto-start: any element marked [data-text-pressure] (the footer name), sized to its parent.
-  document.querySelectorAll('[data-text-pressure]').forEach((el) => textPressure(el, { container: el.parentElement }));
+  // Same settings as the home hero's name: heavy at rest, wider and heavier still near the pointer.
+  document.querySelectorAll('[data-text-pressure]').forEach((el) =>
+    textPressure(el, { container: el.parentElement, idle: 'wave', axes: { wdth: [62, 125], wght: [800, 900] }, fitPressure: 0.35 }));
 })();

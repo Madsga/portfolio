@@ -18,6 +18,8 @@
   --color-hero-navy: #071B2D;
   --color-hero-name: #E7E7E7;
   --color-volt: #CCFF00;
+  /* The home header's ink under a difference blend: shows as volt (#CCE400) on the navy, deep blue on the light name */
+  --color-volt-invert: #D3FF2D;
   /* The hero name's ink under a difference blend: |page − ink| = navy, so it reads navy on the page and turns light over the dark T-shirt */
   --color-home-invert: #D6CBAF;
 
