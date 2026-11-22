@@ -216,12 +216,16 @@
   </a>
 </main>
 
-<footer class="flex flex-col overflow-clip bg-renov-foot px-gut py-[clamp(1.25rem,2.5vw,2.25rem)] text-renov-ink">
-  <div class="order-2 mt-[clamp(1.25rem,2.5vw,2.25rem)] flex flex-wrap items-center justify-between gap-6">
-    <p class="max-w-[24ch] text-[clamp(1.125rem,2vw,1.5rem)] leading-[1.3]">Working on a product that has outgrown its first design?</p>
-    <a class="inline-block rounded-full bg-renov-orange px-[1.6em] py-[.85em] font-display text-[clamp(1.25rem,2.4vw,1.75rem)] font-bold text-renov-bg transition-transform duration-200 hover:scale-104 hover:-rotate-3" href="mailto:hello@madsbuciek.com">Say hello!</a>
+<!-- Footer: the hero turned upside down. Cobalt ground, the volt question and button on top, and the name
+     full-bleed along the bottom, stretched tall and cropped at the bottom edge (--foot-name-h, set below). -->
+<footer class="relative overflow-clip bg-hero-bg text-hero-name">
+  <div class="flex flex-wrap items-end justify-between gap-x-8 gap-y-6 px-gut pt-[clamp(3rem,7vw,6rem)] pb-[max(2.2vw,1.25rem)]">
+    <p class="max-w-[20em] font-inter text-[clamp(1.375rem,2.6vw,3rem)] leading-[1.12] tracking-[-.035em] text-volt">Working on a product that has outgrown its first design?</p>
+    <a class="inline-block rounded-full bg-volt px-[1.4em] py-[.7em] font-display text-[clamp(1.25rem,2.2vw,2rem)] font-extrabold text-hero-bg transition-transform duration-200 hover:scale-104 hover:-rotate-3" href="mailto:hello@madsbuciek.com">Say hello!</a>
   </div>
-  <p class="order-1 flex justify-between font-display leading-none whitespace-nowrap uppercase select-none md:mb-[.48em] md:origin-top md:scale-y-160" data-text-pressure>Mads Buciek</p>
+  <div class="relative h-(--foot-name-h,24.5vw)" data-foot-name>
+    <p class="absolute inset-x-0 bottom-0 flex origin-bottom justify-between font-display leading-none whitespace-nowrap uppercase select-none" data-text-pressure>Mads Buciek</p>
+  </div>
 </footer>
 
 <script src="js/site.js"></script>

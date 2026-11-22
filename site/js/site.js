@@ -35,6 +35,24 @@
   document.querySelectorAll('[data-portrait]').forEach((p) => {
     p.addEventListener('click', () => p.classList.toggle('clear'));
   });
+  // Footer name: capitals a quarter of the width tall, full-bleed and cropped at the bottom edge.
+  // In Archivo with leading-none, the baseline sits .834em below the line's top, so .166em above its bottom.
+  // js/text-pressure.js sets the font size; this stretches and places it whenever that changes.
+  document.querySelectorAll('[data-foot-name]').forEach((box) => {
+    const name = box.querySelector('[data-text-pressure]');
+    if (!name) return;
+    const place = () => {
+      const fs = parseFloat(name.style.fontSize || getComputedStyle(name).fontSize);
+      const capH = 0.245 * box.clientWidth;
+      const scale = capH / (0.686 * fs);
+      name.style.transform = `translateY(${(0.166 * fs * scale).toFixed(1)}px) scaleY(${scale.toFixed(3)})`;
+      box.style.setProperty('--foot-name-h', capH.toFixed(1) + 'px');
+    };
+    new ResizeObserver(place).observe(name);
+    addEventListener('resize', place);
+    document.fonts?.ready.then(place);
+  });
+
   // Email links: open a blank email. If no mail app takes over (the page keeps
   // focus), copy the address instead and say so, so a click never does nothing.
   document.querySelectorAll('a[href^="mailto:"]').forEach((a) => {

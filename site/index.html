@@ -157,20 +157,6 @@
     addEventListener('resize', place);
     document.fonts?.ready.then(place);
     place();
-    // The footer name: the same stretch, mirrored. Capitals a quarter of the width tall, cropped at the bottom edge.
-    // In Archivo with leading-none, the baseline sits .834em below the line's top, so .166em above its bottom.
-    const footBox = document.querySelector('[data-foot-name]');
-    const footName = footBox.querySelector('[data-text-pressure]');
-    const placeFoot = () => {
-      const fs = parseFloat(footName.style.fontSize || getComputedStyle(footName).fontSize);
-      const capH = 0.245 * footBox.clientWidth;
-      const scale = capH / (0.686 * fs);
-      footName.style.transform = `translateY(${(0.166 * fs * scale).toFixed(1)}px) scaleY(${scale.toFixed(3)})`;
-      footBox.style.setProperty('--foot-name-h', capH.toFixed(1) + 'px');
-    };
-    new ResizeObserver(placeFoot).observe(footName);
-    addEventListener('resize', placeFoot);
-    document.fonts?.ready.then(placeFoot);
     portraitDither(hero.querySelector('[data-portrait]'), { area: hero, ink: '#CCFF00', ground: '#1B2BB8', cell: 2 });
   })();
 </script>
