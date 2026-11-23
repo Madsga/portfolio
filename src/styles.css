@@ -107,6 +107,20 @@
   --color-pulse-red: #EE8A8A;
   --color-pulse-foot: #0A1322;
 
+  /* Steady: the prototype's "Dusk" palette */
+  --color-steady-bg: #14161C;
+  --color-steady-surface: #1E222B;
+  --color-steady-deep: #252A35;
+  --color-steady-line: #2C323E;
+  --color-steady-edge: #3A4150;
+  --color-steady-ink: #ECE8E1;
+  --color-steady-body: #C9C5BE;
+  --color-steady-muted: #9AA0AC;
+  --color-steady-sky: #8CC4F5;
+  --color-steady-skybg: #1B2736;
+  --color-steady-sage: #7FB08A;
+  --color-steady-track: #4A5163;
+
   /* Toast */
   --color-toast: #111827;
 

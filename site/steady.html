@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>Steady – Mads Buciek</title>
+<meta name="description" content="Steady: an iOS training app that plans each week around energy, schedule and family life, and rewards consistency instead of streaks.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Inter:wght@400;600&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<!-- Steady wears its prototype's "Dusk" palette: a calm dark ground for the end of a long day, light-blue accent,
+     sage for sessions done. Targets are proposals, not results. -->
+<body class="bg-steady-bg font-manrope text-steady-ink [--focus:var(--color-steady-sky)]">
+
+<header class="absolute inset-x-0 top-0 z-5 flex items-center justify-between gap-4 px-gut py-5 text-[1rem] font-semibold">
+  <a class="underline-offset-[.25em] hover:underline" href="index.html">Mads Buciek</a>
+  <a class="underline-offset-[.25em] hover:underline" href="index.html#work">All work</a>
+</header>
+
+<main>
+  <!-- Hero: the app's own promise, with three real screens from the prototype -->
+  <section class="overflow-clip pt-28 pb-[clamp(3rem,8vw,6rem)] bg-[radial-gradient(60rem_34rem_at_75%_60%,rgba(140,196,245,.10),transparent_70%)]">
+    <div class="wrap grid items-center gap-[clamp(2.5rem,6vw,5rem)] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
+      <div>
+        <p class="text-[1.375rem] font-extrabold tracking-[-.01em]">steady<small class="block text-note font-medium text-steady-muted">Health-first training companion, iOS concept</small></p>
+        <h1 class="mt-8 mb-6 max-w-[12ch] text-[clamp(2.75rem,6.8vw,6rem)] leading-[1.02] font-extrabold tracking-[-.035em]">Training that fits your week.</h1>
+        <p class="max-w-[34rem] text-lede text-steady-body">A weekly plan for strength, cycling and running that bends around energy, calendar and family, and counts consistency instead of streaks. For adults who train for health, whose weeks rarely go to plan.</p>
+        <ul class="mt-8 flex flex-wrap gap-[.5rem] *:rounded-full *:border *:border-steady-edge *:px-[.9rem] *:py-[.4rem] *:text-note *:font-semibold" aria-label="Tags">
+          <li>Research</li><li>Product strategy</li><li>iOS prototype</li><li>2026</li>
+        </ul>
+      </div>
+      <div class="relative mx-auto aspect-[10/9] w-full max-w-[40rem]" aria-hidden="true">
+        <img class="absolute top-[9%] left-0 w-[37%] -rotate-6 opacity-90 drop-shadow-[0_30px_50px_rgba(0,0,0,.55)]" src="img/steady/14-welcome-back.png" alt="" width="836" height="1744">
+        <img class="absolute top-[9%] right-0 w-[37%] rotate-6 opacity-90 drop-shadow-[0_30px_50px_rgba(0,0,0,.55)]" src="img/steady/17-journey.png" alt="" width="836" height="1744">
+        <img class="absolute top-0 left-1/2 z-1 w-[43%] -translate-x-1/2 drop-shadow-[0_40px_70px_rgba(0,0,0,.6)]" src="img/steady/08-today.png" alt="" width="836" height="1744">
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-sec">
+    <div class="wrap grid items-start gap-[clamp(2rem,6vw,6rem)] lg:grid-cols-2">
+      <div class="space-y-5">
+        <h2 class="max-w-[18ch] text-h2 font-extrabold text-balance">From research to prototype, fast</h2>
+        <p class="max-w-xl text-lede text-steady-body">One product question, taken from research to product requirements to a clickable iOS prototype: can a training app that adapts to energy, schedule and family life keep people training for health?</p>
+      </div>
+      <dl class="grid grid-cols-[7rem_1fr] gap-x-6 gap-y-[.9rem] border-t-2 border-steady-line pt-5 [&>dd]:text-steady-body [&>dt]:font-bold">
+        <dt>Role</dt><dd>Product design: research, requirements, prototype</dd>
+        <dt>Scope</dt><dd>Research, product requirements and planning rules, iOS prototype</dd>
+        <dt>Year</dt><dd>2026</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- The problem -->
+  <section class="pb-sec">
+    <div class="wrap">
+      <h2 class="max-w-[22ch] text-h2 font-extrabold text-balance">Fitness apps lose almost everyone within weeks</h2>
+      <p class="mt-5 max-w-2xl text-lede text-steady-body">And the mechanics meant to keep people fit poorly with those who train for health. Streaks, leaderboards and performance targets serve people chasing results. When a sick child or a late meeting breaks the plan, the app records a failure.</p>
+      <div class="mt-12 grid border-t border-steady-line md:grid-cols-3 [&_b]:block [&_b]:text-[clamp(3rem,7vw,5.5rem)] [&_b]:leading-none [&_b]:font-extrabold [&_b]:tracking-[-.045em] [&_span]:mt-3 [&_span]:block [&_span]:text-steady-body">
+        <div class="pt-6 md:pr-6"><b>3–8%</b><span>of health and fitness installs are still active on day 30, depending on the source.</span></div>
+        <div class="mt-6 border-t border-steady-line pt-6 md:mt-0 md:border-t-0 md:border-l md:px-6"><b class="text-steady-sky">35%</b><span>of all annual cancellations happen in month one, and 95% of annual cancellers never return.</span></div>
+        <div class="mt-6 border-t border-steady-line pt-6 md:mt-0 md:border-t-0 md:border-l md:pl-6"><b>25%</b><span>is the median first annual renewal in Health &amp; Fitness. The upper quartile is 37%.</span></div>
+      </div>
+      <p class="mt-6 text-[.875rem] text-steady-muted [&_a]:text-steady-sky [&_a]:underline">Sources: <a href="https://businessofapps.com/data/health-fitness-app-benchmarks" target="_blank" rel="noopener">Business of Apps</a> (citing AppsFlyer and Adjust); <a href="https://9to5mac.com/2026/05/27/new-report-shows-annual-app-subscribers-rarely-return-after-they-cancel/" target="_blank" rel="noopener">9to5Mac on RevenueCat 2026</a>; <a href="https://www.revenuecat.com/sosa-2026-insights-part-2" target="_blank" rel="noopener">RevenueCat</a>; <a href="https://www.revenuecat.com/blog/average-subscription-renewal-rates-by-app-category/" target="_blank" rel="noopener">RevenueCat renewal rates</a>. Figures as of 23 November 2026; methods differ, so read them as ranges.</p>
+      <blockquote class="mt-14 max-w-[46rem] border-l-3 border-steady-sky pl-[clamp(1rem,3vw,2rem)]">
+        <p class="text-[clamp(1.375rem,2.6vw,2rem)] leading-[1.3] font-semibold tracking-[-.015em] text-balance">Adults who train for health need a plan that bends when life does, and feedback that treats a missed session as information, not a lapse. Existing apps ask them to bend to the plan.</p>
+        <footer class="mt-4 text-note text-steady-muted">Working problem statement</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Evidence -->
+  <section class="border-t border-steady-line py-band">
+    <div class="wrap">
+      <div class="mb-10 grid items-end gap-[clamp(1.5rem,5vw,5rem)] lg:grid-cols-2">
+        <h2 class="max-w-[18ch] text-h3 font-extrabold tracking-[-.03em] text-balance">What the evidence says, and what it means for the product</h2>
+        <p class="text-steady-body">The research agrees on one point: motivation that comes from the person (autonomy, competence, a plan that fits their life) predicts long-term exercise better than external pressure.</p>
+      </div>
+      <ol class="grid gap-px overflow-hidden rounded-[20px] border border-steady-line bg-steady-line lg:grid-cols-2 *:bg-steady-surface *:p-[clamp(1.25rem,3vw,2rem)] [&_h3]:text-[1.125rem] [&_h3]:font-bold [&_h3]:leading-snug [&_p]:mt-3 [&_p]:text-steady-body [&_small]:mt-4 [&_small]:block [&_small]:text-[.875rem] [&_small]:text-steady-muted [&_a]:text-steady-sky [&_a]:underline">
+        <li><h3>Broken streaks sap motivation</h3><p>Streaks raise motivation while they last; a broken one reduces it, and highlighting the break can backfire.</p><p class="text-steady-ink!">→ No daily streak. Measure weeks, and let a missed week be absorbed, not announced.</p><small><a href="https://www.psychologytoday.com/us/blog/ulterior-motives/202306/how-broken-streaks-sap-motivation" target="_blank" rel="noopener">Silverman &amp; Barasch 2023</a>, <a href="https://knowledge.insead.edu/marketing/consumer-streaks-are-motivating-key-keeping-them-alive" target="_blank" rel="noopener">INSEAD</a></small></li>
+        <li><h3>Competition adds stress</h3><p>In a preregistered experiment, competition-based gamification raised stress and negative social dynamics; a self-exploration version reduced them.</p><p class="text-steady-ink!">→ No leaderboards in v1. Private reflection instead.</p><small><a href="https://www.emerald.com/insight/content/doi/10.1108/K-03-2024-0792/full/html" target="_blank" rel="noopener">Bai, Kybernetes</a></small></li>
+        <li><h3>Autonomy predicts adherence</h3><p>Across 66 studies, autonomous motivation and competence predicted exercise; intrinsic motivation best predicted long-term adherence.</p><p class="text-steady-ink!">→ Users shape and edit their own plan, and see capacity grow.</p><small><a href="https://pubmed.ncbi.nlm.nih.gov/22726453/" target="_blank" rel="noopener">Teixeira et al. 2012</a></small></li>
+        <li><h3>One miss does not break a habit</h3><p>New habits took a median of 66 days to become automatic, and missing one opportunity did not materially affect it.</p><p class="text-steady-ink!">→ The first 12 weeks are the habit window. A missed session needs no penalty or repair flow.</p><small><a href="https://core.ac.uk/download/70653523.pdf" target="_blank" rel="noopener">Lally et al. 2009</a></small></li>
+        <li class="lg:col-span-2"><h3>Guilt is a named barrier for working parents</h3><p>Parents cite family responsibilities, guilt, scheduling and work as barriers; being active with the children helps.</p><p class="text-steady-ink!">→ Plan around the family calendar, and write copy that never adds guilt.</p><small><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4227023/" target="_blank" rel="noopener">Mailey et al. 2014</a></small></li>
+      </ol>
+      <p class="mt-6 max-w-[46rem] text-note text-steady-muted">Gap in the evidence: most of these studies are short and use general or student samples. None tests an adaptive weekly goal for parents, which is what the next round of research is for.</p>
+    </div>
+  </section>
+
+  <!-- Audience -->
+  <section class="border-t border-steady-line py-band">
+    <div class="wrap">
+      <div class="mb-10 grid items-end gap-[clamp(1.5rem,5vw,5rem)] lg:grid-cols-2">
+        <h2 class="max-w-[18ch] text-h3 font-extrabold tracking-[-.03em] text-balance">For people whose week is the variable</h2>
+        <p class="text-steady-body">Adults around 28–50 who train two to four times a week across strength, cycling and running, for health and enjoyment rather than results. Not for racers or leaderboard fans; Strava, Runna and Fitbod serve them well.</p>
+      </div>
+      <div class="grid gap-5 md:grid-cols-2">
+        <article class="rounded-[20px] border border-steady-line bg-steady-surface p-[clamp(1.25rem,3vw,2rem)]">
+          <span class="text-[.75rem] font-bold tracking-[.08em] text-steady-sky uppercase">Provisional persona A</span>
+          <h3 class="mt-2 text-[1.5rem] font-extrabold tracking-[-.01em]">The stretched parent</h3>
+          <dl class="mt-5 grid gap-y-3 [&_dd]:text-steady-body [&_dt]:text-[.875rem] [&_dt]:font-bold [&_dt]:text-steady-muted">
+            <dt>Trains</dt><dd>Two strength sessions and one or two runs</dd>
+            <dt>Week breaks when</dt><dd>A sick child, a late meeting, a bad night</dd>
+            <dt>Wants</dt><dd>A plan that is ready after a missed week, without a lecture</dd>
+            <dt>Quits over</dt><dd>Guilt copy, broken streaks, plans they cannot keep</dd>
+          </dl>
+        </article>
+        <article class="rounded-[20px] border border-steady-line bg-steady-surface p-[clamp(1.25rem,3vw,2rem)]">
+          <span class="text-[.75rem] font-bold tracking-[.08em] text-steady-sky uppercase">Provisional persona B</span>
+          <h3 class="mt-2 text-[1.5rem] font-extrabold tracking-[-.01em]">The weekend rider</h3>
+          <dl class="mt-5 grid gap-y-3 [&_dd]:text-steady-body [&_dt]:text-[.875rem] [&_dt]:font-bold [&_dt]:text-steady-muted">
+            <dt>Trains</dt><dd>One long bike ride, one or two strength sessions, an occasional run</dd>
+            <dt>Week breaks when</dt><dd>Rain, a family weekend, a heavy week at work</dd>
+            <dt>Wants</dt><dd>A plan that moves the long ride, and a short fallback when it cannot happen</dd>
+            <dt>Quits over</dt><dd>Rigid plans, performance-heavy dashboards, price versus use</dd>
+          </dl>
+        </article>
+      </div>
+      <p class="mt-5 max-w-[46rem] text-note text-steady-muted">Both personas are provisional, to be sharpened by interviews.</p>
+    </div>
+  </section>
+
+  <!-- Competitive gap -->
+  <section class="border-t border-steady-line py-band">
+    <div class="wrap">
+      <h2 class="max-w-[24ch] text-h3 font-extrabold tracking-[-.03em] text-balance">No app plans strength, cycling and running in one week that adapts to a life</h2>
+      <p class="mt-5 max-w-2xl text-steady-body">Gentler Streak shares the values but not the multi-sport plan. Runna and Fitbod share the adaptivity but not the values.</p>
+      <div class="mt-10 overflow-x-auto" tabindex="0" role="region" aria-label="Competitor comparison">
+        <table class="w-full min-w-[46rem] text-note [&_:is(th,td)]:border-b [&_:is(th,td)]:border-steady-line [&_:is(th,td)]:py-[.9rem] [&_:is(th,td)]:pr-5 [&_:is(th,td)]:text-left [&_:is(th,td)]:align-top [&_td]:text-steady-body [&_tbody_th]:font-bold [&_thead_th]:text-[.875rem] [&_thead_th]:font-semibold [&_thead_th]:text-steady-muted [&_a]:text-steady-sky [&_a]:underline">
+          <thead><tr><th>App</th><th>Does well</th><th>Falls short for this audience</th><th>Price, as reported</th></tr></thead>
+          <tbody>
+            <tr><th><a href="https://apps.apple.com/ng/app/id1576857102" target="_blank" rel="noopener">Gentler Streak</a></th><td>Readiness-based suggestions; rest keeps the streak; closest in philosophy</td><td>Apple Health only; no structured strength or cycling plans</td><td>Free tier, premium plans</td></tr>
+            <tr><th><a href="https://the5krunner.com/runna/" target="_blank" rel="noopener">Runna</a></th><td>Adaptive running plans with strength beside them</td><td>Race-goal oriented, running only</td><td><a href="https://en.ain.ua/2025/04/17/strava-acquires-runna" target="_blank" rel="noopener">$119.99 a year</a> at acquisition</td></tr>
+            <tr><th>Fitbod</th><td>Adaptive strength using recovery per muscle group</td><td>Strength only; streaks and strength scores</td><td><a href="https://www.sensai.fit/blog/best-fitbod-alternatives-2026" target="_blank" rel="noopener">$95.99 a year</a></td></tr>
+            <tr><th>Hevy</th><td>Fast logging, adaptive trainer on the paid tier</td><td>Social comparison is a core feature</td><td><a href="https://www.sensai.fit/blog/hevy-vs-strong-vs-fitbod-vs-jefit" target="_blank" rel="noopener">$23.99 a year</a></td></tr>
+            <tr><th>Strava</th><td>Largest community, running and cycling, routes</td><td>Built around kudos, segments and performance</td><td><a href="https://en.ain.ua/2025/04/17/strava-acquires-runna" target="_blank" rel="noopener">$79.99 a year</a> at the Runna deal</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-5 max-w-[46rem] text-note text-steady-muted">From store listings, vendor pages and trade coverage, which change often. A hands-on audit of each app is the first research task. The threat to watch: Strava now owns an adaptive plan engine.</p>
+    </div>
+  </section>
+
+  <!-- Principles -->
+  <section class="border-t border-steady-line py-band">
+    <div class="wrap">
+      <h2 class="max-w-[18ch] text-h3 font-extrabold tracking-[-.03em] text-balance">Seven rules the product has to keep</h2>
+      <p class="mt-5 max-w-2xl text-steady-body">Each principle became concrete product rules. A feature that breaks one needs an explicit decision to proceed.</p>
+      <ol class="mt-10 grid gap-x-8 gap-y-7 sm:grid-cols-2 xl:grid-cols-3 *:border-t *:border-steady-line *:pt-4 [&_b]:block [&_b]:text-[1.25rem] [&_b]:font-extrabold [&_b]:tracking-[-.01em] [&_p]:mt-2 [&_p]:text-steady-body [&_span]:mb-2 [&_span]:block [&_span]:text-[.8125rem] [&_span]:font-bold [&_span]:text-steady-sky">
+        <li><span>P1</span><b>Plans bend, people don’t</b><p>Every session can be shortened, swapped or moved in two taps, and the plan regenerates.</p></li>
+        <li><span>P2</span><b>Weeks, not days</b><p>Goals, summaries and rewards use the calendar week. No daily streak anywhere.</p></li>
+        <li><span>P3</span><b>Celebrate showing up, in any size</b><p>A 10-minute minimum session counts toward the week.</p></li>
+        <li><span>P4</span><b>Absence is neutral</b><p>No loss framing or streak-break alerts. Returning always starts with a welcome.</p></li>
+        <li><span>P5</span><b>Compare with your past self only</b><p>No leaderboards, rankings or public sharing in v1.</p></li>
+        <li><span>P6</span><b>Quiet by default</b><p>At most three notification types, each user-controlled, none reporting a miss.</p></li>
+        <li class="sm:col-span-2 xl:col-span-3"><span>P7</span><b>Honest about limits</b><p class="max-w-2xl">No medical claims, calorie goals or body targets. Rest is a valid, visible part of the plan.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- The consistency model, live -->
+  <section class="border-t border-steady-line py-band">
+    <div class="wrap">
+      <div class="mb-10 grid items-end gap-[clamp(1.5rem,5vw,5rem)] lg:grid-cols-2">
+        <div><span class="text-[.8125rem] font-bold tracking-[.08em] text-steady-sky uppercase">How it works</span><h2 class="mt-[.6rem] max-w-[18ch] text-h3 font-extrabold tracking-[-.03em] text-balance">A gap lowers nothing you already earned</h2></div>
+        <p class="text-steady-body">The unit is the week, and each week closes in one of four states. Steady shows “steady weeks in the last 12”: a count over a window, not a consecutive run, so it can never reset to zero. Tap a week to change it.</p>
+      </div>
+
+      <div class="rounded-[24px] border border-steady-line bg-steady-surface p-[clamp(1.25rem,3vw,2.25rem)]">
+        <div class="grid grid-cols-6 gap-[clamp(.4rem,1.2vw,.75rem)] sm:grid-cols-12" id="weeks" role="group" aria-label="The last 12 weeks. Each button changes that week's state."></div>
+        <div class="mt-7 grid gap-6 border-t border-steady-line pt-6 md:grid-cols-2" aria-live="polite">
+          <p><b class="block text-[clamp(2.25rem,5vw,3.5rem)] leading-none font-extrabold tracking-[-.03em] tabular-nums" id="steadyCount">8</b><span class="mt-2 block text-steady-body">steady weeks in the last 12, the way Steady counts</span></p>
+          <p><b class="block text-[clamp(2.25rem,5vw,3.5rem)] leading-none font-extrabold tracking-[-.03em] text-steady-muted tabular-nums" id="streakCount">3</b><span class="mt-2 block text-steady-body">weeks a streak counter would show, back to zero at the next gap</span></p>
+        </div>
+        <ul class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-note text-steady-body [&_i]:mr-2 [&_i]:inline-block [&_i]:size-[.9rem] [&_i]:rounded-full [&_i]:align-[-.12em]" aria-label="Week states">
+          <li><i class="bg-steady-sage"></i>Steady: met the minimum</li>
+          <li><i class="bg-[linear-gradient(90deg,var(--color-steady-sage)_50%,transparent_50%)] outline-2 -outline-offset-2 outline-steady-sage"></i>Partly: some sessions</li>
+          <li><i class="bg-steady-track"></i>Paused: not counted</li>
+          <li><i class="outline-2 -outline-offset-2 outline-dashed outline-steady-track"></i>Gap: no colour alarm</li>
+        </ul>
+      </div>
+
+      <div class="mt-16 grid gap-[clamp(2rem,5vw,4rem)] lg:grid-cols-2">
+        <div>
+          <h3 class="text-[1.375rem] font-extrabold tracking-[-.01em]">Copy that never adds guilt</h3>
+          <div class="mt-5 overflow-x-auto" tabindex="0" role="region" aria-label="Language rules">
+            <table class="w-full min-w-[26rem] text-note [&_:is(th,td)]:border-b [&_:is(th,td)]:border-steady-line [&_:is(th,td)]:py-[.8rem] [&_:is(th,td)]:pr-4 [&_:is(th,td)]:text-left [&_:is(th,td)]:align-top [&_td:first-child]:text-steady-muted [&_td:first-child]:line-through [&_td:first-child]:decoration-steady-track [&_thead_th]:text-[.875rem] [&_thead_th]:font-semibold [&_thead_th]:text-steady-muted">
+              <thead><tr><th>Instead of</th><th>Write</th></tr></thead>
+              <tbody>
+                <tr><td>You broke your streak</td><td>Nothing. No message is sent</td></tr>
+                <tr><td>You missed your workout</td><td>Want to move today’s session or keep it light?</td></tr>
+                <tr><td>Don’t give up!</td><td>Good to see you. Here’s a lighter week to ease back in</td></tr>
+                <tr><td>Only 1 of 3 workouts done</td><td>One session in. The week is still open</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-[1.375rem] font-extrabold tracking-[-.01em]">Three notifications, no more</h3>
+          <ul class="mt-5 space-y-3 *:rounded-[18px] *:border *:border-steady-line *:p-4 [&_b]:block [&_b]:font-bold [&_span]:mt-1 [&_span]:block [&_span]:text-note [&_span]:text-steady-body">
+            <li><b>Weekly check-in</b><span>On the day the user picks. Skipped if the check-in is done.</span></li>
+            <li><b>Session reminder</b><span>Opt-in per session. Never about a missed one.</span></li>
+            <li><b>Re-entry welcome</b><span>After 7 days without a session. Sent once, then at most every 14 days, then it stops.</span></li>
+          </ul>
+          <p class="mt-4 text-note text-steady-muted">Ignore or opt out of two in a row, and that type stops until it is turned back on.</p>
+        </div>
+      </div>
+
+      <div class="mt-16 grid gap-[clamp(2rem,5vw,4rem)] lg:grid-cols-[1fr_1.2fr]">
+        <div>
+          <h3 class="text-[1.375rem] font-extrabold tracking-[-.01em]">A rules-based planner you can explain</h3>
+          <p class="mt-4 text-steady-body">Version one uses rules, not machine learning, so every session can carry a one-line reason, every rule can be tested on fixtures, and a coach can review the parameters before beta.</p>
+          <h3 class="mt-10 text-[1.375rem] font-extrabold tracking-[-.01em]">MVP and the cut line</h3>
+          <p class="mt-4 text-steady-body">The MVP is the smallest set that can run a 12-week beta on iOS: onboarding, check-in, adaptive plan, Today, session logging, Apple Health and Calendar, the consistency view, missed-week recovery, three notifications and a subscription.</p>
+          <p class="mt-4 text-steady-body">If time runs short, the Watch companion goes first, then calendar sync. The check-in, the recovery flow and the consistency view never go: they carry the core hypotheses.</p>
+        </div>
+        <ol class="grid gap-px self-start overflow-hidden rounded-[20px] border border-steady-line bg-steady-line sm:grid-cols-2 *:bg-steady-bg *:p-5 [&_b]:block [&_b]:font-bold [&_span]:mb-1 [&_span]:block [&_span]:text-[.8125rem] [&_span]:font-bold [&_span]:text-steady-sky [&_p]:mt-1 [&_p]:text-note [&_p]:text-steady-body">
+          <li><span>R1</span><b>Capacity first</b><p>Never more than the free windows, never less than the minimum week.</p></li>
+          <li><span>R2</span><b>Energy changes intensity first</b><p>Low energy shortens sessions and keeps the week’s shape.</p></li>
+          <li><span>R3</span><b>Hard, then easy</b><p>No hard sessions back to back; no heavy legs before a long ride.</p></li>
+          <li><span>R4</span><b>A missed session moves</b><p>To a free window this week, or it drops. Never doubled up.</p></li>
+          <li><span>R5</span><b>A missed week restarts lighter</b><p>Then builds back gradually.</p></li>
+          <li><span>R6</span><b>Progress only on completion</b><p>Otherwise the plan holds.</p></li>
+          <li><span>R7</span><b>Pause freezes progression</b><p>Illness, injury or travel, then a scaled restart.</p></li>
+          <li><span>R8</span><b>Weather fallback</b><p>Rain on ride day offers another day, indoors or a run.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- The prototype -->
+  <section class="border-t border-steady-line py-band">
+    <div class="wrap">
+      <span class="text-[.8125rem] font-bold tracking-[.08em] text-steady-sky uppercase">The prototype</span>
+      <h2 class="mt-[.6rem] max-w-[20ch] text-h2 font-extrabold text-balance">Built around one weekly loop</h2>
+      <p class="mt-5 max-w-2xl text-lede text-steady-body">Check in, get a plan, train, review, repeat. Everything returns to Today, and the moments after a miss get as much design as the plan itself.</p>
+
+      <!-- The flow, in three bands -->
+      <div class="mt-12 grid gap-4 lg:grid-cols-[1fr_1.15fr_1fr]" role="img" aria-label="Flow: onboarding screens 1 to 7 lead to Today. From Today the weekly loop branches to the week plan, strength and run sessions and the weekly check-in, which lead to Your week. Today also opens journey, weekly review, pause, which resumes through Welcome back, and settings, which leads to the paywall.">
+        <div class="rounded-[20px] border border-steady-line p-5">
+          <span class="text-[.8125rem] font-bold text-steady-muted">1 · Onboarding</span>
+          <ol class="mt-4 flex flex-wrap items-center gap-[.4rem] text-[.875rem] font-semibold *:rounded-full *:bg-steady-deep *:px-3 *:py-[.35rem]">
+            <li>01 Welcome</li><li>02 Sports</li><li>03 Equipment</li><li>04 Typical week</li><li>05 Minimum week</li><li>06 Safety</li><li>07 First plan</li>
+          </ol>
+        </div>
+        <div class="rounded-[20px] border border-steady-sky/60 bg-steady-skybg p-5">
+          <span class="text-[.8125rem] font-bold text-steady-sky">2 · Weekly loop</span>
+          <p class="mt-4 inline-block rounded-full bg-steady-sky px-4 py-[.45rem] text-[.9375rem] font-extrabold text-steady-bg">08 Today</p>
+          <ul class="mt-3 flex flex-wrap gap-[.4rem] text-[.875rem] font-semibold *:rounded-full *:border *:border-steady-edge *:px-3 *:py-[.35rem]">
+            <li>09 Week plan</li><li>10 Strength</li><li>11 Run or ride</li><li>12 Check-in</li><li>13 Your week</li>
+          </ul>
+        </div>
+        <div class="rounded-[20px] border border-steady-line p-5">
+          <span class="text-[.8125rem] font-bold text-steady-muted">3 · Recovery and account</span>
+          <ul class="mt-4 flex flex-wrap gap-[.4rem] text-[.875rem] font-semibold *:rounded-full *:bg-steady-deep *:px-3 *:py-[.35rem]">
+            <li>15 Pause → 14 Welcome back</li><li>16 Weekly review</li><li>17 Journey</li><li>18 Settings → 19 Paywall</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero screens, large, each with its reason -->
+  <section class="pb-band">
+    <div class="wrap space-y-[clamp(4rem,10vw,8rem)]">
+      <div class="grid items-center gap-[clamp(2rem,6vw,6rem)] md:grid-cols-2">
+        <img class="mx-auto w-[min(100%,22rem)] drop-shadow-[0_40px_70px_rgba(0,0,0,.55)]" src="img/steady/08-today.png" alt="Today screen: “Two sessions make a steady week.” A row of seven days shows Monday done, Wednesday selected, and a card for today’s 35-minute full-body strength session with its reason and a Start session button." width="836" height="1744" loading="lazy">
+        <div><span class="text-[.8125rem] font-bold text-steady-sky">08 · Today</span><h3 class="mt-2 text-h3 font-extrabold tracking-[-.03em] text-balance">One card for the day, with a reason</h3><p class="mt-5 max-w-[30rem] text-steady-body">The headline sets the bar: two sessions make a steady week. Every session says why it is where it is, so an automatic plan reads as considered rather than arbitrary. Any day can be swapped for rest without a reason.</p></div>
+      </div>
+      <div class="grid items-center gap-[clamp(2rem,6vw,6rem)] md:grid-cols-2">
+        <img class="mx-auto w-[min(100%,22rem)] drop-shadow-[0_40px_70px_rgba(0,0,0,.55)] md:order-2" src="img/steady/12-check-in.png" alt="Weekly check-in, step 1 of 3: “How is your energy going into next week?” with three choices, Low, OK (selected) and Good, and a Continue button." width="836" height="1744" loading="lazy">
+        <div><span class="text-[.8125rem] font-bold text-steady-sky">12 · Weekly check-in</span><h3 class="mt-2 text-h3 font-extrabold tracking-[-.03em] text-balance">Three questions, about 30 seconds</h3><p class="mt-5 max-w-[30rem] text-steady-body">Energy, availability (pre-filled from the calendar) and known disruptions. Low energy changes intensity before frequency, so a tired week keeps its shape. Whether people will really do this weekly is hypothesis H3.</p></div>
+      </div>
+      <div class="grid items-center gap-[clamp(2rem,6vw,6rem)] md:grid-cols-2">
+        <img class="mx-auto w-[min(100%,22rem)] drop-shadow-[0_40px_70px_rgba(0,0,0,.55)]" src="img/steady/09-week-plan.png" alt="Week plan for week 47 with a Light week switch. Monday’s easy run is done, Tuesday is rest, and today’s strength session is open with Move to day chips and Make it shorter and Rest instead buttons. Thursday’s mobility is optional." width="836" height="1744" loading="lazy">
+        <div><span class="text-[.8125rem] font-bold text-steady-sky">09 · Week plan</span><h3 class="mt-2 text-h3 font-extrabold tracking-[-.03em] text-balance">Plans bend in two taps</h3><p class="mt-5 max-w-[30rem] text-steady-body">Move, shorten or rest, none of which asks why. One switch collapses the whole week to its minimum. The plan regenerates around every change and never lands on a calendar conflict.</p></div>
+      </div>
+      <div class="grid items-center gap-[clamp(2rem,6vw,6rem)] md:grid-cols-2">
+        <img class="mx-auto w-[min(100%,22rem)] drop-shadow-[0_40px_70px_rgba(0,0,0,.55)] md:order-2" src="img/steady/14-welcome-back.png" alt="Welcome back after 12 days away: “Nothing was lost and nothing needs catching up.” Three choices: a gentle restart (selected), close to my usual, or start with a check-in, and a Build my week button." width="836" height="1744" loading="lazy">
+        <div><span class="text-[.8125rem] font-bold text-steady-sky">14 · Welcome back</span><h3 class="mt-2 text-h3 font-extrabold tracking-[-.03em] text-balance">The moment after a miss decides retention</h3><p class="mt-5 max-w-[30rem] text-steady-body">So it gets the best design effort, not a reminder. No loss message, no red state: a welcome and a choice of how big the week should be, with a gentle restart as the default. Whether this brings people back more often than a reminder is H1, the first thing to test.</p></div>
+      </div>
+      <div class="grid items-center gap-[clamp(2rem,6vw,6rem)] md:grid-cols-2">
+        <img class="mx-auto w-[min(100%,22rem)] drop-shadow-[0_40px_70px_rgba(0,0,0,.55)]" src="img/steady/17-journey.png" alt="Journey: “20 sessions in 8 weeks. Two weeks away in the middle, and you came back on your own terms.” A grid of weeks 40 to 47 shows sessions as green squares and two break weeks as dashed outlines, with filters for all, strength, cycling and running." width="836" height="1744" loading="lazy">
+        <div><span class="text-[.8125rem] font-bold text-steady-sky">17 · Journey</span><h3 class="mt-2 text-h3 font-extrabold tracking-[-.03em] text-balance">Compared only with your past self</h3><p class="mt-5 max-w-[30rem] text-steady-body">The history shows showing up, not performance. Break weeks are quiet dashed outlines, and the notes worth keeping are about patterns, like coming back after two quiet weeks.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- All screens, by band -->
+  <section class="border-t border-steady-line py-band">
+    <div class="wrap">
+      <h2 class="max-w-[20ch] text-h3 font-extrabold tracking-[-.03em] text-balance">Every screen</h2>
+      <p class="mt-4 max-w-2xl text-steady-body">Built as a clickable prototype in the Dusk direction, one of three explored. Prices on the paywall are placeholders to test.</p>
+    </div>
+    <div class="mt-10 space-y-12">
+      <div>
+        <h3 class="wrap mb-4 text-[1rem] font-bold text-steady-muted">1 · Onboarding</h3>
+        <ul class="wrap grid grid-cols-2 gap-x-[clamp(.75rem,2vw,1.5rem)] gap-y-8 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 [&_figcaption]:mt-3 [&_figcaption]:text-[.875rem] [&_figcaption]:font-semibold [&_figcaption]:text-steady-body" aria-label="Onboarding screens">
+          <li><figure><img src="img/steady/01-welcome.png" alt="Welcome: “Training that fits your life.” Strength, cycling and running, planned around energy, calendar and family." width="836" height="1744" loading="lazy"><figcaption>01 Welcome</figcaption></figure></li>
+          <li><figure><img src="img/steady/02-sports.png" alt="Pick sports: “What do you like to train?” Choose one or more of strength, cycling and running." width="836" height="1744" loading="lazy"><figcaption>02 Sports</figcaption></figure></li>
+          <li><figure><img src="img/steady/03-equipment.png" alt="Equipment and places: “Where and with what?” Options shape which sessions are suggested; the step can be skipped." width="836" height="1744" loading="lazy"><figcaption>03 Equipment</figcaption></figure></li>
+          <li><figure><img src="img/steady/04-typical-week.png" alt="Typical week: “When can you usually train?” The calendar shares free and busy times only; event details stay on the phone." width="836" height="1744" loading="lazy"><figcaption>04 Typical week</figcaption></figure></li>
+          <li><figure><img src="img/steady/05-minimum-week.png" alt="Minimum week: “What is a good-enough week?” On a hard week this is all it takes." width="836" height="1744" loading="lazy"><figcaption>05 Minimum week</figcaption></figure></li>
+          <li><figure><img src="img/steady/06-safety.png" alt="Safety: “A quick readiness check.” Four questions to start at the right size, with answers kept on the phone." width="836" height="1744" loading="lazy"><figcaption>06 Safety</figcaption></figure></li>
+          <li><figure><img src="img/steady/07-first-plan.png" alt="First plan: “Your first week.” Two sessions make it steady; the rest is optional. Each session shows its reason." width="836" height="1744" loading="lazy"><figcaption>07 First plan</figcaption></figure></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="wrap mb-4 text-[1rem] font-bold text-steady-muted">2 · Weekly loop</h3>
+        <ul class="wrap grid grid-cols-2 gap-x-[clamp(.75rem,2vw,1.5rem)] gap-y-8 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 [&_figcaption]:mt-3 [&_figcaption]:text-[.875rem] [&_figcaption]:font-semibold [&_figcaption]:text-steady-body" aria-label="Weekly loop screens">
+          <li><figure><img src="img/steady/08-today.png" alt="Today: the day’s session card with its reason, a seven-day strip and links to the week plan, review and pause." width="836" height="1744" loading="lazy"><figcaption>08 Today</figcaption></figure></li>
+          <li><figure><img src="img/steady/09-week-plan.png" alt="Week plan: seven days with a Light week switch, and move, shorten or rest actions on each session." width="836" height="1744" loading="lazy"><figcaption>09 Week plan</figcaption></figure></li>
+          <li><figure><img src="img/steady/10-strength.png" alt="Strength session: guided exercise list with set logging." width="836" height="1744" loading="lazy"><figcaption>10 Strength</figcaption></figure></li>
+          <li><figure><img src="img/steady/11-run.png" alt="Bike ride, imported from Apple Health: 1 h 24 min and 31 km, an effort guide, and an optional how-hard-did-it-feel rating." width="836" height="1744" loading="lazy"><figcaption>11 Run or ride</figcaption></figure></li>
+          <li><figure><img src="img/steady/12-check-in.png" alt="Weekly check-in, step 1 of 3: energy going into next week, low, OK or good." width="836" height="1744" loading="lazy"><figcaption>12 Check-in</figcaption></figure></li>
+          <li><figure><img src="img/steady/13-your-week.png" alt="Your week: “Why your week looks like this.” Every session has a reason, and the plan adjusts around any change." width="836" height="1744" loading="lazy"><figcaption>13 Your week</figcaption></figure></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="wrap mb-4 text-[1rem] font-bold text-steady-muted">3 · Recovery and account</h3>
+        <ul class="wrap grid grid-cols-2 gap-x-[clamp(.75rem,2vw,1.5rem)] gap-y-8 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 [&_figcaption]:mt-3 [&_figcaption]:text-[.875rem] [&_figcaption]:font-semibold [&_figcaption]:text-steady-body" aria-label="Recovery and account screens">
+          <li><figure><img src="img/steady/14-welcome-back.png" alt="Welcome back after 12 days away, with a gentle restart, close to usual, or a check-in." width="836" height="1744" loading="lazy"><figcaption>14 Welcome back</figcaption></figure></li>
+          <li><figure><img src="img/steady/15-pause.png" alt="Pause: “Taking a break?” Pausing stops the plan and reminders, and the history stays as it is." width="836" height="1744" loading="lazy"><figcaption>15 Pause</figcaption></figure></li>
+          <li><figure><img src="img/steady/16-weekly-review.png" alt="Weekly review: “A steady week.” Two sessions and four active days, with an optional how-did-the-week-feel question and a Plan next week button." width="836" height="1744" loading="lazy"><figcaption>16 Weekly review</figcaption></figure></li>
+          <li><figure><img src="img/steady/17-journey.png" alt="Journey: 20 sessions in 8 weeks, with break weeks shown as dashed outlines." width="836" height="1744" loading="lazy"><figcaption>17 Journey</figcaption></figure></li>
+          <li><figure><img src="img/steady/18-settings.png" alt="Settings: notification controls, privacy, data export and deletion, and subscription." width="836" height="1744" loading="lazy"><figcaption>18 Settings</figcaption></figure></li>
+          <li><figure><img src="img/steady/19-paywall.png" alt="Paywall: “Try Steady free for 14 days.” Yearly €49 or monthly €6.99, marked as example prices to be tested, with renewal and cancellation terms shown before purchase." width="836" height="1744" loading="lazy"><figcaption>19 Paywall</figcaption></figure></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Decisions -->
+  <section class="border-t border-steady-line py-band">
+    <div class="wrap">
+      <h2 class="max-w-[18ch] text-h3 font-extrabold tracking-[-.03em] text-balance">Decisions and what they cost</h2>
+      <ul class="mt-10 grid gap-px overflow-hidden rounded-[20px] border border-steady-line bg-steady-line md:grid-cols-2 *:bg-steady-bg *:p-[clamp(1.25rem,3vw,2rem)] [&_h3]:text-[1.125rem] [&_h3]:font-bold [&_p]:mt-2 [&_p]:text-steady-body [&_small]:mt-3 [&_small]:block [&_small]:text-note [&_small]:text-steady-muted">
+        <li><h3>Weeks, not days</h3><p>A week that met a minimum is a more honest and forgiving unit, and it matches WHO’s weekly guidance.</p><small>Cost: less of the daily pull that streaks create. If users ask, an opt-in daily view can be added (E2).</small></li>
+        <li><h3>Absence is neutral</h3><p>A missed week is a quiet gap. Paused weeks don’t count at all.</p><small>Cost: no loss aversion to lean on. H1 tests whether a welcome beats a reminder.</small></li>
+        <li><h3>Quiet notifications</h3><p>Three types, user-controlled, none about a miss.</p><small>Cost: fewer re-engagement touches. The opt-out rate is a guardrail, not an afterthought.</small></li>
+        <li><h3>A rules-based planner</h3><p>Explainable, testable on fixtures and reviewable by a coach.</p><small>Cost: less personalisation than a learned model. That can come once beta data exists.</small></li>
+        <li class="md:col-span-2"><h3>Paywall after the first session</h3><p>People should feel a plan that fits their week, and ideally a recovery, before they are asked to pay. More than half of trial cancellations happen on day one.</p><small>Cost: some users leave before seeing a price. Timing is experiment E5; trial length is E4.</small></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Next -->
+  <section class="border-t border-steady-line py-band">
+    <div class="wrap grid gap-[clamp(2rem,6vw,6rem)] lg:grid-cols-2">
+      <div>
+        <h2 class="max-w-[16ch] text-h2 font-extrabold text-balance">Next: find out if it is true</h2>
+        <p class="mt-5 max-w-xl text-lede text-steady-body">Eight hypotheses hold the product up. The riskiest three are tested first, before any build is committed.</p>
+        <ul class="mt-8 space-y-4 [&_b]:mr-2 [&_b]:text-steady-sky [&_li]:text-steady-body">
+          <li><b>H1</b>A welcome with a smaller plan brings people back after a missed week more often than a reminder.</li>
+          <li><b>H2</b>A weekly consistency goal motivates this segment more than a daily streak.</li>
+          <li><b>H4</b>One plan across three sports is worth paying for over single-sport apps.</li>
+        </ul>
+      </div>
+      <div>
+        <ol class="relative space-y-5 border-l border-steady-line pl-6 [&_b]:block [&_b]:font-bold [&_li]:relative [&_li]:before:absolute [&_li]:before:top-[.45em] [&_li]:before:-left-[1.85rem] [&_li]:before:size-[.65rem] [&_li]:before:rounded-full [&_li]:before:bg-steady-sky [&_li]:before:content-[''] [&_span]:mt-1 [&_span]:block [&_span]:text-note [&_span]:text-steady-body">
+          <li><b>Weeks 1–2 · Diary and app audit</b><span>Two weeks with the closest competitors, and a heuristic review of five apps.</span></li>
+          <li><b>Weeks 1–3 · Interviews</b><span>12–15 adults from the segment, including four who abandoned a fitness app.</span></li>
+          <li><b>Weeks 2–4 · Diary study</b><span>Planned versus done, what disrupted it, how it felt.</span></li>
+          <li><b>Weeks 4–5 · Survey</b><span>Feature priority and price questions, plus a fake-door paywall.</span></li>
+          <li><b>Weeks 5–8 · Prototype tests</b><span>Two rounds on the weekly loop and missed-week recovery.</span></li>
+          <li><b>After MVP · 12-week closed beta</b><span>150–300 users, so week-12 retention is measured on real use.</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="wrap mt-14">
+      <div class="grid gap-px overflow-hidden rounded-[20px] border border-steady-line bg-steady-line md:grid-cols-3 *:bg-steady-surface *:p-6 [&_b]:block [&_b]:text-[1.75rem] [&_b]:font-extrabold [&_b]:tracking-[-.02em] [&_span]:mt-1 [&_span]:block [&_span]:text-note [&_span]:text-steady-body [&_small]:mt-3 [&_small]:block [&_small]:text-[.8125rem] [&_small]:font-bold [&_small]:text-steady-muted">
+        <div><small>Week-12 retention</small><b>40%</b><span>of activated users, 50% stretch</span></div>
+        <div><small>Weekly active days</small><b>2.5+</b><span>days with a session of any size</span></div>
+        <div><small>Subscription churn</small><b>≤ 8%</b><span>monthly from month 4; annual renewal 40%+</span></div>
+      </div>
+      <p class="mt-5 max-w-[46rem] text-note text-steady-muted">Proposed targets with no baseline yet; the beta sets the real numbers. Guardrails come first: the plan should feel manageable (4 of 5 or higher), notification opt-outs should fall, and reported guilt should stay low. Daily active users, time in app and streak length are deliberately not optimised.</p>
+    </div>
+  </section>
+
+  <!-- Sources -->
+  <section class="border-t border-steady-line py-band">
+    <div class="wrap">
+      <details class="group">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-[1.375rem] font-extrabold tracking-[-.01em] [&::-webkit-details-marker]:hidden">Sources<span class="text-steady-sky transition-transform duration-200 group-open:rotate-45" aria-hidden="true">+</span></summary>
+        <div class="mt-6 grid gap-8 text-note md:grid-cols-2 xl:grid-cols-4 [&_a]:text-steady-sky [&_a]:underline [&_h3]:mb-3 [&_h3]:font-bold [&_li]:mb-2 [&_li]:text-steady-body">
+          <div><h3>Retention and subscriptions</h3><ul>
+            <li><a href="https://businessofapps.com/data/health-fitness-app-benchmarks" target="_blank" rel="noopener">Business of Apps, Health &amp; Fitness benchmarks</a></li>
+            <li><a href="https://www.revenuecat.com/blog/average-subscription-renewal-rates-by-app-category/" target="_blank" rel="noopener">RevenueCat, renewal rates by category</a></li>
+            <li><a href="https://www.revenuecat.com/sosa-2026-insights-part-2" target="_blank" rel="noopener">RevenueCat, State of Subscription Apps 2026</a></li>
+            <li><a href="https://9to5mac.com/2026/05/27/new-report-shows-annual-app-subscribers-rarely-return-after-they-cancel/" target="_blank" rel="noopener">9to5Mac on RevenueCat 2026</a></li>
+          </ul></div>
+          <div><h3>Motivation, streaks, gamification</h3><ul>
+            <li><a href="https://www.psychologytoday.com/us/blog/ulterior-motives/202306/how-broken-streaks-sap-motivation" target="_blank" rel="noopener">Psychology Today, broken streaks</a></li>
+            <li><a href="https://knowledge.insead.edu/marketing/consumer-streaks-are-motivating-key-keeping-them-alive" target="_blank" rel="noopener">INSEAD Knowledge, consumer streaks</a></li>
+            <li><a href="https://www.emerald.com/insight/content/doi/10.1108/K-03-2024-0792/full/html" target="_blank" rel="noopener">Bai, Kybernetes</a></li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/22726453/" target="_blank" rel="noopener">Teixeira et al. 2012</a></li>
+            <li><a href="https://core.ac.uk/download/70653523.pdf" target="_blank" rel="noopener">Lally et al. 2009</a></li>
+          </ul></div>
+          <div><h3>Audience and guidelines</h3><ul>
+            <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4227023/" target="_blank" rel="noopener">Mailey et al. 2014</a></li>
+            <li><a href="https://www.who.int/europe/news-room/fact-sheets/detail/physical-activity" target="_blank" rel="noopener">WHO physical activity fact sheet</a></li>
+            <li><a href="https://bjsm.bmj.com/content/54/24/1451" target="_blank" rel="noopener">WHO 2020 guidelines, BJSM</a></li>
+          </ul></div>
+          <div><h3>Competitors</h3><ul>
+            <li><a href="https://apps.apple.com/ng/app/id1576857102" target="_blank" rel="noopener">Gentler Streak, App Store</a></li>
+            <li><a href="https://the5krunner.com/runna/" target="_blank" rel="noopener">Runna overview, the5krunner</a></li>
+            <li><a href="https://en.ain.ua/2025/04/17/strava-acquires-runna" target="_blank" rel="noopener">Strava acquires Runna, AIN</a></li>
+            <li><a href="https://www.sensai.fit/blog/best-fitbod-alternatives-2026" target="_blank" rel="noopener">Fitbod pricing, SensAI</a></li>
+            <li><a href="https://www.sensai.fit/blog/hevy-vs-strong-vs-fitbod-vs-jefit" target="_blank" rel="noopener">Hevy pricing, SensAI</a></li>
+          </ul></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <a class="group block bg-pulse-bg px-gut py-[clamp(3rem,8vw,6rem)] text-pulse-ink" href="pulse.html">
+    <span class="mb-3 block font-semibold opacity-80">Next case</span>
+    <strong class="block text-next font-bold transition-transform duration-300 ease-[ease] group-hover:translate-x-[.15em]">Pulse</strong>
+  </a>
+</main>
+
+<!-- Footer: the hero turned upside down. Cobalt ground, the volt question and button on top, and the name
+     full-bleed along the bottom, stretched tall and cropped at the bottom edge (--foot-name-h, set below). -->
+<footer class="relative overflow-clip bg-hero-bg text-hero-name">
+  <div class="flex flex-wrap items-end justify-between gap-x-8 gap-y-6 px-gut pt-[clamp(3rem,7vw,6rem)] pb-[max(2.2vw,1.25rem)]">
+    <p class="max-w-[20em] font-inter text-[clamp(1.375rem,2.6vw,3rem)] leading-[1.12] tracking-[-.035em] text-volt">Working on a product that has outgrown its first design?</p>
+    <a class="inline-block rounded-full bg-volt px-[1.4em] py-[.7em] font-display text-[clamp(1.25rem,2.2vw,2rem)] font-extrabold text-hero-bg transition-transform duration-200 hover:scale-104 hover:-rotate-3" href="mailto:hello@madsbuciek.com">Say hello!</a>
+  </div>
+  <div class="relative h-(--foot-name-h,24.5vw)" data-foot-name>
+    <p class="absolute inset-x-0 bottom-0 flex origin-bottom justify-between font-display leading-none whitespace-nowrap uppercase select-none" data-text-pressure>Mads Buciek</p>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+<script src="js/text-pressure.js"></script>
+<script>
+(() => {
+  // The consistency model: 12 weeks, four states. "Steady weeks in the last 12" counts over the
+  // window; a streak counts back from the latest week and stops at the first week that is not steady.
+  const STATES = ['steady', 'partly', 'paused', 'gap'];
+  const LABEL = { steady: 'steady', partly: 'partly', paused: 'paused', gap: 'a gap' };
+  const MARK = {
+    steady: 'bg-steady-sage',
+    partly: 'bg-[linear-gradient(90deg,var(--color-steady-sage)_50%,transparent_50%)] outline-2 -outline-offset-2 outline-steady-sage',
+    paused: 'bg-steady-track',
+    gap: 'outline-2 -outline-offset-2 outline-dashed outline-steady-track'
+  };
+  const weeks = ['steady', 'steady', 'partly', 'steady', 'steady', 'gap', 'gap', 'steady', 'paused', 'steady', 'steady', 'steady'];
+  const box = document.getElementById('weeks');
+  const first = 36; // week numbers shown, ending at week 47 like the prototype
+  const buttons = weeks.map((_, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'flex cursor-pointer flex-col items-center gap-2 rounded-[14px] py-2 text-[.75rem] font-bold text-steady-muted transition-colors hover:bg-steady-deep';
+    b.innerHTML = `<i class="block aspect-square w-[min(100%,2.75rem)] rounded-full transition-[background,outline-color] duration-200"></i><span>W${first + i}</span>`;
+    b.addEventListener('click', () => { weeks[i] = STATES[(STATES.indexOf(weeks[i]) + 1) % STATES.length]; draw(); });
+    box.append(b);
+    return b;
+  });
+  const draw = () => {
+    weeks.forEach((s, i) => {
+      buttons[i].querySelector('i').className = 'block aspect-square w-[min(100%,2.75rem)] rounded-full transition-[background,outline-color] duration-200 ' + MARK[s];
+      buttons[i].setAttribute('aria-label', `Week ${first + i}: ${LABEL[s]}. Change`);
+    });
+    document.getElementById('steadyCount').textContent = weeks.filter((s) => s === 'steady').length;
+    let streak = 0;
+    for (let i = weeks.length - 1; i >= 0 && weeks[i] === 'steady'; i--) streak++;
+    document.getElementById('streakCount').textContent = streak;
+  };
+  draw();
+})();
+</script>
+</body>
+</html>
