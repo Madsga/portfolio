@@ -30,7 +30,7 @@
        within the screen. --name-h (the name's cap height) is set by the script at the bottom.
        --top is where the portrait starts: on phones below the tagline, wider up into the name, so the name
        runs slightly behind it. -->
-  <section class="sticky top-0 isolate h-[clamp(36rem,65vw,calc(100svh_-_2.5rem))] overflow-clip bg-hero-bg *:translate-y-[calc(var(--p,0)*-14%)] after:pointer-events-none after:absolute after:inset-0 after:z-10 after:bg-black after:opacity-[calc(var(--p,0)*.55)] after:content-[''] [--top:calc(var(--name-h,24.5vw)_+_8.5rem)] md:[--top:max(11.5vw,7rem)]" data-hero>
+  <section class="sticky top-0 isolate h-[clamp(36rem,65vw,calc(100svh_-_2.5rem))] overflow-clip bg-hero-bg *:translate-y-[calc(var(--p,0)*-14%)] [--top:calc(var(--name-h,24.5vw)_+_8.5rem)] md:[--top:max(11.5vw,7rem)]" data-hero>
     <!-- The name: letters swell under the pointer and a wave rolls through them at rest (js/text-pressure.js),
          stretched tall and cropped at the top edge -->
     <h1 class="pointer-events-none absolute inset-x-0 top-0 z-0 flex origin-top justify-between font-display leading-none whitespace-nowrap text-hero-name uppercase select-none" data-hero-name>Mads Buciek</h1>
@@ -173,10 +173,13 @@
     document.fonts?.ready.then(place);
     place();
     portraitDither(hero.querySelector('[data-portrait]'), { area: hero, ink: '#CCFF00', ground: '#1B2BB8', cell: 2 });
+    // On scroll the whole hero dithers from cobalt into volt, in the portrait's grid; the stack below drives it.
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) hero.dither = scrollDither(hero, { ink: '#CCFF00', cell: 2, from: 'bottom' });
   })();
 </script>
 <script>
-  // Case stack: as the next case slides over a stuck one, the stuck one drifts up and darkens.
+  // Case stack: as the next case slides over a stuck one, the stuck one drifts up and darkens
+  // (the hero instead dithers into volt as a gradient rising from the bottom, solid once the first case covers it).
   // --p runs from 0 (next case just below it) to 1 (fully covered).
   (() => {
     // The hero is the first layer: the first case slides over it like the rest.
@@ -196,6 +199,7 @@
         const stuckAt = door.getBoundingClientRect().top + h; // the door's bottom, where the next one starts covering
         const p = Math.min(1, Math.max(0, (stuckAt - next.getBoundingClientRect().top) / h));
         door.style.setProperty('--p', p.toFixed(3));
+        door.dither?.(p); // 0% at the top of the page, solid volt once the hero is fully covered
       });
     };
     const schedule = () => { if (!raf) raf = requestAnimationFrame(update); };
